@@ -17,9 +17,9 @@ body, html {
 #container2 {
     background-color: white;
     position: absolute;
-    top: 80%;
+    top: 90%;
     left: 50%;
-    transform: translate(-50%, -80%);
+    transform: translate(-50%, -90%);
     padding: 10px;
     text-align: center;
     padding-right: 50px;
