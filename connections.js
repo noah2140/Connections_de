@@ -135,10 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     triesContainer.appendChild(tries);
                     triesArray.push(tryX);
                     if(tryNumber == 5) {
-                        const enterButton = document.getElementById('enterButton');
-                        const shuffleButton = document.getElementById('shuffleButton');
-                        enterButton.remove();
-                        shuffleButton.remove();
                         for(let y=0;y<4;y++) {
                             while(isSolved[y] == true && y<4) {
                                 y++;
@@ -227,6 +223,17 @@ document.addEventListener('DOMContentLoaded', function() {
         isSolvedNumber+=1;
         createGrid(4-isSolvedNumber,4);
         solvedContainer.appendChild(solve);
+        if(isSolvedNumber == 4) {
+            const enterButton = document.getElementById('enterButton');
+            const shuffleButton = document.getElementById('shuffleButton');
+            enterButton.remove();
+            shuffleButton.remove();
+            const newShareButton = document.getElementById('shButton');
+            newShareButton.style.backgroundColor = "beige";
+            newShareButton.style.border = "thin solid black";
+            newShareButton.style.color = "black";
+            newShareButton.textContent = "Teilen";
+        }
     }
 
     function shareButton() {
