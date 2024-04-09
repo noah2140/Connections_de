@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(attempt);
             shareText = shareText + attempt + "\n";
         }
+        shareText += "https://html-preview.github.io/?url=https://github.com/noah2140/Connections_de/blob/master/index.html";
         const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
         window.location.href = whatsappUrl;
     }
