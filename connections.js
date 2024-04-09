@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         newShareButton.style.backgroundColor = "beige";
                         newShareButton.style.border = "thin solid black";
                         newShareButton.style.color = "black";
-                        newShareButton.textContent = "Share";
+                        newShareButton.textContent = "Teilen";
                     }
                 }
             }
