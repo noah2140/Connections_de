@@ -1,0 +1,115 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#container1 {
+    background-color: white;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    padding: 10px;
+    text-align: center;
+}
+
+#container2 {
+    background-color: white;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    padding: 10px;
+    text-align: center;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.try {
+    font-size: 15px;
+    border: thin solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+#triesContainer {
+    position: relative;
+    top: -90%;
+    padding: 20px;
+}
+
+#solvedContainer {
+    position: relative;
+}
+
+.solve {
+    font-size: 20px;
+    border: thin solid black;
+    padding: 7.5px;
+    margin-bottom: 10px;
+    padding-right: 110px;
+    padding-left: 110px;
+}
+
+#gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border: thin solid black;
+    font-size: 20px;
+}
+
+#buttons {
+    background-color: white;
+    border-radius: 2px;
+    border-color: black;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.button {
+    height: 50px;
+    width: 150px;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: thin solid black;
+    color: black;
+}
+
+#shuffleButton  {
+    background-color: coral;
+}
+
+#enterButton {
+    background-color: lightgreen;
+}
+
+#shareButton {
+    background-color: white;
+    border-radius: 2px;
+    border-color: black;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#shButton {
+    background-color: beige;
+}
