@@ -31,8 +31,8 @@ body, html {
     border: thin solid black;
     padding: 5px;
     margin-bottom: 5px;
-    padding-right: 100px;
-    padding-left: 100px;
+    padding-right: 50px;
+    padding-left: 50px;
 }
 
 #triesContainer {
