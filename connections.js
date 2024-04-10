@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cont2 = document.getElementById('container2');
             cont1.style.margin = "0 auto";
             cont2.style.margin = "0 auto";
-            
+
         }
         const newShareButton = document.getElementById('shButton');
         newShareButton.style.backgroundColor = "white";
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
         if(isMobile) {
-            solve.style.fontSize = "1vw";
+            solve.style.fontSize = "20px";
         }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
