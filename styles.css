@@ -12,6 +12,7 @@ body, html {
     transform: translate(-50%, -10%);
     padding: 10px;
     text-align: center;
+    width: 80ve;
 }
 
 #container2 {
@@ -24,6 +25,7 @@ body, html {
     text-align: center;
     padding-right: 50px;
     padding-left: 50px;
+    width: 80ve;
 }
 
 .try {
