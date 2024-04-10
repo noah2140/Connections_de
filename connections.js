@@ -74,10 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateFontSize(text) {
-        const baseFontSize = 4;
+        const baseFontSize = 8;
         const minFontSize = 0.2; 
-        const maxFontSize = 60; 
-        const lengthFactor = 0.2; 
+        const maxFontSize = 80; 
+        const lengthFactor = 0.15; 
         const maxLength = 15; 
     
         const adjustedLength = Math.min(text.length, maxLength);
