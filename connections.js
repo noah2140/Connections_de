@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const categories = [["Programmiersprachen:", ["Ada", "Lua", "Java", "Python"]], 
-                    ["Planeten:", ["Mars", "Merkur", "Saturn", "Venus"]],
-                    ["Geliebte des Zeus:", ["Hera", "Pluto", "Rhea", "Thalia"]],
-                    ["Götter nach denen Wochentage benannt sind:", ["Freya", "Thor", "Tyr", "Wodan"]]]
 
-    let words = [];
-    words = categories.map(category => category[1]).flat();  
+    const startDate = new Date('4/10/2024');
+    const currentDate = new Date();
+    const diffTime = Math.abs(currentDate - startDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    let words = []; 
     let selectedWords = [];
     let tryNumber = 1;
     let triesArray = [];
@@ -15,6 +15,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const emojis = [
         "\u{1F7E8}", "\u{1F7E9}", "\u{1F7E6}", "\u{1F7EA}" 
     ];
+
+    function fetchData() {
+        fetch('puzzles.txt')
+            .then(response => response.text())
+            .then(data => {
+                const dataArray = JSON.parse(data);
+
+                const categories = dataArray[diffDays];
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    window.addEventListener('load', fetchData);
+
+    words = categories.map(category => category[1]).flat(); 
 
     function shuffleTiles() { 
         let currentIndex = words.length;
@@ -237,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function shareButton() {
-        const currentDate = new Date();
         let shareText = "Connections-DE vom " + currentDate.toDateString() + ": \n \n";
         for(let x=0;x<attempts.length;x++) {
             let attempt = "";
