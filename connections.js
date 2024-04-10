@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const shuffleBtn = document.getElementById('shuffleButton');
             enterBtn.style.fontSize = "15px";
             shuffleBtn.style.fontSize = "15px";
+            newShareButton.style.fontSize = "15px";
         }
         for(let i=0; i<rows; i++) {
             for(let j=0; j<cols; j++) {
@@ -96,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 4; 
+        const baseFontSizeMobile = 4.5; 
         const minFontSizeMobile = 0.2;
         const maxFontSizeMobile = 40;
         const lengthFactorMobile = 0.1; 
@@ -162,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const tries = document.createElement('div');
                     tries.classList.add('try');
                     let howMany = checkHowMany(selectedWords);
-                    tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
+                    tries.innerHTML = "Fehlversuch " + tryNumber++ + ": <br>" + tryX;
                     closenessChecker(howMany, tries);
                     if(isMobile == true) {
                         tries.style.fontSize = "20px";
@@ -269,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
         if(isMobile == true) {
-            solve.style.fontSize = "20px";
+            solve.style.fontSize = "10px";
         }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
