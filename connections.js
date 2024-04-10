@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const enterButton = document.getElementById('enterButton');
             enterButton.fontSize = "5vw";
             const shuffleButton = document.getElementById('shuffleButton');
-            enterButton.fontSize = "5vw";
-            const shareButton = document.getElementById('shareButton');
-            enterButton.fontSize = "5vw";
+            shuffleButton.fontSize = "5vw";
+            const shareButton = document.getElementById('shButton');
+            shareButton.fontSize = "5vw";
 
         }
         const newShareButton = document.getElementById('shButton');
