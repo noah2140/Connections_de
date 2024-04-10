@@ -44,19 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createGrid(rows, cols) {
         if(isMobile) {
-            const cont1 = document.getElementById('container1');
-            const cont2 = document.getElementById('container2');
-            cont1.style.width = "60vw";
-            cont2.style.width = "60vw";
             cont1.style.margin = "0 auto";
             cont2.style.margin = "0 auto";
-            const enterButton = document.getElementById('enterButton');
-            enterButton.fontSize = "5vw";
-            const shuffleButton = document.getElementById('shuffleButton');
-            enterButton.fontSize = "5vw";
-            const shareButton = document.getElementById('shareButton');
-            enterButton.fontSize = "5vw";
-
         }
         const newShareButton = document.getElementById('shButton');
         newShareButton.style.backgroundColor = "white";
