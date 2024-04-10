@@ -159,6 +159,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     let howMany = checkHowMany(selectedWords);
                     tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
                     closenessChecker(howMany, tries);
+                    if(isMobile == true) {
+                        tries.style.fontSize = "50px";
+                    }
                     triesContainer.appendChild(tries);
                     triesArray.push(tryX);
                     if(tryNumber == 5) {
@@ -262,6 +265,9 @@ document.addEventListener('DOMContentLoaded', function() {
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
         if(isMobile == true) {
             solve.style.fontSize = "50px";
+        }
+        else {
+            solve.style.fontSize = "5vw";
         }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
