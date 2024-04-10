@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const tries = document.createElement('div');
                 tries.classList.add('try');
                 if(isMobile == true) {
-                    tries.style.fontSize = "50px";
+                    tries.style.fontSize = "20px";
                 }
                 tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
                 let howMany = checkHowMany(selectedWords);
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
                     closenessChecker(howMany, tries);
                     if(isMobile == true) {
-                        tries.style.fontSize = "50px";
+                        tries.style.fontSize = "20px";
                     }
                     triesContainer.appendChild(tries);
                     triesArray.push(tryX);
@@ -269,10 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
         if(isMobile == true) {
-            solve.style.fontSize = "50px";
-        }
-        else {
-            solve.style.fontSize = "5vw";
+            solve.style.fontSize = "20px";
         }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
