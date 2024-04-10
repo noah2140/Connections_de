@@ -13,7 +13,6 @@ body, html {
     padding: 10px;
     text-align: center;
     width: 80vw;
-    margin: 0 auto;
 }
 
 #container2 {
@@ -27,7 +26,6 @@ body, html {
     padding-right: 50px;
     padding-left: 50px;
     width: 80vw;
-    margin: 0 auto;
 }
 
 .try {
