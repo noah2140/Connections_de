@@ -141,12 +141,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if(triesArray.length == 0) {
                 const tries = document.createElement('div');
                 tries.classList.add('try');
-                tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
-                let howMany = checkHowMany(selectedWords);
-                closenessChecker(howMany, tries);
                 if(isMobile == true) {
                     tries.style.fontSize = "50px";
                 }
+                tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
+                let howMany = checkHowMany(selectedWords);
+                closenessChecker(howMany, tries);
                 triesContainer.appendChild(tries);
                 triesArray.push(tryX);
             }
