@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 6; 
+        const baseFontSizeMobile = 4; 
         const minFontSizeMobile = 0.2;
         const maxFontSizeMobile = 40;
         const lengthFactorMobile = 0.1; 
