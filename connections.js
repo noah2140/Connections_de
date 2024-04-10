@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 4; 
+        const baseFontSizeMobile = 5; 
         const minFontSizeMobile = 0.15;
         const maxFontSizeMobile = 40;
         const lengthFactorMobile = 0.1; 
@@ -271,6 +271,9 @@ document.addEventListener('DOMContentLoaded', function() {
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
             words.splice(index, 1);
+        }
+        if(isMobile) {
+            solve.style.fontSize = "2vw";
         }
         isSolved[category] = true;
         isSolvedNumber+=1;
