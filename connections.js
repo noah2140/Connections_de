@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cont2 = document.getElementById('container2');
             cont1.style.margin = "0 auto";
             cont2.style.margin = "0 auto";
+            cont1.style.top = "20%";
             const enterBtn = document.getElementById('enterButton');
             const shuffleBtn = document.getElementById('shuffleButton');
             enterBtn.style.fontSize = "15px";

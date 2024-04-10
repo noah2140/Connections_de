@@ -7,7 +7,6 @@ body, html {
 #container1 {
     background-color: white;
     position: absolute;
-    top: 20%;
     left: 50%;
     transform: translate(-50%, -10%);
     padding: 10px;
@@ -49,7 +48,6 @@ body, html {
 .solve {
     font-size: 20px;
     border: thin solid black;
-    height: 3vw;
     text-align: center;
     position: relative;
     padding: 20px;
