@@ -129,19 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if(triesArray.length == 0) {
                 const tries = document.createElement('div');
                 tries.classList.add('try');
-                let howMany = checkHowMany(selectedWords);
-                switch(howMany) {
-                    case 1:
-                        tries.style.backgroundColor = "lightCoral";
-                        break;
-                    case 2:
-                        tries.style.backgroundColor = "lightSalmon";
-                        break;
-                    case 3:
-                        tries.style.backgroundColor = "lemonChiffon";
-                        break;
-                }
                 tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
+                let howMany = checkHowMany(selectedWords);
+                closenessChecker(howMany, tries);
                 triesContainer.appendChild(tries);
                 triesArray.push(tryX);
             }
@@ -157,18 +147,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     const tries = document.createElement('div');
                     tries.classList.add('try');
                     let howMany = checkHowMany(selectedWords);
-                    switch(howMany) {
-                        case 1:
-                            tries.style.backgroundColor = "lightCoral";
-                            break;
-                        case 2:
-                            tries.style.backgroundColor = "lightSalmon";
-                            break;
-                        case 3:
-                            tries.style.backgroundColor = "lemonChiffon";
-                            break;
-                    }
                     tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
+                    closenessChecker(howMany, tries);
                     triesContainer.appendChild(tries);
                     triesArray.push(tryX);
                     if(tryNumber == 5) {
@@ -194,6 +174,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         return false;
+    }
+
+    function closenessChecker(number, tries) {
+        switch(number) {
+            case 1:
+                tries.style.backgroundColor = "paleTurquoise";
+                tries.innerHTML += " (Sehr Kalt)"
+                break;
+            case 2:
+                tries.style.backgroundColor = "paleGreen";
+                tries.innerHTML += " (Lauwarm)"
+                break;
+            case 3:
+                tries.style.backgroundColor = "lightSalmon";
+                tries.innerHTML += " (Heiß)"
+                break;
+        }
     }
 
     function checkHowMany(inputWords) {
