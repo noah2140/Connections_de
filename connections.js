@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const cont2 = document.getElementById('container2');
             cont1.style.margin = "0 auto";
             cont2.style.margin = "0 auto";
+            
         }
         const newShareButton = document.getElementById('shButton');
         newShareButton.style.backgroundColor = "white";
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 5; 
+        const baseFontSizeMobile = 4; 
         const minFontSizeMobile = 0.2;
         const maxFontSizeMobile = 40;
         const lengthFactorMobile = 0.1; 
