@@ -260,8 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
-        if(isMobile) {
-            solve.style.fontSize = "20px";
+        if(isMobile == true) {
+            solve.style.fontSize = "50px";
         }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
