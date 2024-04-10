@@ -74,15 +74,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateFontSize(text) {
-        const baseFontSize = 8;
-        const minFontSize = 0.2; 
-        const maxFontSize = 80; 
-        const lengthFactor = 0.15; 
-        const maxLength = 15; 
+        // You can adjust these values as needed
+        const baseFontSizeDesktop = 4; 
+        const minFontSizeDesktop = 0.2; 
+        const maxFontSizeDesktop = 80; 
+        const lengthFactorDesktop = 0.2; 
     
-        const adjustedLength = Math.min(text.length, maxLength);
-        const fontSize = baseFontSize - (lengthFactor * adjustedLength);
+        const baseFontSizeMobile = 4; 
+        const minFontSizeMobile = 0.2;
+        const maxFontSizeMobile = 40;
+        const lengthFactorMobile = 0.1; 
     
+        const isMobile = window.innerWidth <= 768; 
+    
+        const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
+        const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
+        const maxFontSize = isMobile ? maxFontSizeMobile : maxFontSizeDesktop;
+        const lengthFactor = isMobile ? lengthFactorMobile : lengthFactorDesktop;
+    
+        // Calculate font size inversely proportional to text length
+        const fontSize = baseFontSize - (text.length * lengthFactor);
+    
+        // Ensure font size stays within min and max bounds
         return Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'vw';
     }
 
