@@ -1,11 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    const puzzles = [[["Schachfiguren", ["Bauer", "Dame", "König", "Turm"]], ["Küchengeräte", ["Mühle", "Presse", "Reibe", "Sieb"]], ["Am Ende von Künstlern mit Nummer-1 Alben", ["Berg", "Fischer", "Hosen", "Park"]], ["_Klub", ["Automobil", "Buch", "Fussball", "Schach"]]],
+    [["Weißes Pulver", ["Kokain", "Mehl", "Salz", "Zucker"]], ["Allergien", ["Gras", "Haar", "Milch", "Nuss"]], ["Vorkommend in Breaking Bad", ["Labor", "Maske", "Methamphetamin", "Wohnmobil"]], ["Homographen", ["Collagen", "Heroin", "Modern", "Umfahren"]]],
+    [["Häufig während Halloween gesehen", ["Fledermaus", "Geist", "Skelett", "Spinne"]], ["Gesunde Beschreibung des Kopfs einer Person", ["Birne", "Kürbis", "Nuss", "Tomate"]], ["Bestandteil von Chips", ["Essig", "Kartoffel", "Öl", "Salz"]], ["Motor_", ["Boot", "Leistung", "Rad", "Raum"]]],
+    [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "FR", "LU", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]]
+    ];
+
     const startDate = new Date('4/10/2024');
     const currentDate = new Date();
     const diffTime = Math.abs(currentDate - startDate);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
+    console.log(diffDays);
+    let categories = puzzles[diffDays];
     let words = []; 
+    words = categories.map(category => category[1]).flat(); 
     let selectedWords = [];
     let tryNumber = 1;
     let triesArray = [];
@@ -15,23 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const emojis = [
         "\u{1F7E8}", "\u{1F7E9}", "\u{1F7E6}", "\u{1F7EA}" 
     ];
-
-    function fetchData() {
-        fetch('puzzles.txt')
-            .then(response => response.text())
-            .then(data => {
-                const dataArray = JSON.parse(data);
-
-                const categories = dataArray[diffDays];
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }
-
-    window.addEventListener('load', fetchData);
-
-    words = categories.map(category => category[1]).flat(); 
 
     function shuffleTiles() { 
         let currentIndex = words.length;
@@ -60,7 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
             for(let j=0; j<cols; j++) {
                 const gridItem = document.createElement('div');
                 gridItem.classList.add('grid-item');
+                const text = words[n];
                 gridItem.innerHTML = words[n++];
+                const fontSize = calculateFontSize(text);
+                gridItem.style.fontSize = fontSize;
                 gridItem.addEventListener('click', function() {
                     if(this.style.backgroundColor == "lightblue") {
                         this.style.backgroundColor = "white";
@@ -77,6 +71,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 gridContainer.appendChild(gridItem);
             }
         }
+    }
+
+    function calculateFontSize(text) {
+        const baseFontSize = 4;
+        const minFontSize = 0.2; 
+        const maxFontSize = 40; 
+        const lengthFactor = 0.2; 
+        const maxLength = 15; 
+    
+        const adjustedLength = Math.min(text.length, maxLength);
+        const fontSize = baseFontSize - (lengthFactor * adjustedLength);
+    
+        return Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'vw';
     }
 
     function shuffleButton() {

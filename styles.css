@@ -65,7 +65,11 @@ body, html {
     padding: 20px;
     text-align: center;
     border: thin solid black;
-    font-size: 20px;
+    width: 60px;
+    height: 40px;
+    display: flex; /* Added to center the text vertically and horizontally */
+    justify-content: center; /* Added to center the text horizontally */
+    align-items: center; /* Added to center the text vertically */
 }
 
 #buttons {
