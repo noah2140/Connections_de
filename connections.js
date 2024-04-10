@@ -56,14 +56,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 const fontSize = calculateFontSize(text);
                 gridItem.style.fontSize = fontSize;
                 gridItem.addEventListener('click', function() {
-                    if(this.style.backgroundColor == "lightblue") {
+                    if(this.style.backgroundColor == "dimgray") {
                         this.style.backgroundColor = "white";
+                        this.style.color = "black";
                         var index = selectedWords.indexOf(this.textContent);
                         selectedWords.splice(index, 1);
                     }
                     else {
                         if(selectedWords.length<4) {
-                            this.style.backgroundColor = "lightblue";
+                            this.style.backgroundColor = "dimgray";
+                            this.style.color = "white";
                             selectedWords.push(this.textContent);
                         }
                     }
@@ -75,10 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function calculateFontSize(text) {
         // You can adjust these values as needed
-        const baseFontSizeDesktop = 4; 
+        const baseFontSizeDesktop = 2.2; 
         const minFontSizeDesktop = 0.2; 
         const maxFontSizeDesktop = 80; 
-        const lengthFactorDesktop = 0.2; 
+        const lengthFactorDesktop = 0.1; 
     
         const baseFontSizeMobile = 4; 
         const minFontSizeMobile = 0.15;
@@ -92,10 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSize = isMobile ? maxFontSizeMobile : maxFontSizeDesktop;
         const lengthFactor = isMobile ? lengthFactorMobile : lengthFactorDesktop;
     
-        // Calculate font size inversely proportional to text length
         const fontSize = baseFontSize - (text.length * lengthFactor);
     
-        // Ensure font size stays within min and max bounds
         return Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'vw';
     }
 
@@ -261,10 +261,8 @@ document.addEventListener('DOMContentLoaded', function() {
         createGrid(4-isSolvedNumber,4);
         solvedContainer.appendChild(solve);
         if(isSolvedNumber == 4) {
-            const enterButton = document.getElementById('enterButton');
-            const shuffleButton = document.getElementById('shuffleButton');
-            enterButton.remove();
-            shuffleButton.remove();
+            const mainButtons = document.getElementById('buttons');
+            buttons.remove();
             const newShareButton = document.getElementById('shButton');
             newShareButton.style.backgroundColor = "beige";
             newShareButton.style.border = "thin solid black";
