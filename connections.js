@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(isMobile == true) {
                     tries.style.fontSize = "20px";
                 }
-                tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
+                tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + "<br>" + tryX;
                 let howMany = checkHowMany(selectedWords);
                 closenessChecker(howMany, tries);
                 triesContainer.appendChild(tries);
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
         if(isMobile == true) {
-            solve.style.fontSize = "10px";
+            solve.style.fontSize = "15px";
         }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
