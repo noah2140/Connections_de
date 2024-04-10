@@ -43,13 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createGrid(rows, cols) {
-        if(isMobile) {
-            const cont1 = document.getElementById('container1');
-            const cont2 = document.getElementById('container2');
-            cont1.style.margin = "0 auto";
-            cont2.style.margin = "0 auto";
-
-        }
         const newShareButton = document.getElementById('shButton');
         newShareButton.style.backgroundColor = "white";
         newShareButton.style.border = "none";
@@ -59,7 +52,16 @@ document.addEventListener('DOMContentLoaded', function() {
         gridContainer.innerHTML = '';
         let n = 0;
         shuffleTiles();
-    
+        if(isMobile) {
+            const cont1 = document.getElementById('container1');
+            const cont2 = document.getElementById('container2');
+            cont1.style.margin = "0 auto";
+            cont2.style.margin = "0 auto";
+            const enterBtn = document.getElementById('enterButton');
+            const shuffleBtn = document.getElementById('shuffleButton');
+            enterBtn.style.fontSize = "15px";
+            shuffleBtn.style.fontSize = "15px";
+        }
         for(let i=0; i<rows; i++) {
             for(let j=0; j<cols; j++) {
                 const gridItem = document.createElement('div');
@@ -142,6 +144,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + tryX;
                 let howMany = checkHowMany(selectedWords);
                 closenessChecker(howMany, tries);
+                if(isMobile == true) {
+                    tries.style.fontSize = "50px";
+                }
                 triesContainer.appendChild(tries);
                 triesArray.push(tryX);
             }
