@@ -268,12 +268,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
+        if(isMobile) {
+            solve.style.fontSize = "1vw";
+        }
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
             words.splice(index, 1);
-        }
-        if(isMobile) {
-            solve.style.fontSize = "2vw";
         }
         isSolved[category] = true;
         isSolvedNumber+=1;
