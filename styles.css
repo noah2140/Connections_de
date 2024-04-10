@@ -7,12 +7,12 @@ body, html {
 #container1 {
     background-color: white;
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, -20%);
     padding: 10px;
     text-align: center;
-    width: 80ve;
+    width: 80vw;
 }
 
 #container2 {
@@ -20,27 +20,26 @@ body, html {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, -90%);
+    transform: translate(-50%, -100%);
     padding: 10px;
     text-align: center;
     padding-right: 50px;
     padding-left: 50px;
-    width: 80ve;
+    width: 80vw;
 }
 
 .try {
-    font-size: 15px;
+    font-size: 1.5vw;
     border: thin solid black;
-    padding: 5px;
-    margin-bottom: 5px;
-    padding-right: 50px;
-    padding-left: 50px;
+    width: 80vw;
+    margin-bottom: 0.2vw;
+    padding: 0.5vw;
 }
 
 #triesContainer {
     position: relative;
-    top: -95%;
-    padding: 20px;
+    top: -99%;
+    padding: 0.1vw;
 }
 
 #solvedContainer {
@@ -50,14 +49,17 @@ body, html {
 .solve {
     font-size: 20px;
     border: thin solid black;
-    padding: 15px;
-    margin-bottom: 10px;
+    height: 3vw;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 1vw;
 }
 
 #gridContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 1vw;
 }
 
 .grid-item {
@@ -65,33 +67,31 @@ body, html {
     padding: 20px;
     text-align: center;
     border: thin solid black;
-    width: 60px;
-    height: 40px;
-    display: flex; /* Added to center the text vertically and horizontally */
-    justify-content: center; /* Added to center the text horizontally */
-    align-items: center; /* Added to center the text vertically */
+    width: 16.4vw;
+    height: 3vw;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 #buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5vw;
     background-color: white;
     border-radius: 2px;
     border-color: black;
     position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
     padding: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
 }
 
 .button {
     height: 50px;
-    width: 150px;
+    width: 20vw;
     font-weight: bold;
-    margin-right: 20px;
-    margin-left: 20px;
     border: thin solid black;
     color: black;
+    font-size: 1.3vw;
 }
 
 #shuffleButton  {
@@ -100,18 +100,6 @@ body, html {
 
 #enterButton {
     background-color: lightgreen;
-}
-
-#shareButton {
-    background-color: white;
-    border-radius: 2px;
-    border-color: black;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    padding: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
 }
 
 #shButton {

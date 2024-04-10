@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
         "\u{1F7E8}", "\u{1F7E9}", "\u{1F7E6}", "\u{1F7EA}" 
     ];
 
+    let isActiveEnterButton = true;
+    let isActiveShuffleButton = true;
+    let isActiveShareButton = false;
+
     function shuffleTiles() { 
         let currentIndex = words.length;
         while(currentIndex != 0) {
@@ -76,8 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateFontSize(text) {
-        // You can adjust these values as needed
-        const baseFontSizeDesktop = 2.2; 
+        const baseFontSizeDesktop = 3; 
         const minFontSizeDesktop = 0.2; 
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
@@ -100,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function shuffleButton() {
-        createGrid(4-isSolvedNumber,4);
+        if(isActiveShuffleButton) createGrid(4-isSolvedNumber,4);
     }
 
     function isEqualArray(arr1, arr2) {
@@ -169,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         newShareButton.style.border = "thin solid black";
                         newShareButton.style.color = "black";
                         newShareButton.textContent = "Teilen";
+                        isActiveShareButton = true;
                     }
                 }
             }
@@ -228,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function enterButton() {
-        isInCategories(selectedWords);
+        if(isActiveEnterButton) isInCategories(selectedWords);
     }
 
     async function solved(category) {
@@ -248,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 solve.style.backgroundColor = "plum";
                 break;
         }
-        solve.innerHTML = categories[category][0] + "<br>" + categories[category][1];
+        solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
         for(let i=0;i<4;i++) {
             var index = words.indexOf(categories[category][1][i]);
             words.splice(index, 1);
@@ -258,28 +262,44 @@ document.addEventListener('DOMContentLoaded', function() {
         createGrid(4-isSolvedNumber,4);
         solvedContainer.appendChild(solve);
         if(isSolvedNumber == 4) {
-            const mainButtons = document.getElementById('buttons');
-            buttons.remove();
+            const enterButton = document.getElementById('enterButton');
+            makeButtonInvisible(enterButton);
+            isActiveEnterButton = false;
+            const shuffleButton = document.getElementById('shuffleButton');
+            makeButtonInvisible(shuffleButton);
+            isActiveShuffleButton = false;
             const newShareButton = document.getElementById('shButton');
             newShareButton.style.backgroundColor = "beige";
             newShareButton.style.border = "thin solid black";
             newShareButton.style.color = "black";
             newShareButton.textContent = "Teilen";
+            isActiveShareButton = true;
+            const gridCont = document.getElementById('gridContainer');
+            gridCont.style.padding = "0px";
         }
     }
 
+    function makeButtonInvisible(buttonName) {
+        buttonName.style.backgroundColor = "white";
+        buttonName.style.border = "none";
+        buttonName.style.color = "white";
+        buttonName.textContent = "";
+    }
+
     function shareButton() {
-        let shareText = "Connections-DE vom " + currentDate.toDateString() + ": \n \n";
-        for(let x=0;x<attempts.length;x++) {
-            let attempt = "";
-            for(let y=0;y<4;y++) {
-                attempt += emojis[attempts[x][y]];
+        if(isActiveShareButton) {
+            let shareText = "Connections-DE vom " + currentDate.toDateString() + ": \n \n";
+            for(let x=0;x<attempts.length;x++) {
+                let attempt = "";
+                for(let y=0;y<4;y++) {
+                    attempt += emojis[attempts[x][y]];
+                }
+                console.log(attempt);
+                shareText = shareText + attempt + "\n";
             }
-            console.log(attempt);
-            shareText = shareText + attempt + "\n";
+            const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+            window.location.href = whatsappUrl;
         }
-        const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-        window.location.href = whatsappUrl;
     }
 
     window.shuffleButton = shuffleButton;
