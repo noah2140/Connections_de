@@ -67,7 +67,6 @@ body, html {
     padding: 20px;
     text-align: center;
     border: thin solid black;
-    width: 16.4vw;
     height: 3vw;
     display: flex; 
     justify-content: center; 

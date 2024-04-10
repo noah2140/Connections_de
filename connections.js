@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let isActiveShuffleButton = true;
     let isActiveShareButton = false;
 
+    const isMobile = window.innerWidth <= 768; 
+
     function shuffleTiles() { 
         let currentIndex = words.length;
         while(currentIndex != 0) {
@@ -41,6 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createGrid(rows, cols) {
+        if(isMobile) {
+            const cont1 = document.getElementById('container1');
+            const cont2 = document.getElementById('container2');
+            cont1.style.width = "60vw";
+            cont2.style.width = "60vw";
+        }
         const newShareButton = document.getElementById('shButton');
         newShareButton.style.backgroundColor = "white";
         newShareButton.style.border = "none";
@@ -89,8 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const minFontSizeMobile = 0.15;
         const maxFontSizeMobile = 40;
         const lengthFactorMobile = 0.1; 
-    
-        const isMobile = window.innerWidth <= 768; 
     
         const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
         const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
