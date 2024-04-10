@@ -71,6 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 gridItem.innerHTML = words[n++];
                 const fontSize = calculateFontSize(text);
                 gridItem.style.fontSize = fontSize;
+                if(isMobile) {
+                    gridItem.style.height = "50px";
+                }
                 gridItem.addEventListener('click', function() {
                     if(this.style.backgroundColor == "dimgray") {
                         this.style.backgroundColor = "white";
@@ -163,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const tries = document.createElement('div');
                     tries.classList.add('try');
                     let howMany = checkHowMany(selectedWords);
-                    tries.innerHTML = "Fehlversuch " + tryNumber++ + ": <br>" + tryX;
+                    tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + "<br>" + tryX;
                     closenessChecker(howMany, tries);
                     if(isMobile == true) {
                         tries.style.fontSize = "20px";
