@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]]
     ];
 
-    const startDate = new Date('4/10/2024');
-    const currentDate = new Date();
-    const diffTime = Math.abs(currentDate - startDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    let categories = puzzles[diffDays-1];
+    const startDate = new Date('4/11/2024');
+    let currentDate = new Date();
+    let diffTime = Math.abs(currentDate - startDate);
+    let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    let categories = puzzles[diffDays];
     let words = []; 
     words = categories.map(category => category[1]).flat(); 
     let selectedWords = [];
@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let isActiveShareButton = false;
 
     const isMobile = window.innerWidth <= 768; 
+
+    function generateNewPuzzle() {
+        let categories = puzzles[diffDays];
+        let words = []; 
+        words = categories.map(category => category[1]).flat();
+    }
 
     function shuffleTiles() { 
         let currentIndex = words.length;
@@ -396,6 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function saveProgress() {
         const progress = {
+            currDate: currentDate,
             attempts: attempts,
             attemptsCategories,
             isSolved: isSolved,
@@ -425,20 +432,26 @@ document.addEventListener('DOMContentLoaded', function() {
             isActiveShareButton = progress.isActiveShareButton;
             isActiveShuffleButton = progress.isActiveShuffleButton;
         }
+        else {
+            generateNewPuzzle();
+        }
     }
 
     function checkAndResetProgress() {
-        const savedDate = localStorage.getItem('connectionsDate');
-        const currentDateStr = currentDate.toDateString();
-        if (savedDate !== currentDateStr) {
-            localStorage.setItem('connectionsDate', currentDateStr);
+        const savedDateStr = localStorage.getItem('connectionsDate');
+        const savedDate = new Date(savedDateStr);
+        const currentDateWithoutTime = new Date(currentDate);
+        currentDateWithoutTime.setHours(0, 0, 0, 0); 
+        console.log(savedDateStr + " " + currentDateWithoutTime);
+        if (!savedDate || savedDate.getTime() !== currentDateWithoutTime.getTime()) {
+            localStorage.setItem('connectionsDate', currentDateWithoutTime.toDateString());
             localStorage.removeItem('connectionsProgress');
             location.reload(); 
         }
     }
 
-    loadProgress();
     checkAndResetProgress();
+    loadProgress();
     displaySolvedCategories();
     displayTries();
 
