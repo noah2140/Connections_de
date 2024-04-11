@@ -30,6 +30,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const isMobile = window.innerWidth <= 768; 
 
+    function save(callback) {
+        var content = document.getElementById('wrapper');
+    
+        content.setAttribute("contenteditable", "true");
+    
+        content.focus();
+
+        $(content).blur(function() {
+            localStorage.setItem('page_html', this.innerHTML);
+            localStorage.setItem('curr_Puzzle', JSON.stringify(puzzles[diffDays-1]));
+            localStorage.setItem('tryNumber', tryNumber); 
+            if (typeof callback === 'function') {
+                callback();
+            }
+        });
+    
+        if (localStorage.getItem('page_html')) {
+            content.innerHTML = localStorage.getItem('page_html');
+        }
+    
+        content.setAttribute("contenteditable", "false");
+    }
+    
+    async function reset() {
+        const currPuzzleArray = JSON.parse(localStorage.getItem('curr_Puzzle'));
+        if (JSON.stringify(puzzles[diffDays-1]) !== JSON.stringify(currPuzzleArray)) {
+            localStorage.clear();
+            window.location.reload();
+        } else {
+            tryNumber = parseInt(localStorage.getItem('tryNumber')) || 1;
+        }
+    }
+
     function shuffleTiles() { 
         let currentIndex = words.length;
         while(currentIndex != 0) {
@@ -43,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createGrid(rows, cols) {
+        save(reset);
         const newShareButton = document.getElementById('shButton');
         newShareButton.style.backgroundColor = "white";
         newShareButton.style.border = "none";
@@ -300,6 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
         }
+        save(reset);
     }
 
     function makeButtonInvisible(buttonName) {
