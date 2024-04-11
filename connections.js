@@ -17,9 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedWords = [];
     let tryNumber = 1;
     let triesArray = [];
+    let solvedOrder = [];
     let isSolved = [false, false, false, false];
     let isSolvedNumber = 0;
     let attempts = [];
+    let attemptsCategories = [];
     const emojis = [
         "\u{1F7E8}", "\u{1F7E9}", "\u{1F7E6}", "\u{1F7EA}" 
     ];
@@ -29,39 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let isActiveShareButton = false;
 
     const isMobile = window.innerWidth <= 768; 
-
-    function save(callback) {
-        var content = document.getElementById('wrapper');
-    
-        content.setAttribute("contenteditable", "true");
-    
-        content.focus();
-
-        $(content).blur(function() {
-            localStorage.setItem('page_html', this.innerHTML);
-            localStorage.setItem('curr_Puzzle', JSON.stringify(puzzles[diffDays-1]));
-            localStorage.setItem('tryNumber', tryNumber); 
-            if (typeof callback === 'function') {
-                callback();
-            }
-        });
-    
-        if (localStorage.getItem('page_html')) {
-            content.innerHTML = localStorage.getItem('page_html');
-        }
-    
-        content.setAttribute("contenteditable", "false");
-    }
-    
-    async function reset() {
-        const currPuzzleArray = JSON.parse(localStorage.getItem('curr_Puzzle'));
-        if (JSON.stringify(puzzles[diffDays-1]) !== JSON.stringify(currPuzzleArray)) {
-            localStorage.clear();
-            window.location.reload();
-        } else {
-            tryNumber = parseInt(localStorage.getItem('tryNumber')) || 1;
-        }
-    }
 
     function shuffleTiles() { 
         let currentIndex = words.length;
@@ -76,24 +45,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createGrid(rows, cols) {
-        save(reset);
         const newShareButton = document.getElementById('shButton');
-        newShareButton.style.backgroundColor = "white";
-        newShareButton.style.border = "none";
-        newShareButton.style.color = "white";
-        newShareButton.textContent = "";
+        const enterBtn = document.getElementById('enterButton');
+        const shuffleBtn = document.getElementById('shuffleButton');
+        if(!isActiveShareButton) {
+            makeButtonInvisible(newShareButton);
+        }
+        if(!isActiveEnterButton) {
+            makeButtonInvisible(enterBtn);
+            makeButtonInvisible(shuffleBtn);
+        }
         const gridContainer = document.getElementById('gridContainer');
         gridContainer.innerHTML = '';
         let n = 0;
+        words = categories.map(category => category[1]).flat(); 
         shuffleTiles();
+        for(let n=0;n<4;n++) {
+            if(isSolved[n] == true) {
+                for(let i=0;i<4;i++) {
+                    var index = words.indexOf(categories[n][1][i]);
+                    words.splice(index, 1);
+                }
+            }
+        }
         if(isMobile) {
             const cont1 = document.getElementById('container1');
             const cont2 = document.getElementById('container2');
             cont1.style.margin = "0 auto";
             cont2.style.margin = "0 auto";
             cont1.style.top = "20%";
-            const enterBtn = document.getElementById('enterButton');
-            const shuffleBtn = document.getElementById('shuffleButton');
             enterBtn.style.fontSize = "15px";
             shuffleBtn.style.fontSize = "15px";
             newShareButton.style.fontSize = "15px";
@@ -166,72 +146,13 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    async function isInCategories(arr) {
+    function isInCategories(arr) {
         for (let i = 0; i < categories.length; i++) {
             if (isEqualArray(categories[i][1], arr)) {
-                solved(i);
-                attempts.push([i, i, i, i]);
-                return true;
+                return i;
             }
         }
-        let tryX = selectedWords.slice().sort();
-        if(selectedWords.length == 4) {
-            attempts.push(checkWhichCategories(selectedWords));
-            if(triesArray.length == 0) {
-                const tries = document.createElement('div');
-                tries.classList.add('try');
-                if(isMobile == true) {
-                    tries.style.fontSize = "20px";
-                }
-                tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + "<br>" + tryX;
-                let howMany = checkHowMany(selectedWords);
-                closenessChecker(howMany, tries);
-                triesContainer.appendChild(tries);
-                triesArray.push(tryX);
-            }
-            else {
-                let x = false;
-                for (let i = 0; i < triesArray.length; i++) {
-                    if (isEqualArray(triesArray[i], tryX)) {
-                        x = true;
-                        break;
-                    }
-                }
-                if(x == false) {
-                    const tries = document.createElement('div');
-                    tries.classList.add('try');
-                    let howMany = checkHowMany(selectedWords);
-                    tries.innerHTML = "Fehlversuch " + tryNumber++ + ": " + "<br>" + tryX;
-                    closenessChecker(howMany, tries);
-                    if(isMobile == true) {
-                        tries.style.fontSize = "20px";
-                    }
-                    triesContainer.appendChild(tries);
-                    triesArray.push(tryX);
-                    if(tryNumber == 5) {
-                        for(let y=0;y<4;y++) {
-                            while(isSolved[y] == true && y<4) {
-                                y++;
-                            }
-                            if(y<4)  {
-                                await delay(1000);
-                                solved(y);
-                            }
-                            else {
-                                break;
-                            }
-                        }
-                        const newShareButton = document.getElementById('shButton');
-                        newShareButton.style.backgroundColor = "beige";
-                        newShareButton.style.border = "thin solid black";
-                        newShareButton.style.color = "black";
-                        newShareButton.textContent = "Teilen";
-                        isActiveShareButton = true;
-                    }
-                }
-            }
-        }
-        return false;
+        return -1;
     }
 
     function closenessChecker(number, tries) {
@@ -285,10 +206,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function enterButton() {
-        if(isActiveEnterButton) isInCategories(selectedWords);
-    }
-
     async function solved(category) {
         const solve = document.createElement('div');
         solve.classList.add('solve');
@@ -310,11 +227,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if(isMobile == true) {
             solve.style.fontSize = "15px";
         }
-        for(let i=0;i<4;i++) {
-            var index = words.indexOf(categories[category][1][i]);
-            words.splice(index, 1);
-        }
         isSolved[category] = true;
+        solvedOrder.push(category);
         isSolvedNumber+=1;
         createGrid(4-isSolvedNumber,4);
         solvedContainer.appendChild(solve);
@@ -334,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
         }
-        save(reset);
+        saveProgress();
     }
 
     function makeButtonInvisible(buttonName) {
@@ -344,15 +258,90 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonName.textContent = "";
     }
 
+    async function enterButton() {
+        if(isActiveEnterButton) {
+            let check = isInCategories(selectedWords);
+            if(check != -1) {
+                solved(check);
+                attemptsCategories.push([check, check, check, check]);
+                saveProgress();
+            }
+            else {
+                let tryX = selectedWords.slice().sort();
+                attempts.push(tryX);
+                attemptsCategories.push(checkWhichCategories(selectedWords))
+                if(selectedWords.length == 4) {
+                    if(triesArray.length == 0) {
+                        const tries = document.createElement('div');
+                        tries.classList.add('try');
+                        if(isMobile == true) {
+                            tries.style.fontSize = "20px";
+                        }
+                        tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX;
+                        tryNumber += 1;
+                        let howMany = checkHowMany(selectedWords);
+                        closenessChecker(howMany, tries);
+                        triesContainer.appendChild(tries);
+                        triesArray.push(tryX);
+                    }
+                    else {
+                        let x = false;
+                        for (let i = 0; i < triesArray.length; i++) {
+                            if (isEqualArray(triesArray[i], tryX)) {
+                                x = true;
+                                break;
+                            }
+                        }
+                        if(x == false) {
+                            const tries = document.createElement('div');
+                            tries.classList.add('try');
+                            let howMany = checkHowMany(selectedWords);
+                            tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX;
+                            tryNumber += 1;
+                            closenessChecker(howMany, tries);
+                            if(isMobile == true) {
+                                tries.style.fontSize = "20px";
+                            }
+                            triesContainer.appendChild(tries);
+                            triesArray.push(tryX);
+                            if(tryNumber >= 5) {
+                                for(let y=0;y<4;y++) {
+                                    while(isSolved[y] == true && y<4) {
+                                        y++;
+                                    }
+                                    if(y<4)  {
+                                        await delay(1000);
+                                        solved(y);
+                                    }
+                                    else {
+                                        break;
+                                    }
+                                }
+                                const newShareButton = document.getElementById('shButton');
+                                newShareButton.style.backgroundColor = "beige";
+                                newShareButton.style.border = "thin solid black";
+                                newShareButton.style.color = "black";
+                                newShareButton.textContent = "Teilen";
+                                isActiveShareButton = true;
+                            }
+                        }
+                    }
+                }
+                saveProgress();
+                return false;
+            }
+        }
+        saveProgress();
+    }
+
     function shareButton() {
         if(isActiveShareButton) {
             let shareText = "Connections-DE vom " + currentDate.toDateString() + ": \n \n";
-            for(let x=0;x<attempts.length;x++) {
+            for(let x=0;x<attemptsCategories.length;x++) {
                 let attempt = "";
                 for(let y=0;y<4;y++) {
-                    attempt += emojis[attempts[x][y]];
+                    attempt += emojis[attemptsCategories[x][y]];
                 }
-                console.log(attempt);
                 shareText = shareText + attempt + "\n";
             }
             const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
@@ -360,9 +349,102 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function displaySolvedCategories() {
+        const solvedContainer = document.getElementById('solvedContainer');
+        solvedContainer.innerHTML = '';
+        for (let i = 0; i < solvedOrder.length; i++) {
+            let cat = solvedOrder[i];
+            const solve = document.createElement('div');
+            solve.classList.add('solve');
+            switch (cat) {
+                case 0:
+                    solve.style.backgroundColor = "moccasin";
+                    break;
+                case 1:
+                    solve.style.backgroundColor = "paleGreen";
+                    break;
+                case 2:
+                    solve.style.backgroundColor = "lightSkyBlue";
+                    break;
+                case 3:
+                    solve.style.backgroundColor = "plum";
+                    break;
+            }
+            solve.innerHTML = "<b>" + categories[cat][0]+ "</b>" + "<br>" + categories[cat][1];
+            if (isMobile == true) {
+                solve.style.fontSize = "15px";
+            }
+            solvedContainer.appendChild(solve);
+        }
+    }
+
+    function displayTries() {
+        const triesContainer = document.getElementById('triesContainer');
+        triesContainer.innerHTML = ''; 
+        let displayTryNumber = 1; 
+        for (let i = 0; i < attempts.length; i++) {
+            const tries = document.createElement('div');
+            tries.classList.add('try');
+            if (isMobile == true) {
+                tries.style.fontSize = "20px";
+            }
+            tries.innerHTML = "Fehlversuch " + (displayTryNumber++) + ": " + "<br>" + attempts[i].join(', '); 
+            closenessChecker(checkHowMany(attempts[i]), tries); 
+            triesContainer.appendChild(tries);
+        }
+    }
+    
+    function saveProgress() {
+        const progress = {
+            attempts: attempts,
+            attemptsCategories,
+            isSolved: isSolved,
+            isSolvedNumber: isSolvedNumber,
+            solvedOrder: solvedOrder,
+            tryNumber : tryNumber,
+            triesArray : triesArray,
+            isActiveEnterButton : isActiveEnterButton,
+            isActiveShareButton : isActiveShareButton,
+            isActiveShuffleButton : isActiveShuffleButton
+        };
+        localStorage.setItem('connectionsProgress', JSON.stringify(progress));
+    }
+
+    function loadProgress() {
+        const savedProgress = localStorage.getItem('connectionsProgress');
+        if (savedProgress) {
+            const progress = JSON.parse(savedProgress);
+            attempts = progress.attempts;
+            attemptsCategories = progress.attemptsCategories;
+            isSolved = progress.isSolved;
+            isSolvedNumber = progress.isSolvedNumber;
+            solvedOrder = progress.solvedOrder;
+            tryNumber = progress.tryNumber;
+            triesArray = progress.triesArray || [];
+            isActiveEnterButton = progress.isActiveEnterButton;
+            isActiveShareButton = progress.isActiveShareButton;
+            isActiveShuffleButton = progress.isActiveShuffleButton;
+        }
+    }
+
+    function checkAndResetProgress() {
+        const savedDate = localStorage.getItem('connectionsDate');
+        const currentDateStr = currentDate.toDateString();
+        if (savedDate !== currentDateStr) {
+            localStorage.setItem('connectionsDate', currentDateStr);
+            localStorage.removeItem('connectionsProgress');
+            location.reload(); 
+        }
+    }
+
+    loadProgress();
+    checkAndResetProgress();
+    displaySolvedCategories();
+    displayTries();
+
     window.shuffleButton = shuffleButton;
     window.enterButton = enterButton;
     window.shareButton = shareButton;
 
-    createGrid(4, 4);
+    createGrid(4-isSolvedNumber, 4);
 });
