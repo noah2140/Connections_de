@@ -230,9 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
         solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
-        if(isMobile == true) {
-            solve.style.fontSize = "15px";
-        }
         isSolved[category] = true;
         solvedOrder.push(category);
         isSolvedNumber+=1;
@@ -377,9 +374,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
             solve.innerHTML = "<b>" + categories[cat][0]+ "</b>" + "<br>" + categories[cat][1];
-            if (isMobile == true) {
-                solve.style.fontSize = "15px";
-            }
             solvedContainer.appendChild(solve);
         }
     }

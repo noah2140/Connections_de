@@ -102,3 +102,15 @@ body, html {
 #shButton {
     background-color: beige;
 }
+
+@media screen and (max-width: 768px) {
+    .solve {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .solve {
+        font-size: 20px; 
+    }
+}
