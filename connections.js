@@ -57,9 +57,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if(!isActiveShareButton) {
             makeButtonInvisible(newShareButton);
         }
+        else {
+            makeButtonVisible(newShareButton);
+        }
         if(!isActiveEnterButton) {
             makeButtonInvisible(enterBtn);
             makeButtonInvisible(shuffleBtn);
+        }
+        else {
+            makeButtonVisible(enterBtn);
+            makeButtonVisible(shuffleBtn);
         }
         const gridContainer = document.getElementById('gridContainer');
         gridContainer.innerHTML = '';
@@ -80,9 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
             cont1.style.margin = "0 auto";
             cont2.style.margin = "0 auto";
             cont1.style.top = "20%";
-            enterBtn.style.fontSize = "15px";
-            shuffleBtn.style.fontSize = "15px";
-            newShareButton.style.fontSize = "15px";
         }
         for(let i=0; i<rows; i++) {
             for(let j=0; j<cols; j++) {
@@ -165,15 +169,15 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(number) {
             case 1:
                 tries.style.backgroundColor = "paleTurquoise";
-                tries.innerHTML += " (Sehr Kalt)"
+                tries.innerHTML += " <br>(Sehr Kalt)"
                 break;
             case 2:
                 tries.style.backgroundColor = "paleGreen";
-                tries.innerHTML += " (Lauwarm)"
+                tries.innerHTML += " <br>(Lauwarm)"
                 break;
             case 3:
                 tries.style.backgroundColor = "lightSalmon";
-                tries.innerHTML += " (Heiß)"
+                tries.innerHTML += " <br>(Heiß)"
                 break;
         }
     }
@@ -217,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
         solve.classList.add('solve');
         switch (category) {
             case 0:
-                solve.style.backgroundColor = "moccasin";
+                solve.style.backgroundColor = "#EEEE44";
                 break;
             case 1:
                 solve.style.backgroundColor = "paleGreen";
@@ -243,10 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
             makeButtonInvisible(shuffleButton);
             isActiveShuffleButton = false;
             const newShareButton = document.getElementById('shButton');
-            newShareButton.style.backgroundColor = "beige";
-            newShareButton.style.border = "thin solid black";
-            newShareButton.style.color = "black";
-            newShareButton.textContent = "Teilen";
+            makeButtonVisible(newShareButton);
             isActiveShareButton = true;
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
@@ -255,10 +256,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function makeButtonInvisible(buttonName) {
-        buttonName.style.backgroundColor = "white";
-        buttonName.style.border = "none";
-        buttonName.style.color = "white";
-        buttonName.textContent = "";
+        buttonName.style.display = "none";
+    }
+
+    function makeButtonVisible(buttonName) {
+        buttonName.style.display = "inline-block";
     }
 
     async function enterButton() {
@@ -271,16 +273,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             else {
                 let tryX = selectedWords.slice().sort();
-                attempts.push(tryX);
-                attemptsCategories.push(checkWhichCategories(selectedWords))
                 if(selectedWords.length == 4) {
                     if(triesArray.length == 0) {
                         const tries = document.createElement('div');
                         tries.classList.add('try');
-                        if(isMobile == true) {
-                            tries.style.fontSize = "20px";
-                        }
-                        tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX;
+                        tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                        attempts.push(tryX);
+                        attemptsCategories.push(checkWhichCategories(selectedWords))
                         tryNumber += 1;
                         let howMany = checkHowMany(selectedWords);
                         closenessChecker(howMany, tries);
@@ -299,12 +298,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             const tries = document.createElement('div');
                             tries.classList.add('try');
                             let howMany = checkHowMany(selectedWords);
-                            tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX;
+                            tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                            attempts.push(tryX);
+                            attemptsCategories.push(checkWhichCategories(selectedWords))
                             tryNumber += 1;
                             closenessChecker(howMany, tries);
-                            if(isMobile == true) {
-                                tries.style.fontSize = "20px";
-                            }
                             triesContainer.appendChild(tries);
                             triesArray.push(tryX);
                             if(tryNumber >= 5) {
@@ -321,10 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     }
                                 }
                                 const newShareButton = document.getElementById('shButton');
-                                newShareButton.style.backgroundColor = "beige";
-                                newShareButton.style.border = "thin solid black";
-                                newShareButton.style.color = "black";
-                                newShareButton.textContent = "Teilen";
+                                makeButtonVisible(newShareButton);
                                 isActiveShareButton = true;
                             }
                         }
@@ -361,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
             solve.classList.add('solve');
             switch (cat) {
                 case 0:
-                    solve.style.backgroundColor = "moccasin";
+                    solve.style.backgroundColor = "#FFFF66";
                     break;
                 case 1:
                     solve.style.backgroundColor = "paleGreen";
@@ -385,9 +380,6 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < attempts.length; i++) {
             const tries = document.createElement('div');
             tries.classList.add('try');
-            if (isMobile == true) {
-                tries.style.fontSize = "20px";
-            }
             tries.innerHTML = "Fehlversuch " + (displayTryNumber++) + ": " + "<br>" + attempts[i].join(', '); 
             closenessChecker(checkHowMany(attempts[i]), tries); 
             triesContainer.appendChild(tries);
