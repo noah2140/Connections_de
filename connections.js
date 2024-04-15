@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]],
     [["Golfschläger", ["Driver", "Hybrid", "Putter", "Wedge"]], ["Schwermetalle", ["Eisen", "Kupfer", "Quecksilber", "Zink"]], ["Werkzeuge", ["Axt", "Hacke", "Hammer", "Säge"]], ["Anagramme", ["Beil", "Blei", "Leib", "Lieb"]]],
     [["Braune Heißgetränke", ["Americano", "Cappuccino","Espresso", "Kaffee"]], ["Teile eines Fußballtors", ["Latte", "Netz", "Pfosten", "Verankerung"]], ["Auf Weihnachtsmärtken zu sehen", ["Glühwein", "Karusell", "Mandeln", "Stand"]], ["Eis_", ["Bär", "Berg", "Lauf", "Tee"]]],
-    [["Gängiger Wert", ["Durchschnitt", "Mittel", "Normal", "Standard"]], ["Zum Erreichen eines Ziels", ["Lösung", "Methode", "Verfahren", "Weg"]], ["Deutsche Schauspieler", ["Bär", "Herbst", "Koch", "Vogel"]], ["Am Ende europäischer Wahrzeichen", ["Dame", "Platz", "Tag", "Turm"]]],
+    [["Gängiger Wert", ["Durchschnitt", "Mittel", "Normal", "Standard"]], ["Zum Erreichen eines Ziels verwendet", ["Lösung", "Methode", "Verfahren", "Weg"]], ["Deutsche Schauspieler", ["Bär", "Herbst", "Koch", "Vogel"]], ["Am Ende europäischer Wahrzeichen", ["Dame", "Platz", "Tag", "Turm"]]],
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]],
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]],
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]],
@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let diffTime = Math.abs(currentDate - startDate);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     let categories = puzzles[diffDays];
+    for (let i = 0; i < categories.length; i++) {
+        for(let j=0; j < categories[i][1].length; j++) {
+            categories[i][1][j] = categories[i][1][j].toUpperCase();
+        }
+    }
     let words = []; 
     words = categories.map(category => category[1]).flat(); 
     let selectedWords = [];
@@ -49,8 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function generateNewPuzzle() {
         let categories = puzzles[diffDays];
+        for (let i = 0; i < categories.length; i++) {
+            for(let j=0; j < categories[i][1].length; j++) {
+                categories[i][1][j] = categories[i][1][j].toUpperCase();
+            }
+        }
         let words = []; 
         words = categories.map(category => category[1]).flat();
+        for (let i = 0; i < words.length; i++) {
+            words[i] = "<b>" + words[i].toUpperCase() + "</b>";
+        }
     }
 
     function shuffleTiles() { 
@@ -87,6 +100,9 @@ document.addEventListener('DOMContentLoaded', function() {
         gridContainer.innerHTML = '';
         let n = 0;
         words = categories.map(category => category[1]).flat(); 
+        for (let i = 0; i < words.length; i++) {
+            words[i] = "<b>" + words[i].toUpperCase() + "</b>";
+        }
         shuffleTiles();
         for(let n=0;n<4;n++) {
             if(isSolved[n] == true) {
@@ -135,15 +151,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateFontSize(text) {
-        const baseFontSizeDesktop = 3; 
+        const baseFontSizeDesktop = 4; 
         const minFontSizeDesktop = 0.2; 
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 3.8; 
+        const baseFontSizeMobile = 6; 
         const minFontSizeMobile = 0.2;
         const maxFontSizeMobile = 40;
-        const lengthFactorMobile = 0.1; 
+        const lengthFactorMobile = 0.2; 
     
         const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
         const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
@@ -184,15 +200,15 @@ document.addEventListener('DOMContentLoaded', function() {
         switch(number) {
             case 1:
                 tries.style.backgroundColor = "paleTurquoise";
-                tries.innerHTML += " <br>(Sehr Kalt)"
+                tries.innerHTML += " <br>(SEHR KALT)"
                 break;
             case 2:
                 tries.style.backgroundColor = "paleGreen";
-                tries.innerHTML += " <br>(Lauwarm)"
+                tries.innerHTML += " <br>(LAUWARM)"
                 break;
             case 3:
                 tries.style.backgroundColor = "lightSalmon";
-                tries.innerHTML += " <br>(Heiß)"
+                tries.innerHTML += " <br>(HEIß)"
                 break;
         }
     }
@@ -236,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
         solve.classList.add('solve');
         switch (category) {
             case 0:
-                solve.style.backgroundColor = "#EEEE44";
+                solve.style.backgroundColor = "#FFFF66";
                 break;
             case 1:
                 solve.style.backgroundColor = "paleGreen";
@@ -248,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 solve.style.backgroundColor = "plum";
                 break;
         }
-        solve.innerHTML = "<b>" + categories[category][0]+ "</b>" + "<br>" + categories[category][1];
+        solve.innerHTML = "<b>" + categories[category][0].toUpperCase() + "</b>" + "<br>" + categories[category][1].join(', ');
         isSolved[category] = true;
         solvedOrder.push(category);
         isSolvedNumber+=1;
@@ -279,6 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function enterButton() {
+        console.log(selectedWords + " " + categories);
         if(isActiveEnterButton) {
             let check = isInCategories(selectedWords);
             if(check != -1) {
@@ -292,7 +309,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     if(triesArray.length == 0) {
                         const tries = document.createElement('div');
                         tries.classList.add('try');
-                        tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                        if(isMobile) {
+                            let attString = tryX[0] + ", " + tryX[1] + ",<br>" + tryX[2] + ", " + tryX[3];
+                            tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + attString;
+                        }
+                        else {
+                            tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                        }
                         attempts.push(tryX);
                         attemptsCategories.push(checkWhichCategories(selectedWords))
                         tryNumber += 1;
@@ -313,7 +336,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             const tries = document.createElement('div');
                             tries.classList.add('try');
                             let howMany = checkHowMany(selectedWords);
-                            tries.innerHTML = "Fehlversuch " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                            if(isMobile) {
+                                let attString = tryX[0] + ", " + tryX[1] + ",<br>" + tryX[2] + ", " + tryX[3];
+                                tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + attString;
+                            }
+                            else {
+                                tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                            }
                             attempts.push(tryX);
                             attemptsCategories.push(checkWhichCategories(selectedWords))
                             tryNumber += 1;
@@ -383,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     solve.style.backgroundColor = "plum";
                     break;
             }
-            solve.innerHTML = "<b>" + categories[cat][0]+ "</b>" + "<br>" + categories[cat][1];
+            solve.innerHTML = "<b>" + categories[cat][0].toUpperCase() + "</b>" + "<br>" + categories[cat][1].join(', ');
             solvedContainer.appendChild(solve);
         }
     }
@@ -395,7 +424,13 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < attempts.length; i++) {
             const tries = document.createElement('div');
             tries.classList.add('try');
-            tries.innerHTML = "Fehlversuch " + (displayTryNumber++) + ": " + "<br>" + attempts[i].join(', '); 
+            if(isMobile) {
+                let attString = attempts[i][0] + ", " + attempts[i][1] + ",<br>" + attempts[i][2] + ", " + attempts[i][3];
+                tries.innerHTML = "FEHLVERSUCH " + (displayTryNumber++) + ": " + "<br>" + attString;
+            }
+            else {
+                tries.innerHTML = "FEHLVERSUCH " + (displayTryNumber++) + ": " + "<br>" + attempts[i].join(', ');
+            }
             closenessChecker(checkHowMany(attempts[i]), tries); 
             triesContainer.appendChild(tries);
         }
@@ -443,7 +478,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const savedDate = new Date(savedDateStr);
         const currentDateWithoutTime = new Date(currentDate);
         currentDateWithoutTime.setHours(0, 0, 0, 0); 
-        console.log(savedDateStr + " " + currentDateWithoutTime);
         if (!savedDate || savedDate.getTime() !== currentDateWithoutTime.getTime()) {
             localStorage.setItem('connectionsDate', currentDateWithoutTime.toDateString());
             localStorage.removeItem('connectionsProgress');

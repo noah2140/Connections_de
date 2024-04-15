@@ -23,8 +23,6 @@ body, html {
     background-color: white;
     padding: 10px;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
     height: 40%;
 }
 
@@ -69,7 +67,6 @@ body, html {
     padding: 10px;
     text-align: center;
     border: thin solid black;
-    height: 3vw;
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -112,24 +109,36 @@ body, html {
     }
 
     .try {
-        font-size: 11px;
+        font-size: 9px;
+        width: 40vw;
     }
 
     .button {
         font-size: 13px;
+    }
+
+    .grid-item {
+        min-width: 50px; 
+        min-height: 30px;
     }
 }
 
 @media screen and (min-width: 769px) {
     .solve {
         font-size: 18px; 
+        height: 50px;
     }
 
     .try {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .button {
         font-size: 20px;
+    }
+
+    .grid-item {
+        min-width: 100px; 
+        min-height: 50px;
     }
 }
