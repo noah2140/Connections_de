@@ -38,10 +38,6 @@ body, html {
     grid-gap: 1vw;
 }
 
-#solvedContainer {
-    position: relative;
-}
-
 .solve {
     font-size: 20px;
     border: thin solid black;
@@ -59,7 +55,6 @@ body, html {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1vw;
-    margin-bottom: 1vw;
 }
 
 .grid-item {
@@ -100,6 +95,7 @@ body, html {
 
 #shButton {
     background-color: beige;
+    margin-top: -1vw;
 }
 
 @media screen and (max-width: 768px) {
