@@ -34,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     let words = []; 
     words = categories.map(category => category[1]).flat(); 
+    for (let i = 0; i < words.length; i++) {
+        words[i] = "<b>" + words[i].toUpperCase() + "</b>";
+    }
     let selectedWords = [];
     let tryNumber = 1;
     let triesArray = [];
@@ -107,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for(let n=0;n<4;n++) {
             if(isSolved[n] == true) {
                 for(let i=0;i<4;i++) {
-                    var index = words.indexOf(categories[n][1][i]);
+                    var index = words.indexOf("<b>" + categories[n][1][i] + "</b>");
                     words.splice(index, 1);
                 }
             }
@@ -295,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function enterButton() {
-        console.log(selectedWords + " " + categories);
         if(isActiveEnterButton) {
             let check = isInCategories(selectedWords);
             if(check != -1) {
