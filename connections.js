@@ -255,10 +255,10 @@ document.addEventListener('DOMContentLoaded', function() {
         solve.classList.add('solve');
         switch (category) {
             case 0:
-                solve.style.backgroundColor = "#FFFF66";
+                solve.style.backgroundColor = "#FFFF22";
                 break;
             case 1:
-                solve.style.backgroundColor = "paleGreen";
+                solve.style.backgroundColor = "#77FF77";
                 break;
             case 2:
                 solve.style.backgroundColor = "lightSkyBlue";
@@ -380,7 +380,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function shareButton() {
         if(isActiveShareButton) {
-            let shareText = "Connections-DE vom " + currentDate.toDateString() + ": \n \n";
+            let puzzleNumber = diffDays + 2;
+            let shareText = "Connections-DE \n" + "Puzzle #" + puzzleNumber + "\n \n";
             for(let x=0;x<attemptsCategories.length;x++) {
                 let attempt = "";
                 for(let y=0;y<4;y++) {
@@ -402,10 +403,10 @@ document.addEventListener('DOMContentLoaded', function() {
             solve.classList.add('solve');
             switch (cat) {
                 case 0:
-                    solve.style.backgroundColor = "#FFFF66";
+                    solve.style.backgroundColor = "#FFFF22";
                     break;
                 case 1:
-                    solve.style.backgroundColor = "paleGreen";
+                    solve.style.backgroundColor = "#77FF77";
                     break;
                 case 2:
                     solve.style.backgroundColor = "lightSkyBlue";
