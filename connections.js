@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Körperteile/Organe von denen wir 2 haben", ["Fuß", "Hand", "Niere", "Ohr"]], ["Basiseinheiten im SI System", ["Ampere", "Kelvin", "Meter", "Mol"]], ["Namen deutscher Weltmeister", ["Bauer", "Bein", "Lahm", "Mai"]], ["Hand_", ["Ball", "Buch", "Granate", "Schuh"]]],
     [["Kleiner", ["Gnom", "Hobbit", "Pimpf", "Zwerg"]], ["Am Himmel zu sehen", ["Mond", "Regenbogen", "Vogel", "Wolke"]], ["Sternbilder", ["Drache", "Einhorn", "Giraffe", "Widder"]], ["In Logo von F1 Teams zu finden", ["Bulle", "Pferd", "Schlange", "Stern"]]],
     [["Taten die man täglich vollbringt", ["Essen", "Gang", "Schlaf", "Trinken"]], ["Handlung einer Person", ["Arbeit", "Leistung", "Tat", "Tun"]], ["Kennzahlen eines Autos", ["Drehmoment", "Gewicht", "Reichweite", "Verbrauch"]], ["Deutsche Bands ohne erste Silbe", ["Heilig", "Stein", "Werk", "Zen"]]],
-    [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]],
+    [["Tankstellen", ["Aral", "Esso", "Shell", "Jet"]], ["Vollzählig", ["Komplett", "Total", "Umfassend", "Vollständig"]], ["Arten von Zahlen", ["Ganz", "Imaginär", "Natürlich", "Rational"]], ["Was mit L gemeint sein könnte", ["Fünfzig", "Groß", "Liter", "Luxemburg"]]],
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]]
     ];
 
