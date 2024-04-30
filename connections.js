@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Kontinente mit A", ["Afrika", "Amerika", "Asien", "Australien"]], ["Bestandteil von Pizzateig", ["Hefe", "Mehl", "Öl", "Salz"]], ["Lebewesen", ["Charakter", "Leben", "Organismus", "Wesen"]], ["_Park", ["Europa", "Freizeit", "Tier", "Wasser"]]], 
     [["Im Zusammenhang mit Raubtieren verwendet", ["Beute", "Jagd", "Revier", "Riss"]], ["Haben mehrere Grade", ["Abschluss", "Cousin", "Lebensmittel", "Verbrennung"]], ["Dinge die einen Deckel haben", ["Flasche", "Gully", "Toilette", "Topf"]], ["Stein_", ["Adler", "Bruch", "Ofen", "Schleuder"]]], 
     [["Bei der Tour de France zu sehen", ["Fahrrad", "Presse", "Trikot", "Ziel"]], ["Stadium", ["Etappe", "Rang", "Station", "Stufe"]], ["Dinge die Gläser haben", ["Fenster", "Handy", "Lampe", "Monokel"]], ["Enden mit Fortbewegungsmitteln", ["Anzug", "Cottbus", "Grad", "Heranwagen"]]], 
-    [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]], 
+    [["News", ["Bericht", "Meldung", "Nachricht", "Report"]], ["Haben Seiten", ["Buch", "Form", "Internet", "Zeitung"]], ["Enthalten Batterien/Akku", ["Kamera", "Laptop", "Taschenlampe", "Wecker"]], ["Unternehmen ohne 'Deutsche'", ["Bahn", "Bank", "Post", "Telekom"]]], 
     [["Autobegriffe", ["Beschleunigung", "Drehmoment", "Hubraum", "Pferdestärke"]], ["In IT Terminologie verwendet", ["Bug", "Patch", "Software", "Update"]], ["Edelgase", ["Argon", "Neon", "Radon", "Xenon"]], ["Was mit V gemeint sein könnte", ["Fünf", "Geschwindigkeit", "Vanadium", "Version"]]], 
     [["Den Wohlstand einer Person beschreibend", ["Arm", "Betucht", "Illiquid", "Reich"]], ["Teile einer Hose", ["Bein", "Bund", "Saum", "Schritt"]], ["Deutsche Wörter, die auch so im Englischen verwendet werden", ["Angst", "Doppelgänger", "Kindergarten", "Poltergeist"]], ["_Schaft", ["Gemein", "Land", "Ort", "Wissen"]]], 
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]], 
@@ -181,14 +181,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createGrid(rows, cols) {
-        const newShareButton = document.getElementById('shButton');
+        const shareBtn = document.getElementById('shareButton');
         const enterBtn = document.getElementById('enterButton');
         const shuffleBtn = document.getElementById('shuffleButton');
         if(!isActiveShareButton) {
-            makeButtonInvisible(newShareButton);
+            makeButtonInvisible(shareBtn);
         }
         else {
-            makeButtonVisible(newShareButton);
+            makeButtonVisible(shareBtn);
         }
         if(!isActiveEnterButton) {
             makeButtonInvisible(enterBtn);
@@ -379,8 +379,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const shuffleButton = document.getElementById('shuffleButton');
             makeButtonInvisible(shuffleButton);
             isActiveShuffleButton = false;
-            const newShareButton = document.getElementById('shButton');
-            makeButtonVisible(newShareButton);
+            const shareBtn = document.getElementById('shareButton');
+            makeButtonVisible(shareBtn);
             isActiveShareButton = true;
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
@@ -463,8 +463,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
-                                const newShareButton = document.getElementById('shButton');
-                                makeButtonVisible(newShareButton);
+                                const shareBtn = document.getElementById('shareButton');
+                                makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
                             }
                         }
