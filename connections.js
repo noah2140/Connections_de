@@ -258,10 +258,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 6; 
+        const baseFontSizeMobile = 6.5; 
         const minFontSizeMobile = 1.4;
         const maxFontSizeMobile = 40;
-        const lengthFactorMobile = 0.2; 
+        const lengthFactorMobile = 0.23; 
     
         const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
         const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
@@ -354,10 +354,10 @@ document.addEventListener('DOMContentLoaded', function() {
         solve.classList.add('solve');
         switch (category) {
             case 0:
-                solve.style.backgroundColor = "#FFFF22";
+                solve.style.backgroundColor = "#FFFF44";
                 break;
             case 1:
-                solve.style.backgroundColor = "#77FF77";
+                solve.style.backgroundColor = "#88FF88";
                 break;
             case 2:
                 solve.style.backgroundColor = "lightSkyBlue";
@@ -502,10 +502,10 @@ document.addEventListener('DOMContentLoaded', function() {
             solve.classList.add('solve');
             switch (cat) {
                 case 0:
-                    solve.style.backgroundColor = "#FFFF22";
+                    solve.style.backgroundColor = "#FFFF44";
                     break;
                 case 1:
-                    solve.style.backgroundColor = "#77FF77";
+                    solve.style.backgroundColor = "#88FF88";
                     break;
                 case 2:
                     solve.style.backgroundColor = "lightSkyBlue";
