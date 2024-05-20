@@ -78,8 +78,7 @@ body, html {
     justify-content: center; /* Zentriert den Inhalt horizontal */
     align-items: center; /* Zentriert den Inhalt vertikal */
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 #triesCircles {
