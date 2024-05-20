@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < words.length; i++) {
             words[i] = "<b>" + words[i].toUpperCase() + "</b>";
         }
+
         shuffleTiles();
         for(let n=0;n<4;n++) {
             if(isSolved[n] == true) {
@@ -447,6 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             attempts.push(tryX);
                             attemptsCategories.push(checkWhichCategories(selectedWords))
                             tryNumber += 1;
+                            updateTriesVisual();
                             closenessChecker(howMany, tries);
                             triesContainer.appendChild(tries);
                             triesArray.push(tryX);
@@ -474,7 +476,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
         }
+        updateTriesVisual();
         saveProgress();
+    }
+
+    function updateTriesVisual() {
+        const remainingTries = 4 - tryNumber; // Berechne die verbleibende Anzahl der Versuche
+        const tryCircles = document.querySelectorAll('.try-circle');
+        tryCircles.forEach((circle, index) => {
+            if (index <= remainingTries) {
+                circle.style.backgroundColor = 'darkgray'; // Ändere die Hintergrundfarbe der Kreise entsprechend
+            } else {
+                circle.style.backgroundColor = 'white'; // Graue Farbe für nicht verwendete Versuche
+            }
+        });
     }
 
     function shareButton() {
@@ -536,6 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closenessChecker(checkHowMany(attempts[i]), tries); 
             triesContainer.appendChild(tries);
         }
+        updateTriesVisual();
     }
     
     function saveProgress() {
