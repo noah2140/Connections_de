@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    // List of puzzles - most are currently placeholders
     const puzzles = [
     [["Weißes Pulver", ["Kokain", "Mehl", "Salz", "Zucker"]], ["Allergien", ["Gras", "Haar", "Milch", "Nuss"]], ["Vorkommend in Breaking Bad", ["Labor", "Maske", "Methamphetamin", "Wohnmobil"]], ["Homographen", ["Collagen", "Heroin", "Modern", "Umfahren"]]],
     [["Häufig während Halloween gesehen", ["Fledermaus", "Geist", "Skelett", "Spinne"]], ["Gesunde Beschreibung des Kopfs einer Person", ["Birne", "Kürbis", "Nuss", "Tomate"]], ["Bestandteil von Chips", ["Essig", "Kartoffel", "Öl", "Salz"]], ["Motor_", ["Boot", "Leistung", "Rad", "Raum"]]],
@@ -397,7 +398,25 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonName.style.display = "inline-block";
     }
 
+    function animateGuess(tiles) {
+        tiles.forEach((tile, index) => {
+            setTimeout(() => {
+                tile.style.transition = 'transform 0.3s';
+                tile.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    tile.style.transform = '';
+                    setTimeout(() => {
+                        tile.style.transition = '';
+                    }, 200);
+                }, 200);
+            }, index * 100);
+        });
+    }
+
     async function enterButton() {
+        const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
+        animateGuess(selectedTiles);
+        await delay(1000);
         if(isActiveEnterButton) {
             let check = isInCategories(selectedWords);
             if(check != -1) {
@@ -409,6 +428,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 let tryX = selectedWords.slice().sort();
                 if(selectedWords.length == 4) {
                     if(triesArray.length == 0) {
+                        document.body.classList.add('shake');
+                
+                        setTimeout(function() {
+                            document.body.classList.remove('shake');
+                        }, 200);
+
                         const tries = document.createElement('div');
                         tries.classList.add('try');
                         if(isMobile) {
@@ -435,6 +460,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                         if(x == false) {
+                            document.body.classList.add('shake');
+                    
+                            setTimeout(function() {
+                                document.body.classList.remove('shake');
+                            }, 200);
                             const tries = document.createElement('div');
                             tries.classList.add('try');
                             let howMany = checkHowMany(selectedWords);
