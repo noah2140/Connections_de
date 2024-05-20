@@ -414,12 +414,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function enterButton() {
-        const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
-        animateGuess(selectedTiles);
-        await delay(1000);
         if(isActiveEnterButton) {
             let check = isInCategories(selectedWords);
             if(check != -1) {
+                const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
+                animateGuess(selectedTiles);
+                await delay(1000);
                 solved(check);
                 attemptsCategories.push([check, check, check, check]);
                 saveProgress();
@@ -428,6 +428,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 let tryX = selectedWords.slice().sort();
                 if(selectedWords.length == 4) {
                     if(triesArray.length == 0) {
+                        const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
+                        animateGuess(selectedTiles);
+                        await delay(1000);
                         document.body.classList.add('shake');
                 
                         setTimeout(function() {
@@ -449,6 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         let howMany = checkHowMany(selectedWords);
                         closenessChecker(howMany, tries);
                         triesContainer.appendChild(tries);
+                        animateTryDrop(tries);
                         triesArray.push(tryX);
                     }
                     else {
@@ -460,6 +464,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                         if(x == false) {
+                            const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
+                            animateGuess(selectedTiles);
+                            await delay(1000);
                             document.body.classList.add('shake');
                     
                             setTimeout(function() {
@@ -481,6 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             updateTriesVisual();
                             closenessChecker(howMany, tries);
                             triesContainer.appendChild(tries);
+                            animateTryDrop(tries);
                             triesArray.push(tryX);
                             if(tryNumber >= 5) {
                                 for(let y=0;y<4;y++) {
@@ -508,6 +516,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateTriesVisual();
         saveProgress();
+    }
+
+    function animateTryDrop(tryElement) {
+        tryElement.style.transform = 'translateY(-25px)';
+        tryElement.style.transition = 'transform 0.5s ease';
+        requestAnimationFrame(() => {
+            tryElement.style.transform = 'translateY(0)';
+        });
     }
 
     function updateTriesVisual() {
