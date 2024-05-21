@@ -381,6 +381,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function removeHTMLTags(text) {
+        return text.replace(/<\/?[^>]+(>|$)/g, "");
+    }
+
     async function swapTilesAnimated(selectedIndices, firstRowIndices) {
         const gridItems = document.querySelectorAll('.grid-item');
         const animationPromises = [];
@@ -402,8 +406,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const animationPromise = new Promise(resolve => {
                 setTimeout(() => {
-                    selectedTile.style.transition = 'transform 0.4s';
-                    firstEmptyTile.style.transition = 'transform 0.4s';
+                    selectedTile.style.transition = 'transform 0.5s';
+                    firstEmptyTile.style.transition = 'transform 0.5s';
                     requestAnimationFrame(() => {
                         selectedTile.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
                         firstEmptyTile.style.transform = `translate(${-deltaX}px, ${-deltaY}px)`;
@@ -447,20 +451,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const solvedContainer = document.getElementById('solvedContainer');
         const selectedIndices = [];
         const firstRowIndices = [];
-        const gridItems = document.querySelectorAll('.grid-item');
 
-        // Identify the positions of selected tiles that are not in the first row
-        for (let i = 0; i < gridItems.length; i++) {
-            if (gridItems[i].style.backgroundColor === 'dimgray' && i > 3) {
-                selectedIndices.push(i);
+        for(let i=1;i<words.length / 4;i++) {
+            let checkedWords = [];
+            checkedWords.push(words[i*4], words[i*4 + 1], words[i*4 + 2], words[i*4 + 3]);
+            checkedWords = checkedWords.map(word => removeHTMLTags(word));
+            let n = checkWhichCategories(checkedWords);
+            for(let j=0; j<4; j++) {
+                if(n[j] == category) selectedIndices.push(i*4 + j);
             }
         }
 
-        // Identify the positions of non-selected tiles in the first row
-        for (let i = 0; i <= 3; i++) {
-            if (gridItems[i].style.backgroundColor !== 'dimgray') {
-                firstRowIndices.push(i);
-            }
+        let checkedWords = [];
+        checkedWords.push(words[0], words[1], words[2], words[3]);
+        checkedWords = checkedWords.map(word => removeHTMLTags(word));
+        let x = checkWhichCategories(checkedWords);
+        for(let n=0;n<4;n++) {
+            if(x[n] != category) firstRowIndices.push(n);
         }
 
         // Ensure that we have equal number of indices to swap
@@ -532,7 +539,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function showNotification(message) {
+        var notification = document.createElement("div");
+        notification.className = "notification";
+        notification.textContent = message;
+        document.getElementById("notificationContainer").appendChild(notification);
+    
+        setTimeout(function() {
+          notification.style.top = "0px"; // Move down
+          setTimeout(function() {
+            notification.classList.add("minimize"); // Minimize after 3 seconds
+            setTimeout(function() {
+              notification.remove(); // Remove after minimize animation
+            }, 500);
+          }, 3000);
+        }, 100); // Delay to ensure animation starts
+      }
+
+      function deselectAllTiles() {
+        const selectedTiles = document.querySelectorAll('.grid-item');
+        selectedTiles.forEach(tile => {
+            if(tile.style.backgroundColor == "dimgray") {
+                tile.style.backgroundColor = "white";
+                tile.style.color = "black";
+            }
+        });
+        selectedWords = [];
+    }    
+
     async function enterButton() {
+        const enterButtonElement = document.getElementById('enterButton');
         if(isActiveEnterButton) {
             let check = isInCategories(selectedWords);
             if(check != -1) {
@@ -573,11 +609,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         triesContainer.appendChild(tries);
                         animateTryDrop(tries);
                         triesArray.push(tryX);
+                        deselectAllTiles();
+                        updateTriesVisual();
                     }
                     else {
                         let x = false;
                         for (let i = 0; i < triesArray.length; i++) {
                             if (isEqualArray(triesArray[i], tryX)) {
+                                showNotification("Bereits geraten!");
                                 x = true;
                                 break;
                             }
@@ -609,13 +648,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             triesContainer.appendChild(tries);
                             animateTryDrop(tries);
                             triesArray.push(tryX);
+                            deselectAllTiles();
                             if(tryNumber >= 5) {
                                 for(let y=0;y<4;y++) {
                                     while(isSolved[y] == true && y<4) {
                                         y++;
                                     }
                                     if(y<4)  {
-                                        await delay(1000);
+                                        await delay(1500);
                                         solved(y);
                                     }
                                     else {
