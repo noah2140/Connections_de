@@ -169,17 +169,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function shuffleTiles() { 
+    function shuffleTiles() {
+        // Shuffle the tiles using Fisher-Yates algorithm
         let currentIndex = words.length;
-        while(currentIndex != 0) {
-            let randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex --;
-
-            [words[currentIndex], words[randomIndex]] =
-            [words[randomIndex], words[currentIndex]];
+        for (let i = currentIndex - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [words[i], words[j]] = [words[j], words[i]];
         }
+    
+        // Check if each row and each column has at least one tile
+        let rowsWithTile = new Set();
+        let columnsWithTile = new Set();
+        for (let i = 0; i < words.length; i++) {
+            let row = Math.floor(i / 4);
+            let col = i % 4;
+            rowsWithTile.add(row);
+            columnsWithTile.add(col);
+            if (rowsWithTile.size >= 3 && columnsWithTile.size >= 3) {
+                break; // We have at least one tile in at least 3 rows and 3 columns
+            }
+        }
+    
+        // If any row or column is missing a tile, swap tiles to ensure they have at least one
+        for (let i = 0; i < 4; i++) {
+            if (!rowsWithTile.has(i)) {
+                // Find a random tile from another row and swap it with a tile in this row
+                let randomRow = Math.floor(Math.random() * 4);
+                let randomIndex = words.findIndex((tile, index) => index >= randomRow * 4 && index < (randomRow + 1) * 4);
+                [words[i * 4], words[randomIndex]] = [words[randomIndex], words[i * 4]];
+            }
+            if (!columnsWithTile.has(i)) {
+                // Find a random tile from another column and swap it with a tile in this column
+                let randomCol = Math.floor(Math.random() * 4);
+                let randomIndex = words.findIndex((tile, index) => index % 4 === randomCol);
+                [words[i], words[randomIndex]] = [words[randomIndex], words[i]];
+            }
+        }
+    
         selectedWords = [];
     }
+    
+    
 
     function createGrid(rows, cols) {
         const shareBtn = document.getElementById('shareButton');
@@ -351,7 +381,96 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    async function swapTilesAnimated(selectedIndices, firstRowIndices) {
+        const gridItems = document.querySelectorAll('.grid-item');
+        const animationPromises = [];
+    
+        for (let i = 0; i < selectedIndices.length; i++) {
+            const selectedIdx = selectedIndices[i];
+            const firstEmptyIdx = firstRowIndices[i];
+    
+            const selectedTile = gridItems[selectedIdx];
+            const firstEmptyTile = gridItems[firstEmptyIdx];
+    
+            const selectedRect = selectedTile.getBoundingClientRect();
+            const firstEmptyRect = firstEmptyTile.getBoundingClientRect();
+    
+            const deltaX = firstEmptyRect.left - selectedRect.left;
+            const deltaY = firstEmptyRect.top - selectedRect.top;
+
+            const delay = i * 50;
+
+            const animationPromise = new Promise(resolve => {
+                setTimeout(() => {
+                    selectedTile.style.transition = 'transform 0.4s';
+                    firstEmptyTile.style.transition = 'transform 0.4s';
+                    requestAnimationFrame(() => {
+                        selectedTile.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+                        firstEmptyTile.style.transform = `translate(${-deltaX}px, ${-deltaY}px)`;
+                        selectedTile.addEventListener('transitionend', () => {
+                            const selectedTileContent = selectedTile.innerHTML;
+                            const selectedTileBgColor = selectedTile.style.backgroundColor;
+                            const selectedTileTextColor = selectedTile.style.color;
+                            const selectedTileTextSize = selectedTile.style.fontSize;
+    
+                            const firstEmptyTileContent = firstEmptyTile.innerHTML;
+                            const firstEmptyTileBgColor = firstEmptyTile.style.backgroundColor;
+                            const firstEmptyTileTextColor = firstEmptyTile.style.color;
+                            const firstEmptyTileTextSize = firstEmptyTile.style.fontSize;
+    
+                            selectedTile.innerHTML = firstEmptyTileContent;
+                            selectedTile.style.backgroundColor = firstEmptyTileBgColor;
+                            selectedTile.style.color = firstEmptyTileTextColor;
+                            selectedTile.style.fontSize = firstEmptyTileTextSize;
+    
+                            firstEmptyTile.innerHTML = selectedTileContent;
+                            firstEmptyTile.style.backgroundColor = selectedTileBgColor;
+                            firstEmptyTile.style.color = selectedTileTextColor;
+                            firstEmptyTile.style.fontSize = selectedTileTextSize;
+
+                            selectedTile.style.transition = '';
+                            selectedTile.style.transform = '';
+                            firstEmptyTile.style.transition = '';
+                            firstEmptyTile.style.transform = '';
+    
+                            resolve();
+                        }, { once: true });
+                    });
+                }, delay);
+            });
+            animationPromises.push(animationPromise);
+        }
+        await Promise.all(animationPromises);
+    }
+
     async function solved(category) {
+        const solvedContainer = document.getElementById('solvedContainer');
+        const selectedIndices = [];
+        const firstRowIndices = [];
+        const gridItems = document.querySelectorAll('.grid-item');
+
+        // Identify the positions of selected tiles that are not in the first row
+        for (let i = 0; i < gridItems.length; i++) {
+            if (gridItems[i].style.backgroundColor === 'dimgray' && i > 3) {
+                selectedIndices.push(i);
+            }
+        }
+
+        // Identify the positions of non-selected tiles in the first row
+        for (let i = 0; i <= 3; i++) {
+            if (gridItems[i].style.backgroundColor !== 'dimgray') {
+                firstRowIndices.push(i);
+            }
+        }
+
+        // Ensure that we have equal number of indices to swap
+        const minLength = Math.min(selectedIndices.length, firstRowIndices.length);
+        const swapIndices = selectedIndices.slice(0, minLength);
+        const swapFirstRowIndices = firstRowIndices.slice(0, minLength);
+
+        // Animate swapping of tiles
+        await swapTilesAnimated(swapIndices, swapFirstRowIndices);
+
         const solve = document.createElement('div');
         solve.classList.add('solve');
         switch (category) {
