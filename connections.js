@@ -290,17 +290,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxFontSizeDesktop = 80; 
         const lengthFactorDesktop = 0.1; 
     
-        const baseFontSizeMobile = 6.5; 
+        const baseFontSizeMobile = 7.5; 
         const minFontSizeMobile = 1.4;
         const maxFontSizeMobile = 40;
-        const lengthFactorMobile = 0.23; 
+        const lengthFactorMobile = 0.24; 
     
         const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
         const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
         const maxFontSize = isMobile ? maxFontSizeMobile : maxFontSizeDesktop;
         const lengthFactor = isMobile ? lengthFactorMobile : lengthFactorDesktop;
     
-        const fontSize = baseFontSize - (text.length * lengthFactor);
+        const fontSize = baseFontSize - (text.length * Math.pow(lengthFactor, 0.9));
     
         return Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'vw';
     }
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
             notification.classList.add("minimize"); // Minimize after 3 seconds
             setTimeout(function() {
               notification.remove(); // Remove after minimize animation
-            }, 500);
+            }, 200);
           }, 3000);
         }, 100); // Delay to ensure animation starts
       }
@@ -577,6 +577,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 await delay(1000);
                 solved(check);
                 attemptsCategories.push([check, check, check, check]);
+                selectedWords = [];
                 saveProgress();
             }
             else {
