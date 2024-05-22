@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Behältnis", ["Karton", "Kiste", "Schachtel", "Verpackung"]], ["Bei der F1 zu sehen", ["Auto", "Box", "Reifen", "Strecke"]], ["Entfernung", ["Abstand", "Distanz", "Etappe", "Ferne"]], ["Beginnend mit Konjunktiven", ["Aberglaube", "Dabei", "Dennis", "Obacht"]]], 
     [["Afrikanische Tiere", ["Büffel", "Elefant", "Flusspferd", "Giraffe"]], ["In  Schulen zu finden", ["Kreide", "Lehrer", "Rucksack", "Turnhalle"]], ["Kreative Werke", ["Bild", "Buch", "Gedicht", "Lied"]], ["Schokoladen_", ["Brunnen", "Hase", "Riegel", "Tafel"]]], 
     [["Erfindungen des 19. Jahrhunderts", ["Dampflokomotive", "Fotografie", "Glühlampe", "Telefon"]], ["Bei Wahlen zu sehen", ["Kandidat", "Kreuz", "Plakat", "Urne"]], ["Auf Fußballfeld zu sehen", ["Kreis", "Linie", "Punkt", "Tor"]], ["Wörter deren Mehrzahl durch -ta erzeugt wird", ["Komma", "Schema", "Stigma", "Trauma"]]], 
-    [["Gespräch", ["Austausch", "Debatte", "Kolloquium", "Unterhaltung"]], ["Schmuck", ["Brosche", "Kette", "Reif", "Ring"]], ["Von Boxern häufig verwendet", ["Handschuh", "Mundschutz", "Ring", "Sack"]], ["1, 2, 3, 4 Präfixe", ["Dialog", "Monopol", "Tetraeder", "Trilogie"]]], 
-    [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]], 
+    [["Gespräch", ["Austausch", "Debatte", "Kolloquium", "Unterhaltung"]], ["Schmuck", ["Brosche", "Kette", "Krone", "Reif"]], ["Von Boxern häufig verwendet", ["Handschuh", "Mundschutz", "Ring", "Sack"]], ["1, 2, 3, 4 Präfixe", ["Dialog", "Monopol", "Tetraeder", "Trilogie"]]], 
+    [["Geschickt", ["Elegant", "Flink", "Gewandt", "Schlau"]], ["Nach Physikern benannte Einheiten", ["Ampère", "Hertz", "Joule", "Volt"]], ["Katzennahe Begriffe", ["Baum", "Pfote", "Schrödinger", "Vibrisse"]], ["ENden mit Körperteilen", ["Bohr", "Dortmund", "Lauge", "Warm"]]], 
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Häufig bei Brettspielen zu sehen", ["Karte", "FM", "MD", "Würfel"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]], 
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]], 
     [["Einheiten", ["DB", "KG", "NM", "PA"]], ["Chemische Elemente die nach Wissenschaftlern benannt sind", ["ES", "FM", "MD", "NO"]], ["EU-Gründerstaaten", ["BE", "DE", "FR", "NL"]], ["Originaltitel von Filmen", ["IT", "ME", "PI", "UP"]]], 
@@ -170,47 +170,73 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function shuffleTiles() {
-        // Shuffle the tiles using Fisher-Yates algorithm
-        let currentIndex = words.length;
-        for (let i = currentIndex - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [words[i], words[j]] = [words[j], words[i]];
-        }
-    
-        // Check if each row and each column has at least one tile
-        let rowsWithTile = new Set();
-        let columnsWithTile = new Set();
-        for (let i = 0; i < words.length; i++) {
-            let row = Math.floor(i / 4);
-            let col = i % 4;
-            rowsWithTile.add(row);
-            columnsWithTile.add(col);
-            if (rowsWithTile.size >= 3 && columnsWithTile.size >= 3) {
-                break; // We have at least one tile in at least 3 rows and 3 columns
+        while(!isWellDistributed()) {
+            let currentIndex = words.length;
+            for (let i = currentIndex - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [words[i], words[j]] = [words[j], words[i]];
             }
         }
-    
-        // If any row or column is missing a tile, swap tiles to ensure they have at least one
-        for (let i = 0; i < 4; i++) {
-            if (!rowsWithTile.has(i)) {
-                // Find a random tile from another row and swap it with a tile in this row
-                let randomRow = Math.floor(Math.random() * 4);
-                let randomIndex = words.findIndex((tile, index) => index >= randomRow * 4 && index < (randomRow + 1) * 4);
-                [words[i * 4], words[randomIndex]] = [words[randomIndex], words[i * 4]];
-            }
-            if (!columnsWithTile.has(i)) {
-                // Find a random tile from another column and swap it with a tile in this column
-                let randomCol = Math.floor(Math.random() * 4);
-                let randomIndex = words.findIndex((tile, index) => index % 4 === randomCol);
-                [words[i], words[randomIndex]] = [words[randomIndex], words[i]];
-            }
-        }
-    
         selectedWords = [];
     }
-    
-    
 
+    function isWellDistributed() {
+        for(let j=0; j<4; j++) {
+            if(isSolved[j] == false) {
+                let rows = 0;
+                let cols = 0;
+                for(let m=0; m<4-isSolvedNumber; m++) {
+                    for(let n=0; n<4; n++) {
+                        if(categories[j][1].includes(removeHTMLTags(words[4*m + n]))) {
+                            rows+=1;
+                            break;
+                        }
+                    }
+                }
+                if(isSolvedNumber == 0) {
+                    if(rows<3) {
+                        return false;
+                    }
+                }
+                else if (isSolvedNumber == 1) {
+                    if(rows == 1) {
+                        return false;
+                    }
+                }
+                else if (isSolvedNumber == 2) {
+                    if(rows<2) {
+                        return false;
+                    }
+                }
+                for(let m=0; m<4; m++) {
+                    for(let n=0; n<4-isSolvedNumber; n++) {
+                        if(categories[j][1].includes(removeHTMLTags(words[4*n + m]))) {
+                            cols++;
+                            break;
+                        }
+                    }
+                }
+
+                if(isSolvedNumber == 0) {
+                    if(cols<3) {
+                        return false;
+                    }
+                }
+                else if (isSolvedNumber == 1) {
+                    if(cols <= 3 && rows == 2) {
+                        return false;
+                    }
+                }
+                else if (isSolvedNumber == 2) {
+                    if(cols<3) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    
     function createGrid(rows, cols) {
         const shareBtn = document.getElementById('shareButton');
         const enterBtn = document.getElementById('enterButton');
@@ -266,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 gridItem.addEventListener('click', function() {
                     if(this.style.backgroundColor == "dimgray") {
-                        this.style.backgroundColor = "white";
+                        this.style.backgroundColor = "lightgray";
                         this.style.color = "black";
                         var index = selectedWords.indexOf(this.textContent);
                         selectedWords.splice(index, 1);
@@ -482,16 +508,16 @@ document.addEventListener('DOMContentLoaded', function() {
         solve.classList.add('solve');
         switch (category) {
             case 0:
-                solve.style.backgroundColor = "#FFFF44";
+                solve.style.backgroundColor = "#FAE06E";
                 break;
             case 1:
-                solve.style.backgroundColor = "#88FF88";
+                solve.style.backgroundColor = "#A1C45B";
                 break;
             case 2:
-                solve.style.backgroundColor = "lightSkyBlue";
+                solve.style.backgroundColor = "#B2C6F1";
                 break;
             case 3:
-                solve.style.backgroundColor = "plum";
+                solve.style.backgroundColor = "#B980C4";
                 break;
         }
         solve.innerHTML = "<b>" + categories[category][0].toUpperCase() + "</b>" + "<br>" + categories[category][1].join(', ');
@@ -551,8 +577,8 @@ document.addEventListener('DOMContentLoaded', function() {
             notification.classList.add("minimize"); // Minimize after 3 seconds
             setTimeout(function() {
               notification.remove(); // Remove after minimize animation
-            }, 200);
-          }, 3000);
+            }, 500);
+          }, 4000);
         }, 100); // Delay to ensure animation starts
       }
 
@@ -560,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedTiles = document.querySelectorAll('.grid-item');
         selectedTiles.forEach(tile => {
             if(tile.style.backgroundColor == "dimgray") {
-                tile.style.backgroundColor = "white";
+                tile.style.backgroundColor = "lightgray";
                 tile.style.color = "black";
             }
         });
@@ -723,16 +749,16 @@ document.addEventListener('DOMContentLoaded', function() {
             solve.classList.add('solve');
             switch (cat) {
                 case 0:
-                    solve.style.backgroundColor = "#FFFF44";
+                    solve.style.backgroundColor = "#FAE06E";
                     break;
                 case 1:
-                    solve.style.backgroundColor = "#88FF88";
+                    solve.style.backgroundColor = "#A1C45B";
                     break;
                 case 2:
-                    solve.style.backgroundColor = "lightSkyBlue";
+                    solve.style.backgroundColor = "#B2C6F1";
                     break;
                 case 3:
-                    solve.style.backgroundColor = "plum";
+                    solve.style.backgroundColor = "#B980C4";
                     break;
             }
             solve.innerHTML = "<b>" + categories[cat][0].toUpperCase() + "</b>" + "<br>" + categories[cat][1].join(', ');

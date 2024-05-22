@@ -69,16 +69,15 @@ body, html {
     padding: 10px 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    animation: drop 0.2s ease forwards;
+    animation: drop 0.5s ease forwards;
   }
 
   .notification.minimize {
-    animation: minimize 0.2s ease forwards; /* Apply the minimize animation */
+    animation: minimize 0.5s ease forwards; /* Apply the minimize animation */
   }
 
 .solve {
     font-size: 20px;
-    border: thin solid black;
     text-align: center;
     position: relative;
     padding: 10px;
@@ -101,10 +100,9 @@ body, html {
 }
 
 .grid-item {
-    background-color: white;
+    background-color: lightgray;
     padding: 10px;
     text-align: center;
-    border: thin solid black;
     display: flex; 
     justify-content: center; 
     align-items: center;
@@ -139,7 +137,6 @@ body, html {
 #buttons {
     background-color: white;
     border-radius: 2px;
-    border-color: black;
     position: relative;
     padding: 20px;
     height: 15%;
@@ -149,10 +146,10 @@ body, html {
     height: 100%;
     width: 48%;
     font-weight: bold;
-    border: thin solid black;
     color: black;
     margin: 1%;
-    border-radius: 8px;
+    border-radius: 40px;
+    border: thin solid black;
 }
 
 #shuffleButton  {
