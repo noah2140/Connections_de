@@ -319,14 +319,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const baseFontSizeMobile = 7.5; 
         const minFontSizeMobile = 1.4;
         const maxFontSizeMobile = 40;
-        const lengthFactorMobile = 0.24; 
+        const lengthFactorMobile = 0.26; 
     
         const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
         const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
         const maxFontSize = isMobile ? maxFontSizeMobile : maxFontSizeDesktop;
         const lengthFactor = isMobile ? lengthFactorMobile : lengthFactorDesktop;
     
-        const fontSize = baseFontSize - (text.length * Math.pow(lengthFactor, 0.9));
+        const fontSize = baseFontSize - (text.length * lengthFactor);
     
         return Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'vw';
     }
