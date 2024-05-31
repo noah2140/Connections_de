@@ -189,7 +189,7 @@ body, html {
 /* extra stylings specifically for mobile devices */ 
 @media screen and (max-width: 768px) {
     .solve {
-        font-size: 16px;
+        font-size: 15px;
         height: 70px;
     }
 
