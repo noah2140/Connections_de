@@ -521,7 +521,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 solve.style.backgroundColor = "#B980C4";
                 break;
         }
-        solve.innerHTML = "<b>" + categories[category][0].toUpperCase() + "</b>" + "<br>" + categories[category][1].join(', ');
+        solve.innerHTML = "<b>" + categories[category][0].toUpperCase() + "</b>" + "<br>";
+        for(let n=0; n<3; n++) {
+            solve.innerHTML += categories[category][1][n].replace('-', '') + ", ";
+        }
+        solve.innerHTML += categories[category][1][3].replace('-', '');
         isSolved[category] = true;
         solvedOrder.push(category);
         isSolvedNumber+=1;
@@ -623,11 +627,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         const tries = document.createElement('div');
                         tries.classList.add('try');
                         if(isMobile) {
-                            let attString = tryX[0] + ", " + tryX[1] + ",<br>" + tryX[2] + ", " + tryX[3];
+                            let attString = tryX[0].replace('-', '') + ", " + tryX[1].replace('-', '') + ",<br>" + tryX[2].replace('-', '') + ", " + tryX[3].replace('-', '');
                             tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + attString;
                         }
                         else {
-                            tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                            tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>";
+                            for(let n=0; n<3; n++) {
+                                tries.innerHTML += tryX[n].replace('-', '') + ", ";
+                            }
+                            tries.innerHTML += tryX[3].replace('-', '');
                         }
                         attempts.push(tryX);
                         attemptsCategories.push(checkWhichCategories(selectedWords))
@@ -662,11 +670,15 @@ document.addEventListener('DOMContentLoaded', function() {
                             tries.classList.add('try');
                             let howMany = checkHowMany(selectedWords);
                             if(isMobile) {
-                                let attString = tryX[0] + ", " + tryX[1] + ",<br>" + tryX[2] + ", " + tryX[3];
+                                let attString = tryX[0].replace('-', '') + ", " + tryX[1].replace('-', '') + ",<br>" + tryX[2].replace('-', '') + ", " + tryX[3].replace('-', '');
                                 tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + attString;
                             }
                             else {
-                                tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + tryX.join(', ');
+                                tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>";
+                                for(let n=0; n<3; n++) {
+                                    tries.innerHTML += tryX[n].replace('-', '') + ", ";
+                                }
+                                tries.innerHTML += tryX[3].replace('-', '');
                             }
                             attempts.push(tryX);
                             attemptsCategories.push(checkWhichCategories(selectedWords))
@@ -762,7 +774,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     solve.style.backgroundColor = "#B980C4";
                     break;
             }
-            solve.innerHTML = "<b>" + categories[cat][0].toUpperCase() + "</b>" + "<br>" + categories[cat][1].join(', ');
+            solve.innerHTML = "<b>" + categories[cat][0].toUpperCase() + "</b>" + "<br>";
+            for(let n=0; n<3; n++) {
+                solve.innerHTML += categories[cat][1][n].replace('-', '') + ", ";
+            }
+            solve.innerHTML += categories[cat][1][3].replace('-', '');
             solvedContainer.appendChild(solve);
         }
     }
@@ -775,11 +791,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const tries = document.createElement('div');
             tries.classList.add('try');
             if(isMobile) {
-                let attString = attempts[i][0] + ", " + attempts[i][1] + ",<br>" + attempts[i][2] + ", " + attempts[i][3];
+                let attString = attempts[i][0].replace('-', '') + ", " + attempts[i][1].replace('-', '') + ",<br>" + attempts[i][2].replace('-', '') + ", " + attempts[i][3].replace('-', '');
                 tries.innerHTML = "FEHLVERSUCH " + (displayTryNumber++) + ": " + "<br>" + attString;
             }
             else {
-                tries.innerHTML = "FEHLVERSUCH " + (displayTryNumber++) + ": " + "<br>" + attempts[i].join(', ');
+                tries.innerHTML = "FEHLVERSUCH " + (displayTryNumber++) + ": " + "<br>";
+                for(let n=0; n<3; n++) {
+                    tries.innerHTML += attempts[i][n].replace('-', '') + ", ";
+                }
+                tries.innerHTML += attempts[i][3].replace('-', '')
             }
             closenessChecker(checkHowMany(attempts[i]), tries); 
             triesContainer.appendChild(tries);
