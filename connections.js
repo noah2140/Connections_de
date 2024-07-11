@@ -181,20 +181,34 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         const shareBtn = document.getElementById('teilenButton');
         shareBtn.onclick = function() {
-            if (navigator.share) {
-                // Web Share API is supported (mobile)
+            let puzzleNumber = diffDays + 2;
+            let shareText = "Connections-DE \n" + "Puzzle #" + puzzleNumber + "\n \n";
+            for (let x = 0; x < attemptsCategories.length; x++) {
+                let attempt = "";
+                for (let y = 0; y < 4; y++) {
+                attempt += emojis[attemptsCategories[x][y]];
+                }
+                shareText = shareText + attempt + "\n";
+            }
+            
+            if (isMobile) {
+                // Mobile: Redirect to WhatsApp
+                const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+                window.location.href = whatsappUrl;
+            } else if (navigator.share) {
+                // Web Share API is supported (typically on mobile devices)
                 navigator.share({
                     title: 'Share Results',
-                    text: 'Check out these results!',
-                    url: 'https://example.com'  // Replace with your URL or leave empty
+                    text: shareText,
+                    url: window.location.href // URL anpassen oder leer lassen
                 }).then(() => {
                     console.log('Shared successfully');
                 }).catch((error) => {
                     console.error('Error sharing:', error);
                 });
             } else {
-                // Clipboard fallback (desktop)
-                const textToCopy = formattedText; // Use formattedText for HTML content
+                // Clipboard fallback (typically on desktop)
+                const textToCopy = formattedText; // HTML-Inhalt hier einfügen
                 navigator.clipboard.writeText(textToCopy)
                     .then(() => {
                         alert('Copied to clipboard');
@@ -204,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         alert('Failed to copy to clipboard');
                     });
             }
-        };
+        };             
     }
   
     function shareButton() {
@@ -277,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
     
                 // Check if rows and columns are well distributed
-                if (isSolvedNumber === 0 && (rows < 4 || cols < 4)) {
+                if (isSolvedNumber === 0 && (rows < 3 || cols < 3)) {
                     return false;
                 } else if (isSolvedNumber === 1 && (rows < 3 || cols < 3)) {
                     return false;
@@ -754,10 +768,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
-                                showModal(shareText);
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
+                                shareButton();
                             }
                         }
                     }
