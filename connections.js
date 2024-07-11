@@ -156,19 +156,88 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const isMobile = window.innerWidth <= 768; 
 
+    function showModal(shareText) {
+        const modal = document.getElementById('myModal');
+        const modalText = document.getElementById('modalText');
+    
+        const formattedText = shareText.replace(/\n/g, '<br>');
+    
+        modalText.innerHTML = formattedText;
+    
+        // Display the modal
+        modal.style.display = 'block';
+    
+        // Close modal when the close button is clicked
+        const closeBtn = document.getElementsByClassName('close')[0];
+        closeBtn.onclick = function() {
+        modal.style.display = 'none';
+        };
+    
+        // Close modal if user clicks outside of modal content
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+        };
+        const shareBtn = document.getElementById('teilenButton');
+        shareBtn.onclick = function() {
+            if (navigator.share) {
+                // Web Share API is supported (mobile)
+                navigator.share({
+                    title: 'Share Results',
+                    text: 'Check out these results!',
+                    url: 'https://example.com'  // Replace with your URL or leave empty
+                }).then(() => {
+                    console.log('Shared successfully');
+                }).catch((error) => {
+                    console.error('Error sharing:', error);
+                });
+            } else {
+                // Clipboard fallback (desktop)
+                const textToCopy = formattedText; // Use formattedText for HTML content
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        alert('Copied to clipboard');
+                    })
+                    .catch((error) => {
+                        console.error('Error copying to clipboard:', error);
+                        alert('Failed to copy to clipboard');
+                    });
+            }
+        };
+    }
+  
+    function shareButton() {
+        if (isActiveShareButton) {
+          let puzzleNumber = diffDays + 2;
+          let shareText = "<b>Connections-DE \n" + "Puzzle #" + puzzleNumber + "</b> \n \n";
+          for (let x = 0; x < attemptsCategories.length; x++) {
+            let attempt = "";
+            for (let y = 0; y < 4; y++) {
+              attempt += emojis[attemptsCategories[x][y]];
+            }
+            shareText = shareText + attempt + "\n";
+          }
+          
+          // Show modal with shareText
+          showModal(shareText);
+        }
+      }
+
     function generateNewPuzzle() {
         let categories = puzzles[diffDays];
         for (let i = 0; i < categories.length; i++) {
-            for(let j=0; j < categories[i][1].length; j++) {
+            for(let j = 0; j < categories[i][1].length; j++) {
                 categories[i][1][j] = categories[i][1][j].toUpperCase();
             }
         }
-        let words = []; 
-        words = categories.map(category => category[1]).flat();
+        let words = categories.map(category => category[1]).flat();
         for (let i = 0; i < words.length; i++) {
             words[i] = "<b>" + words[i].toUpperCase() + "</b>";
         }
+        return words; // Return formatted words
     }
+    
 
     function shuffleTiles() {
         while(!isWellDistributed()) {
@@ -182,61 +251,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function isWellDistributed() {
-        for(let j=0; j<4; j++) {
-            if(isSolved[j] == false) {
+        for (let j = 0; j < 4; j++) {
+            if (!isSolved[j]) { // Only check if category j is not solved
                 let rows = 0;
                 let cols = 0;
-                for(let m=0; m<4-isSolvedNumber; m++) {
-                    for(let n=0; n<4; n++) {
-                        if(categories[j][1].includes(removeHTMLTags(words[4*m + n]))) {
-                            rows+=1;
-                            break;
+    
+                // Check rows
+                for (let m = 0; m < 4 - isSolvedNumber; m++) {
+                    for (let n = 0; n < 4; n++) {
+                        if (categories[j][1].includes(removeHTMLTags(words[4 * m + n]))) {
+                            rows++;
+                            break; // Found in this row, move to the next
                         }
                     }
                 }
-                if(isSolvedNumber == 0) {
-                    if(rows<3) {
-                        return false;
-                    }
-                }
-                else if (isSolvedNumber == 1) {
-                    if(rows == 1) {
-                        return false;
-                    }
-                }
-                else if (isSolvedNumber == 2) {
-                    if(rows<2) {
-                        return false;
-                    }
-                }
-                for(let m=0; m<4; m++) {
-                    for(let n=0; n<4-isSolvedNumber; n++) {
-                        if(categories[j][1].includes(removeHTMLTags(words[4*n + m]))) {
+    
+                // Check columns
+                for (let m = 0; m < 4; m++) {
+                    for (let n = 0; n < 4 - isSolvedNumber; n++) {
+                        if (categories[j][1].includes(removeHTMLTags(words[4 * n + m]))) {
                             cols++;
-                            break;
+                            break; // Found in this column, move to the next
                         }
                     }
                 }
-
-                if(isSolvedNumber == 0) {
-                    if(cols<3) {
-                        return false;
-                    }
-                }
-                else if (isSolvedNumber == 1) {
-                    if(cols <= 3 && rows == 2) {
-                        return false;
-                    }
-                }
-                else if (isSolvedNumber == 2) {
-                    if(cols<3) {
-                        return false;
-                    }
+    
+                // Check if rows and columns are well distributed
+                if (isSolvedNumber === 0 && (rows < 4 || cols < 4)) {
+                    return false;
+                } else if (isSolvedNumber === 1 && (rows < 3 || cols < 3)) {
+                    return false;
+                } else if (isSolvedNumber === 2 && (rows < 2 || cols < 2)) {
+                    return false;
                 }
             }
         }
         return true;
     }
+    
     
     function createGrid(rows, cols) {
         const shareBtn = document.getElementById('shareButton');
@@ -702,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
+                                showModal(shareText);
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
@@ -735,22 +788,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 circle.style.backgroundColor = 'white'; // Graue Farbe für nicht verwendete Versuche
             }
         });
-    }
-
-    function shareButton() {
-        if(isActiveShareButton) {
-            let puzzleNumber = diffDays + 2;
-            let shareText = "Connections-DE \n" + "Puzzle #" + puzzleNumber + "\n \n";
-            for(let x=0;x<attemptsCategories.length;x++) {
-                let attempt = "";
-                for(let y=0;y<4;y++) {
-                    attempt += emojis[attemptsCategories[x][y]];
-                }
-                shareText = shareText + attempt + "\n";
-            }
-            const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-            window.location.href = whatsappUrl;
-        }
     }
 
     function displaySolvedCategories() {
@@ -842,6 +879,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             generateNewPuzzle();
         }
+        if(isSolvedNumber == 4) shareButton();
     }
 
     function checkAndResetProgress() {
