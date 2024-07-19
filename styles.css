@@ -32,7 +32,7 @@ body, html {
     margin-top: 35%;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     max-width: 600px;
     border-radius: 5px;
     text-align: center;
@@ -205,7 +205,7 @@ body, html {
 }
 
 #shareButton {
-    background-color: beige;
+    background-color: rgb(222, 105, 238);
     margin-top: -1vw;
 }
 
@@ -230,7 +230,7 @@ body, html {
 
 #teilenButton {
     height: 100%;
-    width: 48%;
+    width: 60%;
     font-weight: bold;
     font-size: 28px;
     color: black;
