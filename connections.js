@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Namen", ["Birke", "Jasmin", "Mark", "Roman"]], ["Kann zur Ausrüstung eines Jägers gehören", ["Fernglas", "Gewehr", "Köder", "Tarnung"]], ["Geometrie Begriffe", ["Fläche", "Form", "Körper", "Winkel"]], ["_Buch", ["Comic", "Foto", "Tage", "Text"]]], 
     [["Am Anfang von Wochentagen", ["Dienst", "Donner", "Frei", "Mit"]], ["Bringen einen zum Schwitzen", ["Angst", "Fieber", "Hitze", "Sport"]], ["Können laut sein", ["Autobahn", "Flugzeug", "Gewitter", "Musik"]], ["Sesam_", ["Brötchen", "Öl", "Samen", "Straße"]]],
     [["Schulfächer", ["Chemie", "Kunst", "Musik", "Sport"]], ["Packt man auf den Grill", ["Fackel", "Fleisch", "Kohle", "Spieß"]], ["Aus dem Französischen stammende Wörter", ["Accessoire", "Charme", "Medaille", "Restaurant"]], ["Augen_", ["Arzt", "Farbe", "Paar", "Ring"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Bedeutung", ["Gewicht", "Kraft", "Macht", "Stärke"]], ["Variation", ["Abwandlung", "Form", "Variante", "Version"]], ["Enthalten Spielkarten", ["Fassung", "Königtum", "Lausbube", "Madame"]], ["Kleider_", ["Bügel", "Größe", "Sack", "Schrank"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
