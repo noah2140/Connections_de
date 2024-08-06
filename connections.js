@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Naturwissenschaften", ["Astronomie", "Biologie", "Chemie", "Physik"]], ["Erfundene Erzählung", ["Geschichte", "Lüge", "Märchen", "Story"]], ["Unbewiesene Bereiche/Dinge", ["Astrologie", "Homöopathie", "Reiki", "Telepathie"]], ["Am Anfang von Quizduell-Kategorien", ["Draußen", "Im", "Kunst", "Sport"]]], 
     [["Namen", ["Birke", "Jasmin", "Mark", "Roman"]], ["Kann zur Ausrüstung eines Jägers gehören", ["Fernglas", "Gewehr", "Köder", "Tarnung"]], ["Geometrie Begriffe", ["Fläche", "Form", "Körper", "Winkel"]], ["_Buch", ["Comic", "Foto", "Tage", "Text"]]], 
     [["Am Anfang von Wochentagen", ["Dienst", "Donner", "Frei", "Mit"]], ["Bringen einen zum Schwitzen", ["Angst", "Fieber", "Hitze", "Sport"]], ["Können laut sein", ["Autobahn", "Flugzeug", "Gewitter", "Musik"]], ["Sesam_", ["Brötchen", "Öl", "Samen", "Straße"]]],
-    [["", ["", "", "", ""]], ["Haben ein Ende", ["", "Leben", "Satz", "Spiel"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Schulfächer", ["Chemie", "Kunst", "Musik", "Sport"]], ["Packt man auf den Grill", ["Fackel", "Fleisch", "Kohle", "Spieß"]], ["Aus dem Französischen stammende Wörter", ["Accessoire", "Charme", "Medaille", "Restaurant"]], ["Augen_", ["Arzt", "Farbe", "Paar", "Ring"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
