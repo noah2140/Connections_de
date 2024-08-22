@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["'Seite an Seite'", ["Eins", "Miteinander", "Vereinigt", "Zusammen"]], ["Identisch", ["Analog", "Gleich", "Konform", "Wie"]], ["Am Anfang von klassischen Brett-/Gesellschaftsspielen zu finden", ["Mau", "Mensch", "Mono", "Vier"]], ["Gib (mir) _", ["Acht", "Fünf", "Gas", "Her"]]], 
     [["'Ich bin Fertig'", ["Durch", "Kaputt", "Platt", "Tot"]], ["Mit weniger verbunden", ["Defizit", "Mangel", "Minus", "Verlust"]], ["Schönheitsmakel", ["Blase", "Fleck", "Mal", "Pickel"]], ["_Punkt", ["Anker", "Kosten", "Plus", "Wende"]]],
     [["Was man im Auto macht", ["Blinken", "Fahren", "Rasen", "Sitzen"]], ["Mittelpunkt", ["Herz", "Kern", "Nabel", "Puls"]], ["Plural von Insekten", ["Bremsen", "Fliegen", "Grillen", "Käfer"]], ["Bier_", ["Bank", "Bauch", "Garten", "Preis"]]], 
-    [["Behätnisse", ["Mappe", "Ranzen", "Tasche", "Tüte"]], ["Beleidigungen", ["Narr", "Ochse", "Sack", "Schwein"]], ["Beim Bowling zu sehen", ["Bahn", "Kugel", "Pin", "Wurf"]], ["Eck_", ["Ball", "Punkt", "Stoß", "Zahn"]]], 
+    [["Behältnisse", ["Mappe", "Ranzen", "Tasche", "Tüte"]], ["Beleidigungen", ["Narr", "Ochse", "Sack", "Schwein"]], ["Beim Bowling zu sehen", ["Bahn", "Kugel", "Pin", "Wurf"]], ["Eck_", ["Ball", "Punkt", "Stoß", "Zahn"]]], 
     [["Ertrag", ["Ernte", "Gewinn", "Lohn", "Umsatz"]], ["Dienst", ["Arbeit", "Fron", "Leistung", "Mühe"]], ["Was mit 'Rechts' gemeint sein kann", ["Dumm", "Kapitalistisch", "Konservativ", "Ost"]], ["Am Anfang dt. Vornamen zu finden", ["Alf", "Christi", "Man", "Rom"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
