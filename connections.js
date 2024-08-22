@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Was man im Auto macht", ["Blinken", "Fahren", "Rasen", "Sitzen"]], ["Mittelpunkt", ["Herz", "Kern", "Nabel", "Puls"]], ["Plural von Insekten", ["Bremsen", "Fliegen", "Grillen", "Käfer"]], ["Bier_", ["Bank", "Bauch", "Garten", "Preis"]]], 
     [["Behältnisse", ["Mappe", "Ranzen", "Tasche", "Tüte"]], ["Beleidigungen", ["Narr", "Ochse", "Sack", "Schwein"]], ["Beim Bowling zu sehen", ["Bahn", "Kugel", "Pin", "Wurf"]], ["Eck_", ["Ball", "Punkt", "Stoß", "Zahn"]]], 
     [["Ertrag", ["Ernte", "Gewinn", "Lohn", "Umsatz"]], ["Dienst", ["Arbeit", "Fron", "Leistung", "Mühe"]], ["Was mit 'Rechts' gemeint sein kann", ["Dumm", "Kapitalistisch", "Konservativ", "Ost"]], ["Am Anfang dt. Vornamen zu finden", ["Alf", "Christi", "Man", "Rom"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Zur Zubereitung von Paniertem Schnitzel verwendet", ["Ei", "Fleisch", "Mehl", "Panko"]], ["Sind typischerweise weiß", ["Birke", "Eisbär", "Papier", "Wolke"]], ["Haben Nadeln", ["Kiefer", "Kompass", "Tacho", "Tanne"]], ["Sieg_", ["Burg", "Linde", "Reich", "Tor"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
