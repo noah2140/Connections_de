@@ -704,7 +704,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function enterButton() {
         const enterButtonElement = document.getElementById('enterButton');
+        const shuffleButtonElement = document.getElementById('shuffleButton');
         if(isActiveEnterButton) {
+            enterButtonElement.disabled = true;
+            shuffleButtonElement.disabled = true;
             let check = isInCategories(selectedWords);
             if(check != -1) {
                 const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
@@ -815,9 +818,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 saveProgress();
+                enterButtonElement.disabled = false;
+                shuffleButtonElement.disabled = false;
                 return false;
             }
         }
+        enterButtonElement.disabled = false;
+        shuffleButtonElement.disabled = false;
         updateTriesVisual();
         saveProgress();
     }

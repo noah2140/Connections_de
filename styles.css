@@ -301,4 +301,9 @@ body, html {
     #container2 {
         height: 40%;
     }
+
+    .modal-content {
+        margin: 15% auto;
+        margin-top: 5%;
+      }
 }
