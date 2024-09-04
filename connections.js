@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Sportarten bei denen man schlägt", ["Badminton", "Baseball", "Boxen", "Golf"]], ["Auf dem Golfplatz zu sehen", ["Ball", "Eisen", "Grün", "Loch"]], ["Beginnen mit Körperteilen", ["Armut", "Beinah", "Handball", "Kopfball"]], ["_Arm", ["Greif", "Ober", "Tennis", "Unter"]]], 
     [["Unterart", ["Arm", "Ast", "Gattung", "Zweig"]], ["In Krankenhäusern zu finden", ["Arzt", "Bett", "Patient", "Schwester"]], ["_Buch", ["Dschungel", "Foto", "Hand", "Stamm"]], ["Frère Jacques", ["Bruder", "Dong", "Glocken", "Noch"]]],
     [["Schmal", ["Dünn", "Eng", "Knapp", "Kompakt"]], ["Milchsorten/-typen", ["Kuh", "Mager", "Mandel", "Soja"]], ["Sieht man beim Tennis", ["Ball", "Netz", "Platz", "Schläger"]], ["_Darm", ["Blind", "Dick", "Mast", "Wurst"]]], 
-    [["", ["", "", "", ""]], ["Was man beim Spielen für Erfolg braucht", ["Geschick", "Glück", "Können", "Wissen"]], ["Haben Töne", ["Alarm", "Farbe", "Musik", "Sprache"]], ["Ein bisschen _", ["Freude", "Frieden", "Sonne", "Wärme"]]], 
+    [["Aktionen der Polizei", ["Ermittlung", "Fahndung","Kontrolle", "Sperre"]], ["Was man beim Spielen für Erfolg braucht", ["Geschick", "Glück", "Können", "Wissen"]], ["Haben Töne", ["Alarm", "Farbe", "Musik", "Sprache"]], ["Ein bisschen _", ["Freude", "Frieden", "Sonne", "Wärme"]]], 
     [["Disney-Figuren", ["Bambi", "Dumbo", "Olaf", "Pluto"]], ["Produkte die man für den Garten kaufen kann", ["Erde", "Kanne", "Pflanze", "Zwerg"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["Sind blau", ["Avatar", "Dory", "Himmel", "Schlumpf"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
