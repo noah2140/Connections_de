@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(data => {
         const puzzles = data;
-
-        console.log(puzzles); 
     })
     .catch(error => console.error('Error loading puzzles:', error));
 
