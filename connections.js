@@ -1,6 +1,7 @@
 // Fetch the puzzles array from the JSON file
 fetch('./puzzles.json')
 .then(response => {
+    console.log("x");
     // Check if the fetch was successful
     if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);
@@ -8,6 +9,7 @@ fetch('./puzzles.json')
     return response.json();
 })
 .then(data => {
+    console.log("y");
     const puzzles = data;
     document.addEventListener('DOMContentLoaded', function() {
         const startDate = new Date('4/11/2024');
