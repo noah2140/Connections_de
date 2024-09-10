@@ -423,12 +423,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         for(let i=0; i<rows; i++) {
             for(let j=0; j<cols; j++) {
+                const text = words[n];
+                const fontSize = calculateFontSize(text);
                 const gridItem = document.createElement('div');
                 gridItem.classList.add('grid-item');
-                const text = words[n];
-                gridItem.innerHTML = words[n++];
-                const fontSize = calculateFontSize(text);
                 gridItem.style.fontSize = fontSize;
+                gridItem.innerHTML = words[n++];
                 if(isMobile) {
                     gridItem.style.height = "50px";
                 }
