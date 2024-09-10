@@ -15,6 +15,7 @@ fetch('./puzzles.json')
         let diffTime = Math.abs(currentDate - startDate);
         let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
         let categories = puzzles[diffDays];
+        console.log(categories);
         for (let i = 0; i < categories.length; i++) {
             for(let j=0; j < categories[i][1].length; j++) {
                 categories[i][1][j] = categories[i][1][j].toUpperCase();
