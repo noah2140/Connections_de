@@ -1,19 +1,19 @@
+const puzzles = [];
+// Fetch the puzzles array from the JSON file
+fetch('./puzzles.json')
+.then(response => {
+    // Check if the fetch was successful
+    if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+    }
+    return response.json();
+})
+.then(data => {
+    const puzzles = data;
+})
+.catch(error => console.error('Error loading puzzles:', error));
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch the puzzles array from the JSON file
-    fetch('./puzzles.json')
-    .then(response => {
-        // Check if the fetch was successful
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        const puzzles = data;
-    })
-    .catch(error => console.error('Error loading puzzles:', error));
-
-
     const startDate = new Date('4/11/2024');
     let currentDate = new Date();
     let diffTime = Math.abs(currentDate - startDate);
