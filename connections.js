@@ -9,7 +9,7 @@ fetch('./puzzles.json')
     return response.json();
 })
 .then(data => {
-    const puzzles = data;
+    puzzles = data;
 })
 .catch(error => console.error('Error loading puzzles:', error));
 
