@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Hörorgan", ["Gehör", "Lauscher", "Löffel", "Ohr"]], ["Handy-Apps", ["Kalender", "Kamera", "Uhr", "Wetter"]], ["Haben vier 'Gliedmaße' (Arme, Zacken, ...)", ["Gabel", "Kreuzschlüssel", "Rechen", "Schraubenzieher"]], ["Tafel_", ["Berg", "Bild", "Messer", "Obst"]]],
     [["Schmarre", ["Blessur", "Kratzer", "Narbe", "Schramme"]], ["In der Mathematik verwendet", ["Bruch", "Differenz", "Faktor", "Produkt"]], ["Haben Verschlüsse", ["Dose", "Flasche", "Helm", "Jacke"]], ["Biss_", ["Fest", "Spur", "Verletzung", "Wunde"]]], 
     [["Was man mit Autos macht", ["Fahrt", "Reise", "Tour", "Trip"]], ["Schachfiguren", ["Bauer", "Dame", "König", "Turm"]], ["Beim 100m Rennen zu sehen", ["Bahn", "Läufer", "Start", "Ziel"]], ["_Bahn", ["Auto", "Flug", "Modell", "Schuss"]]], 
-    [["", ["", "", "", ""]], ["Dinge mit B, die auf einer Kirmes zu sehen sind", ["Baum", "Bier", "Bon", "Bühne"]], ["", ["", "", "", ""]], ["Tor_", ["Hüter", "Jubel", "Pedo", "Schuss"]]],
+    [["Die aktuelle Form", ["Situation", "Stand", "Verfassung", "Version"]], ["Wörter mit B, die auf einer Kirmes zu sehen sind", ["Baum", "Bier", "Bon", "Bühne"]], ["Campingzubehör", ["Lampe", "Tasche", "Topf", "Zelt"]], ["Tor_", ["Hüter", "Jubel", "Pedo", "Schuss"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Absatz", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Wo man Noten hat", ["", "Musik", "Schule", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Boden", ["", "", "", ""]]], 
