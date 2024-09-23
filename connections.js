@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Was man mit Autos macht", ["Fahrt", "Reise", "Tour", "Trip"]], ["Schachfiguren", ["Bauer", "Dame", "König", "Turm"]], ["Beim 100m Rennen zu sehen", ["Bahn", "Läufer", "Start", "Ziel"]], ["_Bahn", ["Auto", "Flug", "Modell", "Schuss"]]], 
     [["Relation", ["Beziehung", "Chemie", "Draht", "Verbindung"]], ["Wo man Noten hat", ["Duft", "Musik", "Schule", "Währung"]], ["Wo '+' zum Einsatz kommt", ["Batterie", "Blutgruppe", "Mathematik", "Vorwahl"]], ["Welt_", ["Bild", "Klasse", "Meer", "Religion"]]], 
     [["Die aktuelle Form", ["Situation", "Stand", "Verfassung", "Version"]], ["Wörter mit B, die auf einer Kirmes zu sehen sind", ["Baum", "Bier", "Bon", "Bühne"]], ["Campingzubehör", ["Lampe", "Tasche", "Topf", "Zelt"]], ["Tor_", ["Hüter", "Jubel", "Pedo", "Schuss"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Boden", ["", "", "", ""]]], 
+    [["Geometrische Formen", ["Kugel", "Pyramide", "Würfel", "Zylinder"]], ["Hüne", ["Berg", "Koloss", "Schrank", "Wand"]], ["Worauf man Schritte macht", ["Balken", "Boden", "Leiter", "Treppe"]], ["_Boden", ["Dach", "Fuß", "Kuchen", "Wald"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Einheit", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Eimer", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Ball", ["", "", "", ""]]], 
