@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tempDiv.style.fontSize = `${fontSize}px`;
     
         // Reduce font size until the text fits within the container
-        while ((tempDiv.offsetWidth-20 > containerWidth) && fontSize > 1) {
+        while ((tempDiv.offsetWidth-50 > containerWidth) && fontSize > 1) {
             fontSize -= 1;  // Decrease font size by 1px increments
             tempDiv.style.fontSize = `${fontSize}px`;
         }
