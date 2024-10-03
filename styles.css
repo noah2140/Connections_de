@@ -244,6 +244,10 @@ body, html {
 
 /* extra stylings specifically for mobile devices */ 
 @media screen and (max-width: 768px) {
+    #mainContainer {
+        margin-top: 5vh;
+    }
+
     .solve {
         font-size: 14px;
         height: 70px;
