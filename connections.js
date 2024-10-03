@@ -419,9 +419,9 @@ document.addEventListener('DOMContentLoaded', function() {
             for(let j=0; j<cols; j++) {
                 const text = words[n];
                 const gridItem = document.createElement('div');
+                const fontSize = calculateFontSize(text, rows, cols);
                 gridItem.classList.add('grid-item');
                 gridItem.innerHTML = words[n++];
-                const fontSize = calculateFontSize(text, rows, cols);
                 gridItem.style.fontSize = fontSize;
                 if(isMobile) {
                     gridItem.style.height = "50px";
