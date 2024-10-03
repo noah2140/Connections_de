@@ -926,7 +926,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const mainContainer = document.getElementById('mainContainer');
     
         // Check if the device is in portrait mode
-        if (window.matchMedia("(orientation: landscape)").matches) {
+        if (window.matchMedia("(orientation: landscape)").matches && isMobile) {
             flipMessage.style.display = 'block';  // Show message
             mainContainer.style.display = "none";
         } else {
