@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(tempDiv);
     
         // Return the calculated font size in pixels
-        if(isMobile) fontSize *= 1.3;
+        if(isMobile) fontSize *= 1.2;
         return `${fontSize*1.2}px`;
     }
 
@@ -920,6 +920,27 @@ document.addEventListener('DOMContentLoaded', function() {
             solvedContainer.appendChild(solve);
         }
     }
+
+    function checkOrientation() {
+        const flipMessage = document.getElementById('flip-message');
+        const mainContainer = document.getElementById('mainContainer');
+    
+        // Check if the device is in portrait mode
+        if (window.matchMedia("(orientation: landscape)").matches) {
+            flipMessage.style.display = 'block';  // Show message
+            mainContainer.style.display = "none";
+        } else {
+            flipMessage.style.display = 'none';
+            mainContainer.style.display = "block"; // Hide message
+        }
+    }
+    
+    // Add event listeners to check for orientation change
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', checkOrientation);
+    
+    // Check orientation on page load
+    checkOrientation();
 
     function displayTries() {
         const triesContainer = document.getElementById('triesContainer');
