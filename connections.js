@@ -418,10 +418,10 @@ document.addEventListener('DOMContentLoaded', function() {
         for(let i=0; i<rows; i++) {
             for(let j=0; j<cols; j++) {
                 const text = words[n];
-                const fontSize = calculateFontSize(text);
                 const gridItem = document.createElement('div');
                 gridItem.classList.add('grid-item');
                 gridItem.innerHTML = words[n++];
+                const fontSize = calculateFontSize(text, rows, cols);
                 gridItem.style.fontSize = fontSize;
                 if(isMobile) {
                     gridItem.style.height = "50px";
@@ -446,25 +446,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function calculateFontSize(text) {
-        const baseFontSizeDesktop = 4; 
-        const minFontSizeDesktop = 0.2; 
-        const maxFontSizeDesktop = 80; 
-        const lengthFactorDesktop = 0.1; 
+    function calculateFontSize(text, rows, cols) {
+        // Create a temporary element to measure text size
+        const tempDiv = document.createElement('div');
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.whiteSpace = 'nowrap';
+        tempDiv.style.visibility = 'hidden';  // Hide element for measuring only
+        tempDiv.innerText = text;
     
-        const baseFontSizeMobile = 7.5; 
-        const minFontSizeMobile = 2;
-        const maxFontSizeMobile = 40;
-        const lengthFactorMobile = 0.26; 
+        document.body.appendChild(tempDiv);
     
-        const baseFontSize = isMobile ? baseFontSizeMobile : baseFontSizeDesktop;
-        const minFontSize = isMobile ? minFontSizeMobile : minFontSizeDesktop;
-        const maxFontSize = isMobile ? maxFontSizeMobile : maxFontSizeDesktop;
-        const lengthFactor = isMobile ? lengthFactorMobile : lengthFactorDesktop;
+        // Measure the container's dimensions (each grid item)
+        const containerWidth = gridContainer.offsetWidth / cols; // grid item's width
+        const containerHeight = gridContainer.offsetHeight / rows; // grid item's height
     
-        const fontSize = baseFontSize - (text.length * lengthFactor);
+        // Start with a large font size and iteratively reduce until it fits
+        let fontSize = 100; // Start with a large font size
+        tempDiv.style.fontSize = `${fontSize}px`;
     
-        return Math.max(minFontSize, Math.min(maxFontSize, fontSize)) + 'vw';
+        // Reduce font size until the text fits within the container
+        while ((tempDiv.offsetWidth-20 > containerWidth) && fontSize > 1) {
+            fontSize -= 1;  // Decrease font size by 1px increments
+            tempDiv.style.fontSize = `${fontSize}px`;
+        }
+    
+        // Remove the temporary element
+        document.body.removeChild(tempDiv);
+    
+        // Return the calculated font size in pixels
+        return `${fontSize}px`;
     }
 
     function shuffleButton() {

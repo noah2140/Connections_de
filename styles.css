@@ -276,6 +276,10 @@ body, html {
 }
 
 @media screen and (min-width: 769px) {
+    #mainContainer {
+        width: 50%;
+    }
+
     .solve {
         font-size: 18px; 
         height: 50px;
@@ -290,7 +294,7 @@ body, html {
     }
 
     .grid-item {
-        min-width: 100px; 
+        min-width: 50px; 
         min-height: 50px;
     }
 
