@@ -192,6 +192,12 @@ document.addEventListener('DOMContentLoaded', function() {
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
     ];
 
+    const noPuzzleMessage = document.getElementById('no-puzzle-message');
+    noPuzzleMessage.style.display = "none";
+
+    const mainContainer = document.getElementById('mainContainer');
+    mainContainer.style.display = "none";
+
     const startDate = new Date('4/11/2024');
     let currentDate = new Date();
     let diffTime = Math.abs(currentDate - startDate);
@@ -224,6 +230,29 @@ document.addEventListener('DOMContentLoaded', function() {
     let isActiveShareButton = false;
 
     const isMobile = window.innerWidth <= 768; 
+
+    function checkForEmptyWords(words) {
+        const noPuzzleMessage = document.getElementById('no-puzzle-message');
+        const mainContainer = document.getElementById('mainContainer');
+    
+        // Hide the no puzzle message by default
+        noPuzzleMessage.style.display = "none";
+        mainContainer.style.display = "none";
+        
+        // Check for any empty string in the words array
+        let hasEmptyString = words.includes("<b></b>"); // Check directly if the array includes an empty string
+    
+        // Show or hide messages based on the presence of empty strings
+        if (hasEmptyString) {
+            noPuzzleMessage.style.display = 'block'; // Show message
+            mainContainer.style.display = "none"; // Hide main container
+        } else {
+            noPuzzleMessage.style.display = 'none'; // Hide message
+            mainContainer.style.display = "block"; // Show main container
+        }
+    }
+
+    checkForEmptyWords(words);
 
     function showModal(shareText) {
         const modal = document.getElementById('myModal');
@@ -932,6 +961,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             flipMessage.style.display = 'none';
             mainContainer.style.display = "block"; // Hide message
+            checkForEmptyWords(words);
         }
     }
     
