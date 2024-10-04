@@ -57,39 +57,27 @@ document.addEventListener('DOMContentLoaded', function() {
     function isMobileDevice() {
         const userAgent = navigator.userAgent;
 
-        // Mobile user-agent detection
         const isMobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(userAgent);
-
-        // Desktop user-agent exclusion
         const isDesktop = /Macintosh|Windows NT|Linux/i.test(userAgent);
 
         return isMobile && !isDesktop;
-    }
-
-    if (isMobileDevice()) {
-        console.log("Mobile device detected");
-    } else {
-        console.log("Desktop device detected");
     }
 
     function checkForEmptyWords(words) {
         const noPuzzleMessage = document.getElementById('no-puzzle-message');
         const mainContainer = document.getElementById('mainContainer');
     
-        // Hide the no puzzle message by default
         noPuzzleMessage.style.display = "none";
         mainContainer.style.display = "none";
-        
-        // Check for any empty string in the words array
-        let hasEmptyString = words.includes("<b></b>"); // Check directly if the array includes an empty string
     
-        // Show or hide messages based on the presence of empty strings
+        let hasEmptyString = words.includes("<b></b>"); 
+    
         if (hasEmptyString) {
-            noPuzzleMessage.style.display = 'block'; // Show message
-            mainContainer.style.display = "none"; // Hide main container
+            noPuzzleMessage.style.display = 'block'; 
+            mainContainer.style.display = "none"; 
         } else {
-            noPuzzleMessage.style.display = 'none'; // Hide message
-            mainContainer.style.display = "block"; // Show main container
+            noPuzzleMessage.style.display = 'none'; 
+            mainContainer.style.display = "block";
         }
     }
 
@@ -98,25 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function showModal(shareText) {
         const modal = document.getElementById('myModal');
         const modalText = document.getElementById('modalText');
-    
         const formattedText = shareText.replace(/\n/g, '<br>');
-    
         modalText.innerHTML = formattedText;
-    
-        // Display the modal
         modal.style.display = 'block';
-    
-        // Close modal when the close button is clicked
+
         const closeBtn = document.getElementsByClassName('close')[0];
         closeBtn.onclick = function() {
         modal.style.display = 'none';
         };
-    
-        // Close modal if user clicks outside of modal content
+
         window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
         };
         const shareBtn = document.getElementById('teilenButton');
         shareBtn.onclick = function() {
@@ -131,23 +113,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (isMobileDevice()) {
-                // Mobile: Redirect to WhatsApp
                 const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
                 window.location.href = whatsappUrl;
             } else if (navigator.share) {
-                // Web Share API is supported (typically on mobile devices)
                 navigator.share({
                     title: 'Share Results',
                     text: shareText,
-                    url: window.location.href // URL anpassen oder leer lassen
+                    url: window.location.href
                 }).then(() => {
                     console.log('Shared successfully');
                 }).catch((error) => {
                     console.error('Error sharing:', error);
                 });
             } else {
-                // Clipboard fallback (typically on desktop)
-                const textToCopy = formattedText; // HTML-Inhalt hier einfügen
+                const textToCopy = formattedText;
                 navigator.clipboard.writeText(textToCopy)
                     .then(() => {
                         alert('Copied to clipboard');
@@ -171,8 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             shareText = shareText + attempt + "\n";
           }
-          
-          // Show modal with shareText
           showModal(shareText);
         }
       }
@@ -188,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < words.length; i++) {
             words[i] = "<b>" + words[i].toUpperCase() + "</b>";
         }
-        return words; // Return formatted words
+        return words; 
     }
     
 
@@ -205,31 +182,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function isWellDistributed() {
         for (let j = 0; j < 4; j++) {
-            if (!isSolved[j]) { // Only check if category j is not solved
+            if (!isSolved[j]) { 
                 let rows = 0;
                 let cols = 0;
-    
-                // Check rows
                 for (let m = 0; m < 4 - isSolvedNumber; m++) {
                     for (let n = 0; n < 4; n++) {
                         if (categories[j][1].includes(removeHTMLTags(words[4 * m + n]))) {
                             rows++;
-                            break; // Found in this row, move to the next
+                            break;
                         }
                     }
                 }
     
-                // Check columns
                 for (let m = 0; m < 4; m++) {
                     for (let n = 0; n < 4 - isSolvedNumber; n++) {
                         if (categories[j][1].includes(removeHTMLTags(words[4 * n + m]))) {
                             cols++;
-                            break; // Found in this column, move to the next
+                            break; 
                         }
                     }
                 }
     
-                // Check if rows and columns are well distributed
                 if (isSolvedNumber === 0 && (rows < 3 || cols < 3)) {
                     return false;
                 } else if (isSolvedNumber === 1 && (rows < 3 || cols < 3)) {
@@ -317,34 +290,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateFontSize(text, rows, cols) {
-        // Create a temporary element to measure text size
         const tempDiv = document.createElement('div');
         tempDiv.style.position = 'absolute';
         tempDiv.style.whiteSpace = 'nowrap';
-        tempDiv.style.visibility = 'hidden';  // Hide element for measuring only
+        tempDiv.style.visibility = 'hidden'; 
         tempDiv.innerText = text;
     
         document.body.appendChild(tempDiv);
-
         const gridContainer = document.getElementById('gridContainer');
+        const containerWidth = gridContainer.offsetWidth / cols; 
     
-        // Measure the container's dimensions (each grid item)
-        const containerWidth = gridContainer.offsetWidth / cols; // grid item's width
-    
-        // Start with a large font size and iteratively reduce until it fits
-        let fontSize = 100; // Start with a large font size
+        let fontSize = 100;
         tempDiv.style.fontSize = `${fontSize}px`;
     
-        // Reduce font size until the text fits within the container
         while ((tempDiv.offsetWidth > containerWidth) && fontSize > 1) {
-            fontSize -= 1;  // Decrease font size by 1px increments
+            fontSize -= 1; 
             tempDiv.style.fontSize = `${fontSize}px`;
         }
-    
-        // Remove the temporary element
         document.body.removeChild(tempDiv);
     
-        // Return the calculated font size in pixels
         if(isMobileDevice()) fontSize *= 1.2;
         return `${fontSize*1.2}px`;
     }
@@ -513,13 +477,10 @@ document.addEventListener('DOMContentLoaded', function() {
         for(let n=0;n<4;n++) {
             if(x[n] != category) firstRowIndices.push(n);
         }
-
-        // Ensure that we have equal number of indices to swap
         const minLength = Math.min(selectedIndices.length, firstRowIndices.length);
         const swapIndices = selectedIndices.slice(0, minLength);
         const swapFirstRowIndices = firstRowIndices.slice(0, minLength);
 
-        // Animate swapping of tiles
         await swapTilesAnimated(swapIndices, swapFirstRowIndices);
 
         const solve = document.createElement('div');
@@ -594,14 +555,14 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("notificationContainer").appendChild(notification);
     
         setTimeout(function() {
-          notification.style.top = "0px"; // Move down
+          notification.style.top = "0px"; 
           setTimeout(function() {
-            notification.classList.add("minimize"); // Minimize after 3 seconds
+            notification.classList.add("minimize"); 
             setTimeout(function() {
-              notification.remove(); // Remove after minimize animation
+              notification.remove(); 
             }, 500);
           }, 4000);
-        }, 100); // Delay to ensure animation starts
+        }, 100); 
       }
 
       function deselectAllTiles() {
@@ -751,13 +712,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateTriesVisual() {
-        const remainingTries = 4 - tryNumber; // Berechne die verbleibende Anzahl der Versuche
+        const remainingTries = 4 - tryNumber; 
         const tryCircles = document.querySelectorAll('.try-circle');
         tryCircles.forEach((circle, index) => {
             if (index <= remainingTries) {
-                circle.style.backgroundColor = 'darkgray'; // Ändere die Hintergrundfarbe der Kreise entsprechend
+                circle.style.backgroundColor = 'darkgray';
             } else {
-                circle.style.backgroundColor = 'white'; // Graue Farbe für nicht verwendete Versuche
+                circle.style.backgroundColor = 'white';
             }
         });
     }
@@ -796,9 +757,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const flipMessage = document.getElementById('flip-message');
         const mainContainer = document.getElementById('mainContainer');
     
-        // Check if the device is in portrait mode
         if (window.matchMedia("(orientation: landscape)").matches && isMobileDevice()) {
-            flipMessage.style.display = 'block';  // Show message
+            flipMessage.style.display = 'block';
             mainContainer.style.display = "none";
         } else {
             flipMessage.style.display = 'none';
@@ -808,11 +768,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Add event listeners to check for orientation change
     window.addEventListener('resize', checkOrientation);
     window.addEventListener('orientationchange', checkOrientation);
     
-    // Check orientation on page load
     checkOrientation();
 
     function displayTries() {
