@@ -55,7 +55,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let isActiveShareButton = false;
 
     function isMobileDevice() {
-        return /Mobi|Android/i.test(navigator.userAgent);
+        const userAgent = navigator.userAgent;
+    
+        // Check if the user agent is from a mobile device
+        return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(userAgent) && !/Macintosh|Windows NT/i.test(userAgent);
     }
 
     function checkForEmptyWords(words) {
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 shareText = shareText + attempt + "\n";
             }
             
-            if (isMobileDevice) {
+            if (isMobileDevice()) {
                 // Mobile: Redirect to WhatsApp
                 const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
                 window.location.href = whatsappUrl;
@@ -264,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-        if(isMobileDevice) {
+        if(isMobileDevice()) {
             const cont1 = document.getElementById('container1');
             const cont2 = document.getElementById('container2');
             cont1.style.margin = "0 auto";
@@ -279,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 gridItem.classList.add('grid-item');
                 gridItem.innerHTML = words[n++];
                 gridItem.style.fontSize = fontSize;
-                if(isMobileDevice) {
+                if(isMobileDevice()) {
                     gridItem.style.height = "50px";
                 }
                 gridItem.addEventListener('click', function() {
@@ -331,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(tempDiv);
     
         // Return the calculated font size in pixels
-        if(isMobileDevice) fontSize *= 1.2;
+        if(isMobileDevice()) fontSize *= 1.2;
         return `${fontSize*1.2}px`;
     }
 
@@ -632,7 +635,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         const tries = document.createElement('div');
                         tries.classList.add('try');
-                        if(isMobileDevice) {
+                        if(isMobileDevice()) {
                             let attString = tryX[0].replace('-', '') + ", " + tryX[1].replace('-', '') + ",<br>" + tryX[2].replace('-', '') + ", " + tryX[3].replace('-', '');
                             tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + attString;
                         }
@@ -675,7 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             const tries = document.createElement('div');
                             tries.classList.add('try');
                             let howMany = checkHowMany(selectedWords);
-                            if(isMobileDevice) {
+                            if(isMobileDevice()) {
                                 let attString = tryX[0].replace('-', '') + ", " + tryX[1].replace('-', '') + ",<br>" + tryX[2].replace('-', '') + ", " + tryX[3].replace('-', '');
                                 tries.innerHTML = "FEHLVERSUCH " + tryNumber + ": " + "<br>" + attString;
                             }
@@ -783,7 +786,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const mainContainer = document.getElementById('mainContainer');
     
         // Check if the device is in portrait mode
-        if (window.matchMedia("(orientation: landscape)").matches && isMobileDevice) {
+        if (window.matchMedia("(orientation: landscape)").matches && isMobileDevice()) {
             flipMessage.style.display = 'block';  // Show message
             mainContainer.style.display = "none";
         } else {
@@ -808,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < attempts.length; i++) {
             const tries = document.createElement('div');
             tries.classList.add('try');
-            if(isMobileDevice) {
+            if(isMobileDevice()) {
                 let attString = attempts[i][0].replace('-', '') + ", " + attempts[i][1].replace('-', '') + ",<br>" + attempts[i][2].replace('-', '') + ", " + attempts[i][3].replace('-', '');
                 tries.innerHTML = "FEHLVERSUCH " + (displayTryNumber++) + ": " + "<br>" + attString;
             }
