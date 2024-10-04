@@ -318,8 +318,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Start with a large font size and iteratively reduce until it fits
         let fontSize = 100; // Start with a large font size
         tempDiv.style.fontSize = `${fontSize}px`;
-
-        console.log(tempDiv.offsetWidth + " " + containerWidth);
     
         // Reduce font size until the text fits within the container
         while ((tempDiv.offsetWidth > containerWidth) && fontSize > 1) {
