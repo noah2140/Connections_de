@@ -328,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(tempDiv);
     
         // Return the calculated font size in pixels
+        console.log(fontSize);
         if(isMobile) fontSize *= 1.2;
         return `${fontSize*1.2}px`;
     }
