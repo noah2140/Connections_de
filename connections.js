@@ -788,7 +788,8 @@ document.addEventListener('DOMContentLoaded', function() {
             mainContainer.style.display = "none";
         } else {
             flipMessage.style.display = 'none';
-            mainContainer.style.display = "block"; // Hide message
+            mainContainer.style.display = "block";
+            createGrid(4-isSolvedNumber, 4);
             checkForEmptyWords(words);
         }
     }
@@ -882,6 +883,4 @@ document.addEventListener('DOMContentLoaded', function() {
     window.shuffleButton = shuffleButton;
     window.enterButton = enterButton;
     window.shareButton = shareButton;
-
-    createGrid(4-isSolvedNumber, 4);
 });
