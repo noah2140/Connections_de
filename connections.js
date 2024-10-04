@@ -56,9 +56,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function isMobileDevice() {
         const userAgent = navigator.userAgent;
-    
-        // Check if the user agent is from a mobile device
-        return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(userAgent) && !/Macintosh|Windows NT/i.test(userAgent);
+
+        // Mobile user-agent detection
+        const isMobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(userAgent);
+
+        // Desktop user-agent exclusion
+        const isDesktop = /Macintosh|Windows NT|Linux/i.test(userAgent);
+
+        return isMobile && !isDesktop;
+    }
+
+    if (isMobileDevice()) {
+        console.log("Mobile device detected");
+    } else {
+        console.log("Desktop device detected");
     }
 
     function checkForEmptyWords(words) {
