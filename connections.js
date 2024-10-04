@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const puzzles = [
     [["'Weiße' Metalle", ["Aluminium", "Nickel", "Platin", "Silber"]], ["Mit der Zahl 3 zu verbinden", ["Bronze", "Grundfarbe", "Lithium", "Terz"]], ["Kommen in der Geschichte zu Jesus Geburt vor", ["Engel", "Gold", "Stall", "Stern"]], ["_Karte", ["Gruß", "Land", "Schatz", "Spiel"]]], 
     [["Sportarten", ["Boxen", "Golf", "Polo", "Rennen"]], ["Kleidungsstücke", ["Anzug", "Hemd", "Jacke", "Maske"]], ["Haben Krallen", ["Adler", "Bagger", "Hummer", "Katze"]], ["Bett_", ["Decke", "Fertig", "Ruhe", "Wäsche"]]],
-    [["", ["", "", "", ""]], ["Sind braun", ["Kaffee", "Karamell", "Schokolade", "Stuhl"]], ["_Note", ["Bank", "Duft", "Fuß", "Zeugnis"]], ["Enthalten europäische Hauptstädte", ["Albern", "Aroma", "Origami", "Soziopathen"]]],
-    [["", ["", "", "", ""]], ["Haben 4 Beine", ["Hund", "Katze", "Stuhl", "Tisch"]], ["Im Zusammenhang mit Netz verwendet", ["Fischer", "Internet", "Spinne", "Tennis"]], ["Was mit Au gemeint sein kann", ["Australien", "Gold", "Krankheit", "Schmerz"]]], 
-    [["", ["", "", "", ""]], ["Beim Tennis verwendete Begriffe", ["Ass", "Aufschlag", "Netz", "Satz"]], ["Im Zusammenhang mit Hörnern verwendet", ["Kuh", "Instrument", "Teufel", "Ziege"]], ["_Tor", ["Eigen", "Fußball", "Joker", "Sieg"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Werden durch Ändern des ersten Buchstabens zu Essensutensilien", ["Gesteck", "Keller", "", ""]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Wachs_", ["Figur", "Kerze", "Politur", "Tum"]]], 
+    [["Homophone von Buchstaben", ["Haar", "Kuh", "Tee", "Zeh"]], ["Sind i.d.R. braun", ["Kaffee", "Karamell", "Schokolade", "Stuhl"]], ["_Note", ["Bank", "Duft", "Fuß", "Zeugnis"]], ["Enthalten europäische Hauptstädte", ["Albern", "Aroma", "Origami", "Soziopathen"]]],
+    [["Sportarten mit nicht-kügelförmigen Spielobjekten", ["Darts", "Eishockey", "Rugby", "Speerwerfen"]], ["Haben 4 Beine", ["Hund", "Katze", "Stuhl", "Tisch"]], ["Im Zusammenhang mit Netz verwendet", ["Fischer", "Internet", "Spinne", "Tennis"]], ["Was mit Au gemeint sein kann", ["Australien", "Gold", "Krankheit", "Schmerz"]]], 
+    [["Schachfiguren", ["Bauer", "Dame", "König", "Turm"]], ["Beim Tennis verwendete Begriffe", ["Ass", "Aufschlag", "Netz", "Satz"]], ["Im Zusammenhang mit Hörnern verwendet", ["Kuh", "Instrument", "Teufel", "Ziege"]], ["_Tor", ["Eigen", "Fußball", "Joker", "Sieg"]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Werden durch Ändern des ersten Buchstabens zu Essensutensilien", ["Besser", "Fabel", "Gesteck", "Keller"]]],
+    [["Art und Weise", ["Form", "Gestalt", "Typ", "Version"]], ["2-Dimensionale geometrische Formen", ["Kreis", "Linie", "Punkt", "Quadrat"]], ["Wachs_", ["Figur", "Kerze", "Politur", "Tum"]], ["Am Ende von Computerzubehör zu finden", ["Aus", "Hörer", "Statur", "Tor"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Bäume ohne ersten oder letzten Buchstaben", ["Buch", "Horn", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
+    [["I.d.R. Weiß und 'fluffig'", ["Schaf", "Schnee", "Watte", "Wolke"]], ["Barttypen", ["Kinn", "Schnauzer", "Voll", "Ziege"]], ["Bezeichnung für Personen mit bestimmten Hobbies", ["Boxer", "Darsteller", "Läufer", "Schütze"]], ["In Disney Filmnamen", ["Biest", "Dalmatiner", "Dschungel", "König"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_ Terrier", ["", "", "", ""]]]
     ];
 
     const noPuzzleMessage = document.getElementById('no-puzzle-message');
@@ -112,22 +112,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 shareText = shareText + attempt + "\n";
             }
             
-            if (isMobileDevice()) {
-                const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-                window.location.href = whatsappUrl;
-            } else if (navigator.share) {
+            if (navigator.share) {
                 navigator.share({
                     title: 'Share Results',
                     text: shareText,
-                    url: window.location.href
+                    url: window.location.href // Optional: Include the current URL
                 }).then(() => {
                     console.log('Shared successfully');
                 }).catch((error) => {
                     console.error('Error sharing:', error);
+                    // If sharing fails, fall back to WhatsApp for mobile devices or copying for desktop
+                    if (isMobileDevice()) {
+                        const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+                        window.location.href = whatsappUrl; // Redirect to WhatsApp
+                    } else {
+                        copyToClipboard(formattedText); // For desktop, copy to clipboard
+                    }
                 });
+            } else if (isMobileDevice()) {
+                // If navigator.share is not available and it's a mobile device
+                const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+                window.location.href = whatsappUrl; // Redirect to WhatsApp
             } else {
-                const textToCopy = formattedText;
-                navigator.clipboard.writeText(textToCopy)
+                // For desktop or unsupported mobile, copy to clipboard
+                copyToClipboard(formattedText);
+            }
+            
+            // Function to copy text to clipboard and alert the user
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text)
                     .then(() => {
                         alert('Copied to clipboard');
                     })
