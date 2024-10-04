@@ -309,10 +309,11 @@ document.addEventListener('DOMContentLoaded', function() {
         tempDiv.innerText = text;
     
         document.body.appendChild(tempDiv);
+
+        const gridContainer = document.getElementById('gridContainer');
     
         // Measure the container's dimensions (each grid item)
         const containerWidth = gridContainer.offsetWidth / cols; // grid item's width
-        const containerHeight = gridContainer.offsetHeight / rows; // grid item's height
     
         // Start with a large font size and iteratively reduce until it fits
         let fontSize = 100; // Start with a large font size
