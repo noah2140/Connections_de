@@ -868,4 +868,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.shuffleButton = shuffleButton;
     window.enterButton = enterButton;
     window.shareButton = shareButton;
+
+    createGrid(4-isSolvedNumber, 4);
 });
