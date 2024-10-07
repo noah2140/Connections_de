@@ -14,6 +14,20 @@
         <div id="no-puzzle-message" class="message">
             Aktuell ist kein Puzzle für heute vorhanden!
         </div>
+        <div id="top-bar">
+            <div class="gear-icon" id="gear-icon">&#9881;</div>
+        </div>
+        <div id="settings-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeSettings">&times;</span>
+                <div class="dark-mode-toggle">
+                    <span><b>Dark Mode</b></span>
+                    <div class="toggle-pill" id="toggle-dark-mode">
+                        <div class="toggle-indicator" id="toggle-indicator">O</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="mainContainer">
             <div id="container1">
                 <div id="triesContainer">
@@ -46,7 +60,7 @@
         </div>
         <div id="myModal" class="modal">
             <div class="modal-content">
-              <span class="close">&times;</span>
+              <span class="close" id="closeShare">&times;</span>
               <p id="modalText"></p>
               <button id="teilenButton">Teilen</button>
             </div>

@@ -55,6 +55,55 @@ document.addEventListener('DOMContentLoaded', function() {
         "\u{1F7E8}", "\u{1F7E9}", "\u{1F7E6}", "\u{1F7EA}" 
     ];
 
+    let darkMode = false;
+    let showTries = false;
+
+    var toggleDarkModeButton = document.getElementById("toggle-dark-mode");
+    var toggleIndicator = document.getElementById("toggle-indicator");
+
+    function applyDarkMode() {
+        if (darkMode) {
+            document.body.classList.add('dark-mode');  // Add dark-mode class
+            toggleIndicator.textContent = 'I';         // Change toggle indicator
+            darkModeActivation();                      // Apply dark mode styles
+        } else {
+            document.body.classList.remove('dark-mode'); // Remove dark-mode class
+            toggleIndicator.textContent = 'O';           // Change toggle indicator
+            darkModeDeactivation();                      // Apply light mode styles
+        }
+    }
+
+    function initiateSettings() {
+        loadSettings(); 
+        applyDarkMode();
+    }
+
+    toggleDarkModeButton.onclick = function() {
+        darkMode = !darkMode;         // Toggle dark mode state
+        applyDarkMode();              // Apply the updated mode
+        saveSettings();               // Save the updated settings to localStorage
+    };
+
+    toggleDarkModeButton.onclick = function() {
+        darkMode = !darkMode;         // Toggle dark mode state
+        applyDarkMode();              // Apply the updated mode
+        saveSettings();               // Save the updated settings to localStorage
+    };
+
+    function darkModeActivation() {
+        document.body.style.backgroundColor = "#222";
+        const triesInfoText = document.getElementById("triesInfo");
+        triesInfoText.style.color = "white";
+    }
+
+    function darkModeDeactivation() {
+        document.body.style.backgroundColor = "white";
+        const triesInfoText = document.getElementById("triesInfo");
+        triesInfoText.style.color = "black";
+    }
+
+    initiateSettings();
+
     // Sets initial status of buttons
     let isActiveEnterButton = true;
     let isActiveShuffleButton = true;
@@ -99,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalText.innerHTML = formattedText;
         modal.style.display = 'block';
 
-        const closeBtn = document.getElementsByClassName('close')[0];
+        const closeBtn = document.getElementById('closeShare');
         closeBtn.onclick = function() {
         modal.style.display = 'none';
         };
@@ -587,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("notificationContainer").appendChild(notification);
     
         setTimeout(function() {
-          notification.style.top = "0px"; 
+          notification.style.top = "10vh"; 
           setTimeout(function() {
             notification.classList.add("minimize"); 
             setTimeout(function() {
@@ -633,10 +682,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
                         animateGuess(selectedTiles);
                         await delay(1000);
-                        document.body.classList.add('shake');
+                        const mainContainer = document.getElementById('mainContainer');
+                        mainContainer.classList.add('shake');
                 
                         setTimeout(function() {
-                            document.body.classList.remove('shake');
+                            mainContainer.classList.remove('shake');
                         }, 200);
 
                         const tries = document.createElement('div');
@@ -658,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         let howMany = checkHowMany(selectedWords);
                         closenessChecker(howMany, tries);
                         triesContainer.appendChild(tries);
-                        animateTryDrop(tries);
+                        //animateTryDrop(tries);
                         triesArray.push(tryX);
                         deselectAllTiles();
                         updateTriesVisual();
@@ -676,10 +726,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             const selectedTiles = Array.from(gridContainer.querySelectorAll('.grid-item')).filter(tile => selectedWords.includes(tile.textContent));
                             animateGuess(selectedTiles);
                             await delay(1000);
-                            document.body.classList.add('shake');
+                            const mainContainer = document.getElementById('mainContainer');
+                            mainContainer.classList.add('shake');
                     
                             setTimeout(function() {
-                                document.body.classList.remove('shake');
+                                mainContainer.classList.remove('shake');
                             }, 200);
                             const tries = document.createElement('div');
                             tries.classList.add('try');
@@ -701,7 +752,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             updateTriesVisual();
                             closenessChecker(howMany, tries);
                             triesContainer.appendChild(tries);
-                            animateTryDrop(tries);
+                            //animateTryDrop(tries);
                             triesArray.push(tryX);
                             deselectAllTiles();
                             if(tryNumber >= 5) {
@@ -737,9 +788,30 @@ document.addEventListener('DOMContentLoaded', function() {
         saveProgress();
     }
 
+    var modal = document.getElementById("settings-modal");
+    var gearIcon = document.getElementById("gear-icon");
+    var closeBtn = document.getElementById("closeSettings");
+
+    // When the gear icon is clicked, open the modal
+    gearIcon.onclick = function() {
+        modal.style.display = "flex";
+    }
+
+    // When the close button is clicked, close the modal
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When clicking anywhere outside the modal content, close the modal
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+
     // Small animation, to ease a try element into the screen
     function animateTryDrop(tryElement) {
-        tryElement.style.transform = 'translateY(-25px)';
+        tryElement.style.transform = 'translateY(5px)';
         tryElement.style.transition = 'transform 0.5s ease';
         requestAnimationFrame(() => {
             tryElement.style.transform = 'translateY(0)';
@@ -879,6 +951,23 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('connectionsDate', currentDateWithoutTime.toDateString());
             localStorage.removeItem('connectionsProgress');
             location.reload(); 
+        }
+    }
+
+    function saveSettings() {
+        const settings = {
+            darkMode: darkMode,
+            showTries: showTries
+        };
+        localStorage.setItem('connectionsSettings', JSON.stringify(settings));
+    }
+
+    function loadSettings() {
+        const savedSettings = localStorage.getItem('connectionsSettings');
+        if (savedSettings) {
+            const settings = JSON.parse(savedSettings);
+            darkMode = settings.darkMode;
+            showTries = settings.showTries;
         }
     }
 
