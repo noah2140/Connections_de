@@ -832,35 +832,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTriesVisual();
     }
     
-    // Set a cookie with the specified name, value, and expiration days
-    function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    // Get the value of a specific cookie by name
-    function getCookie(name) {
-        const nameEQ = name + "=";
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    // Erase a cookie by name
-    function eraseCookie(name) {
-        document.cookie = name + "=; Max-Age=-99999999;";
-    }
-
-
     function saveProgress() {
         const progress = {
             currDate: currentDate,
@@ -875,12 +846,11 @@ document.addEventListener('DOMContentLoaded', function() {
             isActiveShareButton : isActiveShareButton,
             isActiveShuffleButton : isActiveShuffleButton
         };
-        setCookie('connectionsProgress', JSON.stringify(progress), 365);
+        localStorage.setItem('connectionsProgress', JSON.stringify(progress));
     }
 
     function loadProgress() {
-        const savedProgress = getCookie('connectionsProgress');
-
+        const savedProgress = localStorage.getItem('connectionsProgress');
         if (savedProgress) {
             const progress = JSON.parse(savedProgress);
             attempts = progress.attempts;
@@ -900,17 +870,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if(isSolvedNumber == 4) shareButton();
     }
 
-    async function checkAndResetProgress() {
-        const savedDateStr = getCookie('connectionsDate');
+    function checkAndResetProgress() {
+        const savedDateStr = localStorage.getItem('connectionsDate');
         const savedDate = new Date(savedDateStr);
         const currentDateWithoutTime = new Date(currentDate);
         currentDateWithoutTime.setHours(0, 0, 0, 0); 
-
         if (!savedDate || savedDate.getTime() !== currentDateWithoutTime.getTime()) {
-            setCookie('connectionsDate', currentDateWithoutTime.toDateString(), 365);  // Save the new date
-            eraseCookie('connectionsProgress');  // Remove progress cookie
-            location.reload();  // Reload page to start fresh
-            await delay(1000000);
+            localStorage.setItem('connectionsDate', currentDateWithoutTime.toDateString());
+            localStorage.removeItem('connectionsProgress');
+            location.reload(); 
         }
     }
 
