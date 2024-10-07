@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    // List of puzzles - most are currently placeholders
+    // List of puzzles
     const puzzles = [
     [["'Weiße' Metalle", ["Aluminium", "Nickel", "Platin", "Silber"]], ["Mit der Zahl 3 zu verbinden", ["Bronze", "Grundfarbe", "Lithium", "Terz"]], ["Kommen in der Geschichte zu Jesus Geburt vor", ["Engel", "Gold", "Stall", "Stern"]], ["_Karte", ["Gruß", "Land", "Schatz", "Spiel"]]], 
     [["Sportarten", ["Boxen", "Golf", "Polo", "Rennen"]], ["Kleidungsstücke", ["Anzug", "Hemd", "Jacke", "Maske"]], ["Haben Krallen", ["Adler", "Bagger", "Hummer", "Katze"]], ["Bett_", ["Decke", "Fertig", "Ruhe", "Wäsche"]]],
@@ -16,17 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_ Terrier", ["", "", "", ""]]]
     ];
 
+    // Make it so that nothing is displayed, until the check for a current puzzle is displayed
     const noPuzzleMessage = document.getElementById('no-puzzle-message');
     noPuzzleMessage.style.display = "none";
-
     const mainContainer = document.getElementById('mainContainer');
     mainContainer.style.display = "none";
 
+    // Calculation for which puzzle to pick, and displaying the number of the puzzle
     const addedDays = 177;
     const startDate = new Date('10/3/2024');
     let currentDate = new Date();
     let diffTime = Math.abs(currentDate - startDate);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) - 1;
+
+    // Creates the puzzle and its categories from the puzzles list
     let categories = puzzles[diffDays];
     for (let i = 0; i < categories.length; i++) {
         for(let j=0; j < categories[i][1].length; j++) {
@@ -38,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let i = 0; i < words.length; i++) {
         words[i] = "<b>" + words[i].toUpperCase() + "</b>";
     }
+
+    // Defining some variables used for logic later on
     let selectedWords = [];
     let tryNumber = 1;
     let triesArray = [];
@@ -50,10 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
         "\u{1F7E8}", "\u{1F7E9}", "\u{1F7E6}", "\u{1F7EA}" 
     ];
 
+    // Sets initial status of buttons
     let isActiveEnterButton = true;
     let isActiveShuffleButton = true;
     let isActiveShareButton = false;
 
+    // function to determine if a phone or computer device is used
     function isMobileDevice() {
         const userAgent = navigator.userAgent;
 
@@ -63,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return isMobile && !isDesktop;
     }
 
+    // Checks, if the puzzle is not completely defined, so that there isn't a puzzle displayed in case of this
     function checkForEmptyWords(words) {
         const noPuzzleMessage = document.getElementById('no-puzzle-message');
         const mainContainer = document.getElementById('mainContainer');
@@ -83,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     checkForEmptyWords(words);
 
+    // Determines what to display as the results, and what the button to share should do
     function showModal(shareText) {
         const modal = document.getElementById('myModal');
         const modalText = document.getElementById('modalText');
@@ -116,29 +125,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 navigator.share({
                     title: 'Share Results',
                     text: shareText,
-                    url: window.location.href // Optional: Include the current URL
+                    url: window.location.href
                 }).then(() => {
                     console.log('Shared successfully');
                 }).catch((error) => {
                     console.error('Error sharing:', error);
-                    // If sharing fails, fall back to WhatsApp for mobile devices or copying for desktop
                     if (isMobileDevice()) {
                         const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-                        window.location.href = whatsappUrl; // Redirect to WhatsApp
+                        window.location.href = whatsappUrl;
                     } else {
-                        copyToClipboard(formattedText); // For desktop, copy to clipboard
+                        copyToClipboard(formattedText);
                     }
                 });
             } else if (isMobileDevice()) {
-                // If navigator.share is not available and it's a mobile device
                 const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
-                window.location.href = whatsappUrl; // Redirect to WhatsApp
+                window.location.href = whatsappUrl;
             } else {
-                // For desktop or unsupported mobile, copy to clipboard
                 copyToClipboard(formattedText);
             }
             
-            // Function to copy text to clipboard and alert the user
             function copyToClipboard(text) {
                 navigator.clipboard.writeText(text)
                     .then(() => {
@@ -152,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };             
     }
   
+    // Determines the results screen and opens it
     function shareButton() {
         if (isActiveShareButton) {
           let puzzleNumber = addedDays + diffDays + 1;
@@ -167,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
+    // Function to generate a new puzzle, used if there is already a puzzle present, to compare it to
     function generateNewPuzzle() {
         let categories = puzzles[diffDays];
         for (let i = 0; i < categories.length; i++) {
@@ -181,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return words; 
     }
     
-
+    // Shuffles the tiles, if they are well distributed
     function shuffleTiles() {
         while(!isWellDistributed()) {
             let currentIndex = words.length;
@@ -193,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedWords = [];
     }
 
+    // Checks if the tiles of different categories are decently well distributed
     function isWellDistributed() {
         for (let j = 0; j < 4; j++) {
             if (!isSolved[j]) { 
@@ -228,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
     
-    
+    // Main function to create the grid with all the words
     function createGrid(rows, cols) {
         const shareBtn = document.getElementById('shareButton');
         const enterBtn = document.getElementById('enterButton');
@@ -302,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Calculates the font size for all different words, so they are more readable
     function calculateFontSize(text, rows, cols) {
         const tempDiv = document.createElement('div');
         tempDiv.style.position = 'absolute';
@@ -326,10 +335,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${fontSize*1.2}px`;
     }
 
+    // Function to shuffle the tiles
     function shuffleButton() {
         if(isActiveShuffleButton) createGrid(4-isSolvedNumber,4);
     }
 
+    // Compares two arrays, to determine if a guess is equal to a category
     function isEqualArray(arr1, arr2) {
         const sortedArr1 = arr1.slice().sort();
         const sortedArr2 = arr2.slice().sort();
@@ -342,6 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    // Checks if a category is equal to a guess
     function isInCategories(arr) {
         for (let i = 0; i < categories.length; i++) {
             if (isEqualArray(categories[i][1], arr)) {
@@ -351,6 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return -1;
     }
 
+    // Determines the background color of a guess
     function closenessChecker(number, tries) {
         switch(number) {
             case 1:
@@ -368,6 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Determines how close a guess is to a category
     function checkHowMany(inputWords) {
         let howMany = [0, 0, 0, 0];
         for(let i=0;i<4;i++) {
@@ -382,6 +396,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return Math.max(...howMany);
     }
 
+    // Function to check in which category a word is (used for closeness check)
     function checkWhichCategories(inputWords) {
         let checkCat = [];
         for(let i=0;i<4;i++) {
@@ -406,6 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return text.replace(/<\/?[^>]+(>|$)/g, "");
     }
 
+    // Animates the swap function for when there is a solve
     async function swapTilesAnimated(selectedIndices, firstRowIndices) {
         const gridItems = document.querySelectorAll('.grid-item');
         const animationPromises = [];
@@ -468,6 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
         await Promise.all(animationPromises);
     }
 
+    // Determines what to do, if a correct category has been guessed
     async function solved(category) {
         const solvedContainer = document.getElementById('solvedContainer');
         const selectedIndices = [];
@@ -546,6 +563,7 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonName.style.display = "inline-block";
     }
 
+    // Small animation when a guess is entered
     function animateGuess(tiles) {
         tiles.forEach((tile, index) => {
             setTimeout(() => {
@@ -561,6 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Makes sure a notification can be shown at the top of the screen
     function showNotification(message) {
         var notification = document.createElement("div");
         notification.className = "notification";
@@ -576,9 +595,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
           }, 4000);
         }, 100); 
-      }
+    }
 
-      function deselectAllTiles() {
+    // Deselects all tiles
+    function deselectAllTiles() {
         const selectedTiles = document.querySelectorAll('.grid-item');
         selectedTiles.forEach(tile => {
             if(tile.style.backgroundColor == "dimgray") {
@@ -589,6 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedWords = [];
     }    
 
+    // Determines what to do, when the enter button is pressed
     async function enterButton() {
         const enterButtonElement = document.getElementById('enterButton');
         const shuffleButtonElement = document.getElementById('shuffleButton');
@@ -716,6 +737,7 @@ document.addEventListener('DOMContentLoaded', function() {
         saveProgress();
     }
 
+    // Small animation, to ease a try element into the screen
     function animateTryDrop(tryElement) {
         tryElement.style.transform = 'translateY(-25px)';
         tryElement.style.transition = 'transform 0.5s ease';
@@ -810,6 +832,35 @@ document.addEventListener('DOMContentLoaded', function() {
         updateTriesVisual();
     }
     
+    // Set a cookie with the specified name, value, and expiration days
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    // Get the value of a specific cookie by name
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    // Erase a cookie by name
+    function eraseCookie(name) {
+        document.cookie = name + "=; Max-Age=-99999999;";
+    }
+
+
     function saveProgress() {
         const progress = {
             currDate: currentDate,
@@ -824,11 +875,12 @@ document.addEventListener('DOMContentLoaded', function() {
             isActiveShareButton : isActiveShareButton,
             isActiveShuffleButton : isActiveShuffleButton
         };
-        localStorage.setItem('connectionsProgress', JSON.stringify(progress));
+        setCookie('connectionsProgress', JSON.stringify(progress), 365);
     }
 
     function loadProgress() {
-        const savedProgress = localStorage.getItem('connectionsProgress');
+        const savedProgress = getCookie('connectionsProgress');
+
         if (savedProgress) {
             const progress = JSON.parse(savedProgress);
             attempts = progress.attempts;
@@ -848,15 +900,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if(isSolvedNumber == 4) shareButton();
     }
 
-    function checkAndResetProgress() {
-        const savedDateStr = localStorage.getItem('connectionsDate');
+    async function checkAndResetProgress() {
+        const savedDateStr = getCookie('connectionsDate');
         const savedDate = new Date(savedDateStr);
         const currentDateWithoutTime = new Date(currentDate);
         currentDateWithoutTime.setHours(0, 0, 0, 0); 
+
         if (!savedDate || savedDate.getTime() !== currentDateWithoutTime.getTime()) {
-            localStorage.setItem('connectionsDate', currentDateWithoutTime.toDateString());
-            localStorage.removeItem('connectionsProgress');
-            location.reload(); 
+            setCookie('connectionsDate', currentDateWithoutTime.toDateString(), 365);  // Save the new date
+            eraseCookie('connectionsProgress');  // Remove progress cookie
+            location.reload();  // Reload page to start fresh
+            await delay(1000000);
         }
     }
 
