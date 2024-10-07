@@ -94,12 +94,22 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.backgroundColor = "#222";
         const triesInfoText = document.getElementById("triesInfo");
         triesInfoText.style.color = "white";
+        const modals = document.querySelector(".modal");
+        modals.forEach(modal => {
+            modal.style.backgroundColor = "#222";
+            modal.style.color = "white";
+        })
     }
 
     function darkModeDeactivation() {
         document.body.style.backgroundColor = "white";
         const triesInfoText = document.getElementById("triesInfo");
         triesInfoText.style.color = "black";
+        const modals = document.querySelector(".modal");
+        modals.forEach(modal => {
+            modal.style.backgroundColor = "white";
+            modal.style.color = "black";
+        })
     }
 
     initiateSettings();
