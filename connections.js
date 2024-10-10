@@ -11,9 +11,25 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Art und Weise", ["Form", "Gestalt", "Typ", "Version"]], ["2-Dimensionale geometrische Formen", ["Kreis", "Linie", "Punkt", "Quadrat"]], ["Wachs_", ["Figur", "Kerze", "Politur", "Tum"]], ["Am Ende von Computerzubehör zu finden", ["Aus", "Hörer", "Statur", "Tor"]]], 
     [["Zum Abwischen von etwas verwendet", ["Lappen", "Schwamm", "Serviette", "Tuch"]], ["Haben typischerweise 5 von etwas", ["Arbeitswoche", "Fuß", "Hand", "Seestern"]], ["_Form", ["Kuchen", "Pass", "Uni", "Zeit"]], ["Bäume ohne ersten oder letzten Buchstaben", ["Anne", "Buch", "Hase", "Horn"]]], 
     [["I.d.R. Weiß und 'fluffig'", ["Schaf", "Schnee", "Watte", "Wolke"]], ["Barttypen", ["Kinn", "Schnauzer", "Voll", "Ziege"]], ["Bezeichnung für Personen mit bestimmten Hobbies", ["Boxer", "Darsteller", "Läufer", "Schütze"]], ["In Disney Filmnamen", ["Biest", "Dalmatiner", "Dschungel", "König"]]],
+    [["Ausstattung eines Autos", ["Gurt", "Klimaanlage", "Sitz", "Spiegel"]], ["Pracht", ["Ausstrahlung", "Glamour", "Glanz", "Zauber"]], ["_Bild", ["Blut", "Feind", "Profil", "Stern"]], ["Im Zusammenhang mit Mitgehen verwendet", ["Demo", "Diebstahl", "Enthusiasmus", "Zeit"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_ Terrier", ["", "", "", ""]]]
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
     ];
 
     // Make it so that nothing is displayed, until the check for a current puzzle is displayed
