@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Zum Abwischen von etwas verwendet", ["Lappen", "Schwamm", "Serviette", "Tuch"]], ["Haben typischerweise 5 von etwas", ["Arbeitswoche", "Fuß", "Hand", "Seestern"]], ["_Form", ["Kuchen", "Pass", "Uni", "Zeit"]], ["Bäume ohne ersten oder letzten Buchstaben", ["Anne", "Buch", "Hase", "Horn"]]], 
     [["I.d.R. Weiß und 'fluffig'", ["Schaf", "Schnee", "Watte", "Wolke"]], ["Barttypen", ["Kinn", "Schnauzer", "Voll", "Ziege"]], ["Bezeichnung für Personen mit bestimmten Hobbies", ["Boxer", "Darsteller", "Läufer", "Schütze"]], ["In Disney Filmnamen", ["Biest", "Dalmatiner", "Dschungel", "König"]]],
     [["Ausstattung eines Autos", ["Gurt", "Klimaanlage", "Sitz", "Spiegel"]], ["Pracht", ["Ausstrahlung", "Glamour", "Glanz", "Zauber"]], ["_Bild", ["Blut", "Feind", "Profil", "Stern"]], ["Im Zusammenhang mit Mitgehen verwendet", ["Demo", "Diebstahl", "Enthusiasmus", "Zeit"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Düster", ["Dunkel", "Finster", "Obskur", "Ominös"]], ["Kriminell", ["Illegal", "Schwarz", "Untersagt", "Verboten"]], ["Auf der US-Amerikanischen Flagge zu sehen", ["Blau", "Rot", "Stern", "Streifen"]], ["Taschen_", ["Dieb", "Geld", "Tuch", "Uhr"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
