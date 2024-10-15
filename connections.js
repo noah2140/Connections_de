@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Ausstattung eines Autos", ["Gurt", "Klimaanlage", "Sitz", "Spiegel"]], ["Pracht", ["Ausstrahlung", "Glamour", "Glanz", "Zauber"]], ["_Bild", ["Blut", "Feind", "Profil", "Stern"]], ["Im Zusammenhang mit Mitgehen verwendet", ["Demo", "Diebstahl", "Enthusiasmus", "Zeit"]]], 
     [["Düster", ["Dunkel", "Finster", "Obskur", "Ominös"]], ["Kriminell", ["Illegal", "Schwarz", "Untersagt", "Verboten"]], ["Auf der US-Amerikanischen Flagge zu sehen", ["Blau", "Rot", "Stern", "Streifen"]], ["Taschen_", ["Dieb", "Geld", "Tuch", "Uhr"]]], 
     [["Was Äpfel haben", ["Fruchtfleisch", "Kern", "Schale", "Stiel"]], ["Haben Deckel", ["Flasche", "Klo", "Mülltonne", "Topf"]], ["Nahe Ski-Pisten zu sehen", ["Hütte", "Lift", "Markierung", "Raupe"]], ["_Baum", ["Apfel", "Kirmes", "Stamm", "Turnier"]]], 
-    [["Worauf man sitzt", ["Hocker", "Sessel", "Sitz", "Stuhl"]], ["Werden bei Filmverleihungen ausgezeichnet", ["Film", "Musik", "Regisseur", "Schauspieler"]], ["Was Leonardo da Vinci war", ["Architekt", "Erfinder", "Ingenieur", "Maöer"]], ["Park_", ["Bank", "Haus", "Platz", "Uhr"]]], 
+    [["Worauf man sitzt", ["Hocker", "Sessel", "Sitz", "Stuhl"]], ["Werden bei Filmverleihungen ausgezeichnet", ["Film", "Musik", "Regisseur", "Schauspieler"]], ["Was Leonardo da Vinci war", ["Architekt", "Erfinder", "Ingenieur", "Maler"]], ["Park_", ["Bank", "Haus", "Platz", "Uhr"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
