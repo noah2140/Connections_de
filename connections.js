@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Himmel", ["Horizont", "Paradies", "Weltall", "Wolken"]], ["Herstellung von Stoff oder Garn", ["Filzen", "Knüpfen", "Spinnen", "Weben"]], ["Kreative Hobbies", ["Malen", "Nähen", "Stricken", "Zeichnen"]], ["Zeitungs_", ["Anzeige", "Artikel", "Beilage", "Bote"]]], 
+    [["In Drogeriemärkten zu kaufen", ["Coronatest", "Deo", "Rasierschaum", "Windeln"]], ["An Geburtstagen zu sehen", ["Geschenk", "Karte", "Kerze", "Torte"]], ["Haribo-Artikel", ["Fläschchen", "Gurke", "Schnecke", "Schnuller"]], ["Hoch_", ["Adel", "Druck", "Haus", "Zeit"]]], 
+    [["In Flugzeugen zu sehen", ["Fenster", "Gurt", "Schwimmweste", "Sitz"]], ["Kann man spielen", ["Ball", "Golf", "Harfe", "Schach"]], ["_Bruch", ["Aus", "Baum", "Bein", "Deich"]], ["Am Anfang deutscher Moderatoren", ["Gott", "Kern", "Welk", "Winter"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
