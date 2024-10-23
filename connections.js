@@ -320,8 +320,9 @@ document.addEventListener('DOMContentLoaded', function() {
             makeButtonInvisible(shareBtn);
         }
         else {
+            const container2 = document.getElementById('container2');
             const triesInfo = document.getElementById('triesInfo');
-            mainContainer.remove(triesInfo);
+            container2.remove(triesInfo);
             makeButtonVisible(shareBtn);
         }
         if(!isActiveEnterButton) {
@@ -623,8 +624,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const shuffleButton = document.getElementById('shuffleButton');
             makeButtonInvisible(shuffleButton);
             isActiveShuffleButton = false;
-            const triesInfo = document.getElementById('triesInfo');
-            mainContainer.remove(triesInfo);
             const shareBtn = document.getElementById('shareButton');
             makeButtonVisible(shareBtn);
             isActiveShareButton = true;
@@ -793,8 +792,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
+                                const container2 = document.getElementById('container2');
                                 const triesInfo = document.getElementById('triesInfo');
-                                mainContainer.remove(triesInfo);
+                                container2.remove(triesInfo);
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
