@@ -110,11 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.backgroundColor = "#222";
         const triesInfoText = document.getElementById("triesInfo");
         triesInfoText.style.color = "white";
-        const modalContents = document.querySelectorAll(".modal-content");
-        modalContents.forEach(modal => {
-            console.log("y");
-            modal.style.backgroundColor = "#222";
-            modal.style.color = "white";
+        const texts = document.querySelectorAll(".text");
+        texts.forEach(text => {
+            text.style.backgroundColor = "#222";
+            text.style.color = "white";
         });
     }
 
@@ -122,11 +121,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.backgroundColor = "white";
         const triesInfoText = document.getElementById("triesInfo");
         triesInfoText.style.color = "black";
-        const modalContents = document.querySelectorAll(".modal-content");
-        modalContents.forEach(modal => {
-            console.log("x");
-            modal.style.backgroundColor = "white";
-            modal.style.color = "black";
+        const texts = document.querySelectorAll(".text");
+        texts.forEach(text => {
+            text.style.backgroundColor = "white";
+            text.style.color = "black";
         });
     }
 
