@@ -164,8 +164,10 @@ body.dark-mode .toggle-pill {
   }
 
   @keyframes drop {
-    0% { top: -1px; } 
-    100% { top: 0px; } 
+    0% { top: 0vh; } 
+    30% { top: 3vh; } 
+    70% { top: 7vh; } 
+    100% { top: 10vh; } 
   }
 
 .notification {
