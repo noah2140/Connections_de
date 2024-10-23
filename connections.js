@@ -320,8 +320,9 @@ document.addEventListener('DOMContentLoaded', function() {
             makeButtonInvisible(shareBtn);
         }
         else {
+            const container2 = document.getElementById('container2');
             const triesInfo = document.getElementById('triesInfo');
-            triesInfo.remove();
+            container2.removeChild(triesInfo);
             makeButtonVisible(shareBtn);
         }
         if(!isActiveEnterButton) {
@@ -790,8 +791,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
+                                const container2 = document.getElementById('container2');
                                 const triesInfo = document.getElementById('triesInfo');
-                                triesInfo.remove();
+                                container2.removeChild(triesInfo);
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
