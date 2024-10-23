@@ -108,8 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function darkModeActivation() {
         document.body.style.backgroundColor = "#222";
-        const triesInfoText = document.getElementById("triesInfo");
-        triesInfoText.style.color = "white";
         const texts = document.querySelectorAll(".text");
         texts.forEach(text => {
             text.style.backgroundColor = "#222";
@@ -119,8 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function darkModeDeactivation() {
         document.body.style.backgroundColor = "white";
-        const triesInfoText = document.getElementById("triesInfo");
-        triesInfoText.style.color = "black";
         const texts = document.querySelectorAll(".text");
         texts.forEach(text => {
             text.style.backgroundColor = "white";
@@ -320,12 +316,12 @@ document.addEventListener('DOMContentLoaded', function() {
             makeButtonInvisible(shareBtn);
         }
         else {
-            const container2 = document.getElementById('container2');
-            const triesInfo = document.getElementById('triesInfo');
-            container2.removeChild(triesInfo);
             makeButtonVisible(shareBtn);
         }
         if(!isActiveEnterButton) {
+            const container2 = document.getElementById('container2');
+            const triesInfo = document.getElementById('triesInfo');
+            container2.removeChild(triesInfo);
             makeButtonInvisible(enterBtn);
             makeButtonInvisible(shuffleBtn);
         }
@@ -629,6 +625,9 @@ document.addEventListener('DOMContentLoaded', function() {
             isActiveShareButton = true;
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
+            const container2 = document.getElementById('container2');
+            const triesInfo = document.getElementById('triesInfo');
+            container2.removeChild(triesInfo);
         }
         saveProgress();
     }
@@ -779,6 +778,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             triesArray.push(tryX);
                             deselectAllTiles();
                             if(tryNumber >= 5) {
+                                const container2 = document.getElementById('container2');
+                                const triesInfo = document.getElementById('triesInfo');
+                                container2.removeChild(triesInfo);
                                 for(let y=0;y<4;y++) {
                                     while(isSolved[y] == true && y<4) {
                                         y++;
@@ -791,9 +793,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
-                                const container2 = document.getElementById('container2');
-                                const triesInfo = document.getElementById('triesInfo');
-                                container2.removeChild(triesInfo);
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
