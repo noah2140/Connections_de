@@ -320,9 +320,8 @@ document.addEventListener('DOMContentLoaded', function() {
             makeButtonInvisible(shareBtn);
         }
         else {
-            const container2 = document.getElementById('container2');
             const triesInfo = document.getElementById('triesInfo');
-            container2.remove(triesInfo);
+            triesInfo.remove();
             makeButtonVisible(shareBtn);
         }
         if(!isActiveEnterButton) {
@@ -663,7 +662,6 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.className = "notification";
         notification.textContent = message;
         document.getElementById("notificationContainer").appendChild(notification);
-        notification.style.top = "10vh";
         setTimeout(function() {
             notification.classList.add("minimize"); 
             setTimeout(function() {
@@ -792,9 +790,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
-                                const container2 = document.getElementById('container2');
                                 const triesInfo = document.getElementById('triesInfo');
-                                container2.remove(triesInfo);
+                                triesInfo.remove();
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
