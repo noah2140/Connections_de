@@ -625,6 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
             isActiveShareButton = true;
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
+            saveProgress();
             const container2 = document.getElementById('container2');
             const triesInfo = document.getElementById('triesInfo');
             container2.removeChild(triesInfo);

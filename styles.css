@@ -225,8 +225,8 @@ body.dark-mode .toggle-pill {
     justify-content: center; 
     align-items: center; 
     text-align: center;
-    margin-top: 10px;
     margin-right: 20px;
+    margin-top: 2vh;
 }
 
 #triesCircles {
@@ -259,6 +259,7 @@ body.dark-mode .toggle-pill {
     margin: 1%;
     border-radius: 40px;
     border: thin solid black;
+    margin-top: 2vh;
 }
 
 #shuffleButton  {
@@ -273,7 +274,6 @@ body.dark-mode .toggle-pill {
 
 #shareButton {
     background-color: rgb(231, 198, 235);
-    margin-top: -1vw;
 }
 
 @keyframes shake {
