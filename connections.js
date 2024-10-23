@@ -320,6 +320,8 @@ document.addEventListener('DOMContentLoaded', function() {
             makeButtonInvisible(shareBtn);
         }
         else {
+            const triesInfo = document.getElementById('triesInfo');
+            mainContainer.remove(triesInfo);
             makeButtonVisible(shareBtn);
         }
         if(!isActiveEnterButton) {
@@ -621,6 +623,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const shuffleButton = document.getElementById('shuffleButton');
             makeButtonInvisible(shuffleButton);
             isActiveShuffleButton = false;
+            const triesInfo = document.getElementById('triesInfo');
+            mainContainer.remove(triesInfo);
             const shareBtn = document.getElementById('shareButton');
             makeButtonVisible(shareBtn);
             isActiveShareButton = true;
@@ -660,16 +664,13 @@ document.addEventListener('DOMContentLoaded', function() {
         notification.className = "notification";
         notification.textContent = message;
         document.getElementById("notificationContainer").appendChild(notification);
-    
+        notification.style.top = "10vh";
         setTimeout(function() {
-          notification.style.top = "10vh"; 
-          setTimeout(function() {
             notification.classList.add("minimize"); 
             setTimeout(function() {
-              notification.remove(); 
+                notification.remove(); 
             }, 500);
-          }, 4000);
-        }, 100); 
+        }, 4000);
     }
 
     // Deselects all tiles
@@ -734,7 +735,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         let howMany = checkHowMany(selectedWords);
                         closenessChecker(howMany, tries);
                         triesContainer.appendChild(tries);
-                        //animateTryDrop(tries);
                         triesArray.push(tryX);
                         deselectAllTiles();
                         updateTriesVisual();
@@ -778,7 +778,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             updateTriesVisual();
                             closenessChecker(howMany, tries);
                             triesContainer.appendChild(tries);
-                            //animateTryDrop(tries);
                             triesArray.push(tryX);
                             deselectAllTiles();
                             if(tryNumber >= 5) {
@@ -794,6 +793,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
+                                const triesInfo = document.getElementById('triesInfo');
+                                mainContainer.remove(triesInfo);
                                 const shareBtn = document.getElementById('shareButton');
                                 makeButtonVisible(shareBtn);
                                 isActiveShareButton = true;
