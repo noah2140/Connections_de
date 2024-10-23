@@ -165,8 +165,15 @@ body.dark-mode .toggle-pill {
 
   @keyframes drop {
     0% { top: 0vh; } 
+    10% { top: 1vh; } 
+    20% { top: 2vh; } 
     30% { top: 3vh; } 
+    40% { top: 4vh; } 
+    50% { top: 5vh; } 
+    60% { top: 6vh; } 
     70% { top: 7vh; } 
+    80% { top: 8vh; } 
+    90% { top: 9vh; } 
     100% { top: 10vh; } 
   }
 
