@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sets initial status of buttons
     let isActiveEnterButton = true;
     let isActiveShuffleButton = true;
-    let isActiveShareButton = false;
+    let isActiveResultsButton = false;
 
     // function to determine if a phone or computer device is used
     function isMobileDevice() {
@@ -194,8 +194,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 modal.style.display = 'none';
             }
         };
-        const shareBtn = document.getElementById('teilenButton');
-        shareBtn.onclick = function() {
+        const shareButton = document.getElementById('shareButton');
+        shareButton.onclick = function() {
             let puzzleNumber = addedDays + diffDays + 1;
             let shareText = "Connections-DE \n" + "Puzzle #" + puzzleNumber + "\n \n";
             for (let x = 0; x < attemptsCategories.length; x++) {
@@ -243,8 +243,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   
     // Determines the results screen and opens it
-    function shareButton() {
-        if (isActiveShareButton) {
+    function resultsButton() {
+        if (isActiveResultsButton) {
           let puzzleNumber = addedDays + diffDays + 1;
           let shareText = "<b>Connections-DE \n" + "Puzzle #" + puzzleNumber + "</b> \n \n";
           for (let x = 0; x < attemptsCategories.length; x++) {
@@ -323,14 +323,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Main function to create the grid with all the words
     function createGrid(rows, cols) {
-        const shareBtn = document.getElementById('shareButton');
+        const resultsBtn = document.getElementById('resultsButton');
         const enterBtn = document.getElementById('enterButton');
         const shuffleBtn = document.getElementById('shuffleButton');
-        if(!isActiveShareButton) {
-            makeButtonInvisible(shareBtn);
+        if(!isActiveResultsButton) {
+            makeButtonInvisible(resultsBtn);
         }
         else {
-            makeButtonVisible(shareBtn);
+            makeButtonVisible(resultsBtn);
         }
         if(!isActiveEnterButton) {
             const container2 = document.getElementById('container2');
@@ -634,9 +634,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const shuffleButton = document.getElementById('shuffleButton');
             makeButtonInvisible(shuffleButton);
             isActiveShuffleButton = false;
-            const shareBtn = document.getElementById('shareButton');
-            makeButtonVisible(shareBtn);
-            isActiveShareButton = true;
+            const resultsBtn = document.getElementById('resultsButton');
+            makeButtonVisible(resultsBtn);
+            isActiveResultsButton = true;
             const gridCont = document.getElementById('gridContainer');
             gridCont.style.padding = "0px";
             saveProgress();
@@ -808,10 +808,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                         break;
                                     }
                                 }
-                                const shareBtn = document.getElementById('shareButton');
-                                makeButtonVisible(shareBtn);
-                                isActiveShareButton = true;
-                                shareButton();
+                                const resultsBtn = document.getElementById('resultsButton');
+                                makeButtonVisible(resultsBtn);
+                                isActiveResultsButton = true;
+                                resultsButton();
                             }
                         }
                     }
@@ -954,7 +954,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tryNumber : tryNumber,
             triesArray : triesArray,
             isActiveEnterButton : isActiveEnterButton,
-            isActiveShareButton : isActiveShareButton,
+            isActiveResultsButton : isActiveResultsButton,
             isActiveShuffleButton : isActiveShuffleButton
         };
         localStorage.setItem('connectionsProgress', JSON.stringify(progress));
@@ -972,13 +972,13 @@ document.addEventListener('DOMContentLoaded', function() {
             tryNumber = progress.tryNumber;
             triesArray = progress.triesArray || [];
             isActiveEnterButton = progress.isActiveEnterButton;
-            isActiveShareButton = progress.isActiveShareButton;
+            isActiveResultsButton = progress.isActiveResultsButton;
             isActiveShuffleButton = progress.isActiveShuffleButton;
         }
         else {
             generateNewPuzzle();
         }
-        if(isSolvedNumber == 4) shareButton();
+        if(isSolvedNumber == 4) resultsButton();
     }
 
     function checkAndResetProgress() {
@@ -1017,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.shuffleButton = shuffleButton;
     window.enterButton = enterButton;
-    window.shareButton = shareButton;
+    window.resultsButton = resultsButton;
 
     createGrid(4-isSolvedNumber, 4);
 });
