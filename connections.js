@@ -915,7 +915,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    window.addEventListener('resize', checkOrientation);
     window.addEventListener('orientationchange', checkOrientation);
     
     checkOrientation();
