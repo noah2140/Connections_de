@@ -8,7 +8,7 @@ body, html {
 #mainContainer {
     width: 99%;
     height: 80vh; 
-    margin: 3vh auto 0;
+    margin: 1vh auto 0;
     display: flex;
     flex-direction: column;
 }
@@ -20,9 +20,6 @@ body, html {
     background-color: #333;
     padding: 10px;
     color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 5vh;
 }
@@ -235,7 +232,6 @@ body.dark-mode .toggle-pill {
     align-items: center; 
     text-align: center;
     margin-right: 20px;
-    margin-top: 1vh;
 }
 
 #triesCircles {
@@ -333,7 +329,7 @@ body.dark-mode .toggle-pill {
 /* extra stylings specifically for mobile devices */ 
 @media screen and (max-width: 768px) {
     #mainContainer {
-        margin-top: 8vh;
+        margin-top: 1vh;
     }
 
     .solve {
