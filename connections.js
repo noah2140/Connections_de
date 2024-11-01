@@ -230,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Shuffles the tiles, if they are well distributed
     function shuffleTiles() {
+        console.log("x");
         let tempWords = words;
         while(!isWellDistributed(tempWords)) {
             let currentIndex = tempWords.length;
