@@ -903,14 +903,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkOrientation() {
         const flipMessage = document.getElementById('flip-message');
         const mainContainer = document.getElementById('mainContainer');
+        const gridContainer = document.getElementById('gridContainer');
     
         if (window.matchMedia("(orientation: landscape)").matches && isMobileDevice()) {
             flipMessage.style.display = 'block';
             mainContainer.style.display = "none";
+
         } else {
             flipMessage.style.display = 'none';
             mainContainer.style.display = "block";
-            createGrid(4-isSolvedNumber, 4);
             checkForEmptyWords(words);
         }
     }
