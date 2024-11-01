@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
     [["Tiere mit Hörnern", ["Antilope", "Steinbock", "Stier", "Widder"]], ["Tauchen in der Regel paarweise auf", ["Flügel", "Schuh", "Socke", "Zwillinge"]], ["Verschwinden im Laufe der Zeit", ["Echo", "Erinnerung", "Rauch", "Schatten"]], ["Symbole in der Justiz", ["Augenbinde", "Gavel", "Schwert", "Waage"]]], 
     [["Werden oft in Ritualen verwendet", ["Glocke", "Kerze", "Wasser", "Weihrauch"]], ["Kommen oft in Schalen", ["Müsli", "Obst", "Snack", "Suppe"]], ["Mit Zahlen assoziiert", ["Kapitel", "Maßband", "Rechnung", "Uhr"]], ["Können fließen", ["Blut", "Fluss", "Träne", "Verkehr"]]], 
     [["Hat man häufig am/im Mund", ["Flöte", "Gabel", "Glas", "Löffel"]], ["Können 'aufgehen'", ["Blume", "Hefe", "Plan", "Sonne"]], ["_Block", ["College", "Messer", "Notiz", "Zeichen"]], ["Haben Kerne", ["Apfel", "Atom", "Erde", "Prozessor"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Können 'springen'", ["Ball", "Frosch", "Glas", "Hase"]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Haben 'Wurzeln'", ["Baum", "Kultur", "Mathematik", "Zahn"]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["Kann man spielen", ["Fußball", "Instrument", "Rolle", "Spiel"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Oft mit der Farbe rot assoziiert", ["Blut", "Gefahr", "Rose", "Wut"]], ["Haben (oft) mehrere Lagen/Schichten", ["Erde", "Klopapier", "Kuchen", "Zwiebel"]], ["Können 'springen'", ["Ball", "Frosch", "Glas", "Hase"]], ["Alben von Udo Lindenberg", ["Kosmos", "Odyssee", "Phönix", "Zeitmaschine"]]], 
+    [["Sind rund", ["Kreis", "Rad", "Sonne", "Teller"]], ["Hängen oft an der Wand", ["Bild", "Regal", "Spiegel", "Uhr"]], ["Haben 'Wurzeln'", ["Baum", "Kultur", "Mathematik", "Zahn"]], ["Im Zusammenhang mit 'Ketten' verwendet", ["Fahrrad", "Reaktion", "Restaurant", "Schmuck"]]], 
+    [["Werden oft in Kalendern eingetragen", ["Feiertag", "Geburtstag", "Termin", "Urlaub"]], ["Können ihre Farbe ändern", ["Chamäleon", "Haut", "Himmel", "Laub"]], ["_Reise", ["Dienst", "Rund", "Welt", "Zeit"]], ["Sollten von Zeit zu Zeit aufgefrischt werden", ["Farbe", "Luft", "Passwort", "Wissen"]]], 
+    [["", ["", "", "", ""]], ["Haben zu tun, mit immer weniger werden", ["Akku", "Kerze", "Sanduhr", "Vorrat"]], ["Sind immer in Bewegung", ["Fluss", "Karussell", "Pendel", "Uhr"]], ["Im Kontext 'Verbindung' verwendet", ["Beziehung", "Brücke", "Kabel", "Netzwerk"]]], 
+    [["Nächtliche Begriffe", ["Mond", "Schlaf", "Stern", "Traum"]], ["Sind unsichtbar", ["Gedanke", "Geist", "Strom", "Wind"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Mit Reisen verbunden", ["Koffer", "Pass", "Route", "Ziel"]], ["", ["", "", "", "Tor"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
@@ -275,25 +275,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Shuffles the tiles, if they are well distributed
     function shuffleTiles() {
-        while(!isWellDistributed()) {
-            let currentIndex = words.length;
+        let tempWords = words;
+        while(!isWellDistributed(tempWords)) {
+            let currentIndex = tempWords.length;
             for (let i = currentIndex - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [words[i], words[j]] = [words[j], words[i]];
+                [tempWords[i], tempWords[j]] = [tempWords[j], tempWords[i]];
             }
         }
+        words = tempWords;
         selectedWords = [];
     }
 
-    // Checks if the tiles of different categories are decently well distributed
-    function isWellDistributed() {
+    function isWellDistributed(tempWords) {
         for (let j = 0; j < 4; j++) {
             if (!isSolved[j]) { 
                 let rows = 0;
                 let cols = 0;
                 for (let m = 0; m < 4 - isSolvedNumber; m++) {
                     for (let n = 0; n < 4; n++) {
-                        if (categories[j][1].includes(removeHTMLTags(words[4 * m + n]))) {
+                        if (categories[j][1].includes(removeHTMLTags(tempWords[4 * m + n]))) {
                             rows++;
                             break;
                         }
@@ -302,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 for (let m = 0; m < 4; m++) {
                     for (let n = 0; n < 4 - isSolvedNumber; n++) {
-                        if (categories[j][1].includes(removeHTMLTags(words[4 * n + m]))) {
+                        if (categories[j][1].includes(removeHTMLTags(tempWords[4 * n + m]))) {
                             cols++;
                             break; 
                         }
