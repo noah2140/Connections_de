@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContainer = document.getElementById('mainContainer');
     mainContainer.style.display = "none";
 
-    // Calculation for which puzzle to pick, and displaying the number of the puzzle
-    const addedDays = 177;
-    const startDate = new Date('10/3/2024');
+    const startDate = new Date('4/10/2024');
     let currentDate = new Date();
     let diffTime = Math.abs(currentDate - startDate);
     let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) - 1;
@@ -151,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         const shareButton = document.getElementById('shareButton');
         shareButton.onclick = function() {
-            let puzzleNumber = addedDays + diffDays + 1;
+            let puzzleNumber = diffDays + 1;
             let shareText = "Connections-DE \n" + "Puzzle #" + puzzleNumber + "\n \n";
             for (let x = 0; x < attemptsCategories.length; x++) {
                 let attempt = "";
@@ -200,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Determines the results screen and opens it
     function resultsButton() {
         if (isActiveResultsButton) {
-          let puzzleNumber = addedDays + diffDays + 1;
+          let puzzleNumber = diffDays + 1;
           let shareText = "<b>Connections-DE \n" + "Puzzle #" + puzzleNumber + "</b> \n \n";
           for (let x = 0; x < attemptsCategories.length; x++) {
             let attempt = "";
@@ -230,7 +228,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Shuffles the tiles, if they are well distributed
     function shuffleTiles() {
-        console.log("x");
         let tempWords = words;
         while(!isWellDistributed(tempWords)) {
             let currentIndex = tempWords.length;
