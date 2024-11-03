@@ -72,7 +72,6 @@ body.dark-mode .toggle-pill {
 #mainContainer {
     width: 99%;
     height: 80vh; 
-    margin: 1vh auto 0;
     display: flex;
     flex-direction: column;
 }
@@ -176,7 +175,7 @@ body.dark-mode .toggle-pill {
     margin: 1%;
     border-radius: 40px;
     border: thin solid black;
-    margin-top: 2vh;
+    margin-top: 3vh;
 }
 
 #shuffleButton  {
@@ -333,10 +332,6 @@ body.dark-mode .toggle-pill {
         margin-right: 1vh;
     }
 
-    #mainContainer {
-        margin-top: 1vh;
-    }
-
     .solve {
         font-size: 14px;
         height: 70px;
@@ -344,6 +339,10 @@ body.dark-mode .toggle-pill {
 
     .try {
         font-size: 9px;
+    }
+
+    #triesInfo {
+        margin-bottom: -3vh;
     }
 
     .button {
@@ -360,8 +359,12 @@ body.dark-mode .toggle-pill {
         min-height: 70px;
     }
 
+    #mainContainer {
+        margin-top: 1vh;
+    }
+
     #container1 {
-        height: 20%;
+        height: 18%;
         margin-top: -50px;
     }
 

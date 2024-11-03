@@ -857,12 +857,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkOrientation() {
         const flipMessage = document.getElementById('flip-message');
         const mainContainer = document.getElementById('mainContainer');
-        const gridContainer = document.getElementById('gridContainer');
+
+        const isLandscape = window.innerWidth > window.innerHeight;
     
-        if (window.matchMedia("(orientation: landscape)").matches && isMobileDevice()) {
+        if (isLandscape && isMobileDevice()) {
             flipMessage.style.display = 'block';
             mainContainer.style.display = "none";
-
         } else {
             flipMessage.style.display = 'none';
             mainContainer.style.display = "block";
@@ -870,7 +870,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    window.addEventListener('orientationchange', checkOrientation);
+    window.addEventListener('orientationchange', () => {
+        setTimeout(checkOrientation, 50);
+    });
     
     checkOrientation();
 
