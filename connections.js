@@ -1,11 +1,21 @@
 import { puzzles } from './puzzles.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Make it so that nothing is displayed, until the check for a current puzzle is displayed
+
+    const loadingScreen = document.getElementById('loading-screen');
     const noPuzzleMessage = document.getElementById('no-puzzle-message');
-    noPuzzleMessage.style.display = "none";
     const mainContainer = document.getElementById('mainContainer');
-    mainContainer.style.display = "none";
+    const flipMessage = document.getElementById('flip-message');
+
+    let hasBeenFlipped = false;
+
+    // This function will be called to complete loading and determine visibility
+    function finishLoading() {
+        checkOrientation();
+        loadingScreen.style.display = "none";  
+    }
+
+    setTimeout(finishLoading, 500);
 
     const startDate = new Date('4/10/2024');
     let currentDate = new Date();
@@ -110,20 +120,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Checks, if the puzzle is not completely defined, so that there isn't a puzzle displayed in case of this
     function checkForEmptyWords(words) {
-        const noPuzzleMessage = document.getElementById('no-puzzle-message');
-        const mainContainer = document.getElementById('mainContainer');
-    
-        noPuzzleMessage.style.display = "none";
-        mainContainer.style.display = "none";
-    
-        let hasEmptyString = words.includes("<b></b>"); 
-    
+        const hasEmptyString = words.includes("<b></b>");
+
         if (hasEmptyString) {
-            noPuzzleMessage.style.display = 'block'; 
-            mainContainer.style.display = "none"; 
+            noPuzzleMessage.style.display = 'block';   // Show message if puzzle is empty
+            mainContainer.style.display = "none";      // Hide main content
         } else {
-            noPuzzleMessage.style.display = 'none'; 
-            mainContainer.style.display = "block";
+            noPuzzleMessage.style.display = 'none';    // Hide message if puzzle is present
+            mainContainer.style.display = "block";     // Show main content
         }
     }
 
@@ -855,23 +859,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function checkOrientation() {
-        const flipMessage = document.getElementById('flip-message');
-        const mainContainer = document.getElementById('mainContainer');
-
         const isLandscape = window.innerWidth > window.innerHeight;
-    
+
         if (isLandscape && isMobileDevice()) {
-            flipMessage.style.display = 'block';
-            mainContainer.style.display = "none";
+            flipMessage.style.display = 'block';       
+            mainContainer.style.display = "none";      
+            noPuzzleMessage.style.display = "none";    
         } else {
-            flipMessage.style.display = 'none';
-            mainContainer.style.display = "block";
-            checkForEmptyWords(words);
+            flipMessage.style.display = 'none';        
+            checkForEmptyWords(words);                 
         }
     }
     
     window.addEventListener('orientationchange', () => {
         setTimeout(checkOrientation, 50);
+        if (!hasBeenFlipped) {
+            setTimeout(() => {
+                createGrid(4 - isSolvedNumber, 4);
+            }, 100);
+            hasBeenFlipped = true;
+        }
     });
     
     checkOrientation();
