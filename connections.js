@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadingScreen.style.display = "none";  
     }
 
-    setTimeout(finishLoading, 500);
+    setTimeout(finishLoading, 300);
 
     const startDate = new Date('4/10/2024');
     let currentDate = new Date();
