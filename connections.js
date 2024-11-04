@@ -866,8 +866,10 @@ document.addEventListener('DOMContentLoaded', function() {
             mainContainer.style.display = "none";      
             noPuzzleMessage.style.display = "none";    
         } else {
-            flipMessage.style.display = 'none';        
-            checkForEmptyWords(words);                 
+            flipMessage.style.display = 'none';   
+            mainContainer.style.display = "block";       
+            checkForEmptyWords(words);  
+            hasBeenFlipped = true;               
         }
     }
     
