@@ -3,12 +3,11 @@ body, html {
     padding: 0;
     height: 90%;
     font-family: "Helvetica";
+    justify-content: center;
+    align-items: center;
 }
 
 #loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -89,6 +88,9 @@ body.dark-mode .toggle-pill {
     height: 80vh; 
     display: flex;
     flex-direction: column;
+    justify-content: center;    /* Center content vertically */
+    align-items: center;        /* Center content horizontally */
+    margin: 0 auto;
 }
 
 #container1 {
