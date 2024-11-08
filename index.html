@@ -11,62 +11,64 @@
         <div id="loading-screen">
             <p>Loading...</p>
         </div>
-        <div id="flip-message" class="message text">
-            <p>Bitte drehe das Handy wieder in die aufrechte Position</p>
-        </div>
-        <div id="no-puzzle-message" class="message text">
-            Aktuell ist kein Puzzle für heute vorhanden!
-        </div>
-        <div id="top-bar">
-            <div class="gear-icon" id="gear-icon">&#9881;</div>
-        </div>
-        <div id="settings-modal" class="modal">
-            <div class="modal-content text">
-                <span class="close" id="closeSettings">&times;</span>
-                <div class="dark-mode-toggle">
-                    <span><b>Dark Mode</b></span>
-                    <div class="toggle-pill" id="toggle-dark-mode">
-                        <div class="toggle-indicator" id="toggle-indicator">O</div>
+        <div id="mainPage">
+            <div id="flip-message" class="message text">
+                <p>Bitte drehe das Handy wieder in die aufrechte Position</p>
+            </div>
+            <div id="no-puzzle-message" class="message text">
+                Aktuell ist kein Puzzle für heute vorhanden!
+            </div>
+            <div id="top-bar">
+                <div class="gear-icon" id="gear-icon">&#9881;</div>
+            </div>
+            <div id="settings-modal" class="modal">
+                <div class="modal-content text">
+                    <span class="close" id="closeSettings">&times;</span>
+                    <div class="dark-mode-toggle">
+                        <span><b>Dark Mode</b></span>
+                        <div class="toggle-pill" id="toggle-dark-mode">
+                            <div class="toggle-indicator" id="toggle-indicator">O</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="mainContainer">
-            <div id="container1">
-                <div id="triesContainer">
+            <div id="mainContainer">
+                <div id="container1">
+                    <div id="triesContainer">
+                            
+                    </div>
+                    <div id="notificationContainer"></div>
+                </div>
+                <div id="container2">
+                    <div id="solvedContainer">
                         
-                </div>
-                <div id="notificationContainer"></div>
-            </div>
-            <div id="container2">
-                <div id="solvedContainer">
-                    
-                </div>
-                <div class="grid" id="gridContainer">
-                        
-                </div>
-                <div id="triesInfo" class="text">
-                    <p>Verbleibende Versuche:</p>
-                    <div id="triesCircles">
-                        <div class="try-circle"></div>
-                        <div class="try-circle"></div>
-                        <div class="try-circle"></div>
-                        <div class="try-circle"></div>
+                    </div>
+                    <div class="grid" id="gridContainer">
+                            
+                    </div>
+                    <div id="triesInfo" class="text">
+                        <p>Verbleibende Versuche:</p>
+                        <div id="triesCircles">
+                            <div class="try-circle"></div>
+                            <div class="try-circle"></div>
+                            <div class="try-circle"></div>
+                            <div class="try-circle"></div>
+                        </div>
+                    </div>
+                    <div id="buttons">
+                        <button class="button" onclick="shuffleButton()" id="shuffleButton">Mischen</button>
+                        <button class="button" onclick="resultsButton()" id="resultsButton">Ergebnisse</button>
+                        <button class="button" onclick="enterButton()" id="enterButton">Enter</button>
                     </div>
                 </div>
-                <div id="buttons">
-                    <button class="button" onclick="shuffleButton()" id="shuffleButton">Mischen</button>
-                    <button class="button" onclick="resultsButton()" id="resultsButton">Ergebnisse</button>
-                    <button class="button" onclick="enterButton()" id="enterButton">Enter</button>
+            </div>
+            <div id="myModal" class="modal">
+                <div class="modal-content text">
+                <span class="close" id="closeShare">&times;</span>
+                <p id="modalText"></p>
+                <button id="shareButton">Teilen</button>
                 </div>
             </div>
         </div>
-        <div id="myModal" class="modal">
-            <div class="modal-content text">
-              <span class="close" id="closeShare">&times;</span>
-              <p id="modalText"></p>
-              <button id="shareButton">Teilen</button>
-            </div>
-          </div>
     </body>
 </html>

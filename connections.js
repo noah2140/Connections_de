@@ -12,10 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // This function will be called to complete loading and determine visibility
     function finishLoading() {
         checkOrientation();
-        loadingScreen.style.display = "none";  
+        loadingScreen.style.display = "none"; 
+        document.getElementById("mainPage").style.display = "block"; 
     }
 
-    setTimeout(finishLoading, 300);
+    setTimeout(finishLoading, 500);
 
     const startDate = new Date('4/10/2024');
     let currentDate = new Date();
