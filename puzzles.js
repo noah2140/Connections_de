@@ -212,8 +212,8 @@ export const puzzles = [
     [["Nächtliche Begriffe", ["Mond", "Schlaf", "Stern", "Traum"]], ["Sind unsichtbar", ["Gedanke", "Geist", "Strom", "Wind"]], ["iPhone Apps, aber in deren Einzahl", ["Einstellung", "Kontakt", "Nachricht", "Notiz"]], ["_Verkehr", ["Feierabend", "Ferien", "Links", "Nah"]]], 
     [["Mit Reisen verbunden", ["Koffer", "Pass", "Route", "Ziel"]], ["Werden im Fußball aber nicht im American Football verwendet", ["Ecke", "Flanke", "Karte", "Tor"]], ["_Bach", ["Baum", "Horn", "Lauter", "Offen"]], ["Haben mit 'Kippen' zu tun", ["Fenster", "Stimmung", "Turm", "Zigarette"]]], 
     [["Zum Aufwärmen im Winter verwendet", ["Decke", "Glühwein", "Jacke", "Mütze"]], ["Werden beschützt/geschützt", ["Geheimnis", "Kind", "König", "Schatz"]], ["Haben eine Spitze", ["Berg", "Bleistift", "Pfeil", "Turm"]], ["Spiel_", ["Brett", "Feld", "Film", "Plan"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Wörter ohne einzelnen Buchstaben + '-' am Anfang", ["Bahn", "Gitarre", "Mail", "Shirt"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Zur Erholung verwendet", ["Pause", "Rast", "Schlaf", "Urlaub"]], ["Kommen in der Grammatik vor", ["Artikel", "Fall", "Modus", "Person"]], ["Können fallen", ["Licht", "Regen", "Schatten", "Würfel"]], ["Wörter ohne einzelnen Buchstaben + '-' am Anfang", ["Bahn", "Gitarre", "Mail", "Shirt"]]], 
+    [["In der Finanzwelt gebraucht", ["Bank", "Konto", "Kurs", "Markt"]], ["Kosten Zeit", ["Ampel", "Kontrolle", "Schlange", "Stau"]], ["Haben Rahmen", ["Brille", "Fenster", "Gemälde", "Tür"]], ["_stag", ["Bus", "Geburt", "Hochzeit", "Leben"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
