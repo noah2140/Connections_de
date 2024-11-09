@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
         checkOrientation();
         loadingScreen.style.display = "none"; 
         document.getElementById("mainPage").style.display = "block"; 
+        const gridItems = document.querySelectorAll(".grid-item");
+        let i = 0;
+        gridItems.forEach((gridItem) => {
+            const text = words[i++];
+            gridItem.style.fontSize = calculateFontSize(text, 4);
+        });
     }
 
     setTimeout(finishLoading, 500);
@@ -330,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for(let j=0; j<cols; j++) {
                 const text = words[n];
                 const gridItem = document.createElement('div');
-                const fontSize = calculateFontSize(text, rows, cols);
+                const fontSize = calculateFontSize(text, cols);
                 gridItem.classList.add('grid-item');
                 gridItem.innerHTML = words[n++];
                 gridItem.style.fontSize = fontSize;
@@ -358,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Calculates the font size for all different words, so they are more readable
-    function calculateFontSize(text, rows, cols) {
+    function calculateFontSize(text, cols) {
         const tempDiv = document.createElement('div');
         tempDiv.style.position = 'absolute';
         tempDiv.style.whiteSpace = 'nowrap';
