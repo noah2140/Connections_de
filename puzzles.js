@@ -214,7 +214,7 @@ export const puzzles = [
     [["Zum Aufwärmen im Winter verwendet", ["Decke", "Glühwein", "Jacke", "Mütze"]], ["Werden beschützt/geschützt", ["Geheimnis", "Kind", "König", "Schatz"]], ["Haben eine Spitze", ["Berg", "Bleistift", "Pfeil", "Turm"]], ["Spiel_", ["Brett", "Feld", "Film", "Plan"]]], 
     [["Zur Erholung verwendet", ["Pause", "Rast", "Schlaf", "Urlaub"]], ["Kommen in der Grammatik vor", ["Artikel", "Fall", "Modus", "Person"]], ["Können fallen", ["Licht", "Regen", "Schatten", "Würfel"]], ["Wörter ohne einzelnen Buchstaben + '-' am Anfang", ["Bahn", "Gitarre", "Mail", "Shirt"]]], 
     [["In der Finanzwelt gebraucht", ["Bank", "Konto", "Kurs", "Markt"]], ["Kosten Zeit", ["Ampel", "Kontrolle", "Schlange", "Stau"]], ["Haben Rahmen", ["Brille", "Fenster", "Gemälde", "Tür"]], ["_stag", ["Bus", "Geburt", "Hochzeit", "Leben"]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]], 
+    [["Steigen in die Luft", ["Ballon", "Dampf", "Rakete", "Vogel"]], ["Tiernahe Begriffe", ["Feder", "Horn", "Pelz", "Pfote"]], ["Auf Notenblättern (Musik) zu sehen", ["Note", "Pause", "Takt", "Tempo"]], ["_Glas", ["Fern", "Panzer", "Sekt", "Wein"]]], 
+    [["Gewichtseinheiten", ["Gramm", "Kilo", "Stein", "Tonne"]], ["Schlecht für die Umwelt", ["Auto", "Flugzeug", "Kuh", "Plastik"]], ["", ["", "", "", ""]], ["_Welle", ["Dauer", "Gehirn", "Hitze", "Mikro"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
     ];
