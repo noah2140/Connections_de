@@ -955,10 +955,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function checkAndResetProgress() {
-        const savedPuzzle = localStorage.getItem('connectionsPuzzle');
-        console.log(categories + " " + savedPuzzle);
-        if (!savedPuzzle || savedPuzzle !== categories) {
-            localStorage.setItem('connectionsPuzzle', categories);
+        const savedDateStr = localStorage.getItem('connectionsDate');
+        const savedDate = new Date(savedDateStr);
+        const currentDateWithoutTime = new Date(currentDate);
+        currentDateWithoutTime.setHours(0, 0, 0, 0); 
+        if (!savedDate || savedDate.getTime() !== currentDateWithoutTime.getTime()) {
+            localStorage.setItem('connectionsDate', currentDateWithoutTime.toDateString());
             localStorage.removeItem('connectionsProgress');
             location.reload(); 
         }
