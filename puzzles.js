@@ -217,7 +217,7 @@ export const puzzles = [
     [["Steigen in die Luft", ["Ballon", "Dampf", "Rakete", "Vogel"]], ["Tiernahe Begriffe", ["Feder", "Horn", "Pelz", "Pfote"]], ["Auf Notenblättern (Musik) zu sehen", ["Note", "Pause", "Takt", "Tempo"]], ["_Glas", ["Fern", "Panzer", "Sekt", "Wein"]]], 
     [["Gewichtseinheiten", ["Gramm", "Kilo", "Pfund", "Tonne"]], ["Schlecht für die Umwelt", ["Auto", "Flugzeug", "Kuh", "Plastik"]], ["Dinge die oft aus Kunststoff gemacht sind", ["Brotdose", "Flasche", "Folie", "Rohr"]], ["_Welle", ["Dauer", "Gehirn", "Hitze", "Mikro"]]], 
     [["In vielen Rezepten zu sehen", ["Becher", "Erhitzen", "Schlagen", "Teelöffel"]], ["Beim Poker zu sehen", ["Chips", "Einsatz", "Paar", "Straße"]], ["Sternbilder", ["Drache", "Dreieck", "Krebs", "Pegasus"]], ["Wolfs_", ["Burg", "Grube", "Rudel", "Schanze"]]],
-    [["Bahnhöfe in Monopoly", ["Haupt", "Nord", "Süd", "West"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Wörter, die in alphabetischer Reihenfolge angeordnet sind", ["Beginn", "", "", ""]]],
+    [["Bundeswehrränge", ["General", "Hauptmann", "Oberst", "Soldat"]], ["Bahnhöfe in Monopoly", ["Haupt", "Nord", "Süd", "West"]], ["Was Schildkröten haben", ["Beine", "Kopf", "Panzer", "Schwanz"]], ["Am Anfang gesetzlicher Feiertage zu finden", ["Alle", "Neu", "Ost", "Reform"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
