@@ -218,7 +218,7 @@ export const puzzles = [
     [["Gewichtseinheiten", ["Gramm", "Kilo", "Pfund", "Tonne"]], ["Schlecht für die Umwelt", ["Auto", "Flugzeug", "Kuh", "Plastik"]], ["Dinge die oft aus Kunststoff gemacht sind", ["Brotdose", "Flasche", "Folie", "Rohr"]], ["_Welle", ["Dauer", "Gehirn", "Hitze", "Mikro"]]], 
     [["In vielen Rezepten zu sehen", ["Becher", "Erhitzen", "Schlagen", "Teelöffel"]], ["Beim Poker zu sehen", ["Chips", "Einsatz", "Paar", "Straße"]], ["Sternbilder", ["Drache", "Dreieck", "Krebs", "Pegasus"]], ["Wolfs_", ["Burg", "Grube", "Rudel", "Schanze"]]],
     [["Bundeswehrränge", ["General", "Hauptmann", "Oberst", "Soldat"]], ["Bahnhöfe in Monopoly", ["Haupt", "Nord", "Süd", "West"]], ["Was Schildkröten haben", ["Beine", "Kopf", "Panzer", "Schwanz"]], ["Am Anfang gesetzlicher Feiertage zu finden", ["Alle", "Neu", "Ost", "Reform"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
+    [["Gruppe an Menschen", ["Bund", "Partei", "Team", "Union"]], ["Slang für Kopf von Haarlosen", ["Flughafen", "Glatze", "Kahlkopf", "Platte"]], ["Worauf/Worin man Essen findet", ["Karte", "Teller", "Tisch", "Topf"]], ["_Kampf", ["Box", "Macht", "Wahl", "Zehn"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
