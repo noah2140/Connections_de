@@ -222,7 +222,7 @@ export const puzzles = [
     [["Haben mit Wasser zu tun", ["Gießen", "Schwimmen", "Trinken", "Tropfen"]], ["Was man auf dem Teller findet", ["Essen", "Fleisch", "Gemüse", "Sauce"]], ["Herz_", ["Blatt", "Haft", "Klopfen", "Schlag"]], ["Werden gezogen", ["Karte", "Schlitten", "Seil", "Zahn"]]],
     [["Haben 4 Beine", ["Hund", "Kuh", "Pferd", "Tisch"]], ["Dinge, die oft geknotet/zerknotet sind", ["Kabel", "Krawatte", "Schal", "Seil"]], ["Gold_", ["Barren", "Fisch", "Grube", "Ring"]], ["Worauf/Woran man klopft", ["Fenster", "Holz", "Trommel", "Tür"]]],
     [["Sind 'scharf'", ["Chili", "Messer", "Pfeffer", "Schwert"]], ["Haben Flügel, sind aber keine Vögel", ["Engel", "Fledermaus", "Flugzeug", "Schmetterling"]], ["Was mit 'Stock' gemeint sein kann", ["Ast", "Etage", "Gehhilfe", "Vorrat"]], ["_Stein", ["Edel", "Klo", "Pizza", "Ziegel"]]],
-    [["Winterliche Begriffe", ["Eis", "Kamin", "Schlitten", "Schnee"]], ["", ["", "", "", ""]], ["Haben mit 'Rollen' zu tun", ["Ball", "Münzen", "Reifen", "Schauspieler"]], ["Namen von Straßen in Monopoly", ["Berliner", "Goethe", "Park", "Schiller"]]],
+    [["Winterliche Begriffe", ["Eis", "Kamin", "Schlitten", "Schnee"]], ["In Gärten zu sehen", ["Mäher", "Rasen", "Teich", "Zwerg"]], ["Haben mit 'Rollen' zu tun", ["Ball", "Münzen", "Reifen", "Schauspieler"]], ["Namen von Straßen in Monopoly", ["Berliner", "Goethe", "Park", "Schiller"]]],
     [["Haben mit Wind zu tun", ["Atmen", "Drachen", "Pfeifen", "Wehen"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Wieder_", ["Geburt", "Kauen", "Sehen", "Wahl"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
