@@ -227,7 +227,7 @@ export const puzzles = [
     [["Haben Feuer", ["Grill", "Herd", "Kerze", "Vulkan"]], ["Werden aus Holz gemacht", ["Geige", "Kiste", "Möbel", "Papier"]], ["Dinge die 'wachsen'", ["Baum", "Haare", "Kind", "Nagel"]], ["Himmels_", ["Richtung", "Stern", "Tor", "Zelt"]]],
     [["Oft bei Brettspielen dabei", ["Anleitung", "Brett", "Figur", "Würfel"]], ["In der Mathematik verwendete Begriffe", ["Bruch", "Faktor", "Funktion", "Produkt"]], ["Haben etwas mit 'Drehen' zu tun", ["Film", "Kreisel", "Lenkrad", "Ventilator"]], ["Wieder_", ["Geburt", "Kauen", "Sehen", "Wahl"]]],
     [["Währungen", ["CAD", "EUR", "GBP", "JPY"]], ["Kürzel im Bereich Technologie und IT", ["RAM", "USB", "VPN", "WWW"]], ["Kürzel großer US-amerikanischer Flughäfen", ["ATL", "LAX", "JFK", "MIA"]], ["Auf einigen Taschenrechnern zu sehen", ["Ans", "Log", "Sin", "Tan"]]],
-    [["Begriffe der Musik", ["Instrument", "Note", "Stimme", "Ton"]], ["Können zur Zeitorientierung genutzt werden", ["Kalender", "Mond", "Uhr", "Wochentag"]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
+    [["Begriffe der Musik", ["Instrument", "Note", "Stimme", "Ton"]], ["Können zur Zeitorientierung genutzt werden", ["Kalender", "Mond", "Uhr", "Wochentag"]], ["Dinge die oft transportiert werden", ["Brief", "Gepäck", "Möbel", "Paket"]], ["_Schein", ["Geld", "Gut", "Lotto", "Waffen"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Kost", ["Fein", "Frisch", "Roh", "Trocken"]], ["Im Kontext 'Bund' verwendet", ["Buch", "Deutschland", "Hose", "Schlüssel"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["_Werk", ["Bau", "Kunst", "Netz", "Uhr"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
