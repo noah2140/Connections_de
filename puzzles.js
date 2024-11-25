@@ -229,10 +229,10 @@ export const puzzles = [
     [["Währungen", ["CAD", "EUR", "GBP", "JPY"]], ["Kürzel im Bereich Technologie und IT", ["RAM", "USB", "VPN", "WWW"]], ["Kürzel großer US-amerikanischer Flughäfen", ["ATL", "LAX", "JFK", "MIA"]], ["Auf einigen Taschenrechnern zu sehen", ["Ans", "Log", "Sin", "Tan"]]],
     [["Begriffe der Musik", ["Instrument", "Note", "Stimme", "Ton"]], ["Können zur Zeitorientierung genutzt werden", ["Kalender", "Mond", "Uhr", "Wochentag"]], ["Dinge die oft transportiert werden", ["Brief", "Gepäck", "Möbel", "Paket"]], ["_Schein", ["Geld", "Gut", "Lotto", "Waffen"]]],
     [["Haben mit Geld zu tun", ["Gehalt", "Konto", "Schein", "Schulden"]], ["Haben 2 Seiten", ["Hand", "Münze", "Schild", "Spielkarte"]], ["_Kost", ["Fein", "Frisch", "Roh", "Trocken"]], ["Kontexte, in denen 'Bund' verwendet wird", ["Buch", "Deutschland", "Hose", "Schlüssel"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Werden geschlossen", ["Fenster", "Geschäft", "Kiste", "Tür"]], ["_Werk", ["Bau", "Kunst", "Netz", "Uhr"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Am Ende europäischer Länder", ["Alien", "", "Land", "Reich"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
+    [["Sind rund", ["Ball", "Erde", "Mond", "Ring"]], ["Für nicht gut passende Kleidung verwendet", ["Eng", "Knapp", "Lang", "Weit"]], ["Werden geschlossen", ["Fenster", "Geschäft", "Kiste", "Tür"]], ["_Werk", ["Bau", "Kunst", "Netz", "Uhr"]]],
+    [["", ["", "", "", ""]], ["Brauchen Luft", ["Ballon", "Feuer", "Taucher", "Ventilator"]], ["Können geschnitten werden", ["Brot", "Haar", "Papier", "Spur"]], ["Am Ende europäischer Länder", ["Alien", "Land", "Reich", "Stein"]]],
+    [["Infolge von", ["Dank", "Durch", "Mittels", "Wegen"]], ["Rücksichtsloser Umgang", ["Grob", "Hart", "Kalt", "Roh"]], ["Enthalten Körperteile", ["Anhand", "Beinahe", "Farm", "Kopflos"]], ["_ Nicht", ["Gar", "Noch", "So", "Überhaupt"]]],
+    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Nomen, vor denen in Einzahl sowohl 'Der' als auch 'Die' passend ist", ["Band", "Kiefer", "Leiter", "See"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]]
     ];
