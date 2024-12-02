@@ -235,6 +235,7 @@ export const puzzles = [
     [["Kann man rollen", ["Ball", "Fass", "Rad", "Teig"]], ["Sind hart", ["Eisen", "Knochen", "Marmor", "Stein"]], ["Was man landet", ["Flugzeug", "Heißluftballon", "Rakete", "Treffer"]], ["Nomen, vor denen in Einzahl sowohl 'Der' als auch 'Die' passend ist", ["Band", "Kiefer", "Leiter", "See"]]],
     [["Sind laut", ["Gewitter", "Pfeife", "Sirene", "Wecker"]], ["Sorgen für rutschige Straßen", ["Eis", "Laub", "Öl", "Wasser"]], ["Haben Zähne", ["Hai", "Kamm", "Mund", "Säge"]], ["Feuer_", ["Alarm", "Decke", "Teufel", "Zeug"]]],
     [["Dinge von denen wir mehr als 2 haben", ["Finger", "Rippe", "Zahn", "Zeh"]], ["Was bei Elefanten groß ist", ["Bein", "Horn", "Ohr", "Rüssel"]], ["Im Kontext 'Glück haben / gehabt' verwendet", ["Dusel", "Glück", "Lauf", "Schwein"]], ["Salat_", ["Bar", "Buffet", "Kopf", "Sauce"]]], 
+    [["Im Zusammenhang mit Raubtieren verwendet", ["Beute", "Jagd", "Revier", "Riss"]], ["Haben mehrere Grade", ["Abschluss", "Cousin", "Lebensmittel", "Verbrennung"]], ["Dinge die einen Deckel haben", ["Flasche", "Gully", "Toilette", "Topf"]], ["Stein_", ["Adler", "Bruch", "Ofen", "Schleuder"]]], 
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Stark_", ["Bier", "Och", "Regen", "Wind"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Bienen_", ["Stich", "Stock", "Tanz", "Volk"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
