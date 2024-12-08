@@ -242,7 +242,7 @@ export const puzzles = [
     [["Eigenart", ["Charakter", "Merkmal", "Note", "Typ"]], ["Können reflektieren", ["Fenster", "Politur", "Spiegel", "Wasser"]], ["Werden gezogen", ["Faden", "Karte", "Kutsche", "Zahn"]], ["Blut_", ["Bad", "Bild", "Gruppe", "Wurst"]]],
     [["Kann man hoch-/runtergehen", ["Leiter", "Rampe", "Stufe", "Treppe"]], ["Kann man sich rein versenken", ["Arbeit", "Buch", "Gespräch", "Meditation"]], ["Hinterlassen Spuren", ["Auto", "Biss", "Schnecke", "Verbrecher"]], ["_Rohr", ["Abfluss", "Bambus", "Drainage", "Zucker"]]],
     [["Saugen Dinge auf", ["Reis", "Schwamm", "Staubsauger", "Windel"]], ["Grüntöne", ["Apfel", "Billard", "Militär", "Smaragd"]], ["Aus dem Französischen stammende Wörter", ["Accessoire", "Charme", "Medaille", "Restaurant"]], ["Auto_", ["Bahn", "Gramm", "Kino", "Korrektur"]]],
-    [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
+    [["Weshalb man schwitzt", ["Angst", "Fieber", "Hitze", "Sport"]], ["'Halt den/die'", ["Klappe", "Mund", "Rand", "Schnabel"]], ["Was mit 'Bar' gemeint sein kann", ["Druck", "Kneipe", "Münze", "Schein"]], ["_Phase", ["Ampel", "Schlaf", "Test", "Trocken"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["Am Anfang von Inhabern großer Unternehmen", ["Gate", "", "Mus", "Zucker"]]],
     [["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]], ["", ["", "", "", ""]]],
